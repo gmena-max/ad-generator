@@ -10,6 +10,8 @@ import { TemplateSelector } from "@/components/TemplateSelector";
 import { CopyEditor } from "@/components/CopyEditor";
 import { BulkGenerator } from "@/components/BulkGenerator";
 import { ExportPanel } from "@/components/ExportPanel";
+import { ImageUpload } from "@/components/ImageUpload";
+import { getPresetsForClient } from "@/data/presets";
 import { exportAndDownload, bulkExportAll } from "@/lib/export";
 
 export default function Home() {
@@ -20,11 +22,13 @@ export default function Home() {
   );
   const [variations, setVariations] = useState<CopyContent[]>([]);
   const [isExporting, setIsExporting] = useState(false);
+  const [image, setImage] = useState<string | null>(null);
 
   const canvasRef = useRef<HTMLDivElement>(null);
   const bulkCanvasRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
   const brand = clients[clientId];
+  const presets = getPresetsForClient(clientId);
 
   function handleTemplateChange(id: TemplateId) {
     setTemplateId(id);
@@ -107,12 +111,20 @@ export default function Home() {
 
           <div>
             <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+              Image
+            </h2>
+            <ImageUpload image={image} onChange={setImage} />
+          </div>
+
+          <div>
+            <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
               Copy
             </h2>
             <CopyEditor
               templateId={templateId}
               copy={copy}
               onChange={setCopy}
+              presets={presets}
             />
           </div>
         </div>
@@ -128,6 +140,7 @@ export default function Home() {
               brand={brand}
               template={templateId}
               copy={copy}
+              image={image ?? undefined}
             />
           </AdPreview>
         </div>
@@ -177,6 +190,7 @@ export default function Home() {
                       brand={brand}
                       template={templateId}
                       copy={v}
+                      image={image ?? undefined}
                     />
                   </div>
                 </div>

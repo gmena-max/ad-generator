@@ -1,4 +1,4 @@
-export type TemplateId = "stat-authority" | "symptom-question" | "social-proof" | "faq-card" | "educational" | "scarcity";
+export type TemplateId = "stat-authority" | "symptom-question" | "social-proof" | "faq-card" | "educational" | "scarcity" | "photo-hero" | "testimonial";
 
 export type CopyContent = {
   hook: string;
@@ -90,61 +90,3 @@ export const templates: AdTemplate[] = [
   },
 ];
 
-export type CopyPreset = {
-  label: string;
-  category: string;
-  copies: CopyContent[];
-};
-
-export const copyPresets: CopyPreset[] = [
-  {
-    label: "Cataratas",
-    category: "cataratas",
-    copies: [
-      {
-        hook: "¿Ve borroso o nublado?",
-        body: "Podría ser cataratas. La cirugía es rápida, segura y efectiva. Más de 23 años de experiencia.",
-        cta: "Agenda su valoración",
-      },
-      {
-        hook: "Las cataratas son la primera causa de ceguera reversible.",
-        body: "El Dr. Mena puede ayudarle a recuperar su visión.",
-        cta: "Escríbanos por WhatsApp",
-      },
-      {
-        hook: "99% de los pacientes recuperan su visión",
-        body: "Tras la cirugía de catarata. Tecnología de última generación en Alajuela Centro.",
-        cta: "Agende hoy",
-        stat: "99%",
-      },
-    ],
-  },
-  {
-    label: "Ojo Seco",
-    category: "ojo-seco",
-    copies: [
-      {
-        hook: "¿Siente los ojos secos, irritados o cansados?",
-        body: "El ojo seco es tratable. Consulte con un especialista.",
-        cta: "WhatsApp 6439-8221",
-      },
-    ],
-  },
-  {
-    label: "General",
-    category: "general",
-    copies: [
-      {
-        hook: "¿Problemas de visión? No espere más.",
-        body: "Más de 23 años cuidando la salud visual de los costarricenses.",
-        cta: "Agenda tu cita",
-      },
-      {
-        hook: "186 reseñas en Google. 4.9 estrellas.",
-        body: "Miles de pacientes confían en el Dr. Diego Mena.",
-        cta: "Escríbanos hoy",
-        stat: "4.9★",
-      },
-    ],
-  },
-];

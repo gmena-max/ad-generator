@@ -14,6 +14,8 @@ const TEMPLATE_ICONS: Record<TemplateId, string> = {
   "faq-card": "Q&A",
   "educational": "i",
   "scarcity": "!!",
+  "photo-hero": "PH",
+  "testimonial": "T",
 };
 
 export function TemplateSelector({ selected, onChange }: Props) {

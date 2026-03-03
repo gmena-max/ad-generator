@@ -1,11 +1,13 @@
 "use client";
 
-import { CopyContent, templates, copyPresets, TemplateId } from "@/data/templates";
+import { CopyContent, templates, TemplateId } from "@/data/templates";
+import { CopyPreset } from "@/data/presets";
 
 type Props = {
   templateId: TemplateId;
   copy: CopyContent;
   onChange: (copy: CopyContent) => void;
+  presets: CopyPreset[];
 };
 
 const FIELD_LABELS: Record<string, string> = {
@@ -17,7 +19,7 @@ const FIELD_LABELS: Record<string, string> = {
   answer: "Respuesta",
 };
 
-export function CopyEditor({ templateId, copy, onChange }: Props) {
+export function CopyEditor({ templateId, copy, onChange, presets }: Props) {
   const template = templates.find((t) => t.id === templateId)!;
 
   function handleField(field: keyof CopyContent, value: string) {
@@ -36,10 +38,10 @@ export function CopyEditor({ templateId, copy, onChange }: Props) {
           Copy Presets
         </label>
         <div className="flex flex-wrap gap-1">
-          {copyPresets.map((preset) =>
+          {presets.map((preset) =>
             preset.copies.map((c, i) => (
               <button
-                key={`${preset.category}-${i}`}
+                key={`${preset.label}-${i}`}
                 onClick={() => loadPreset(c)}
                 className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-600 hover:bg-gray-200 transition-colors"
                 title={c.hook}

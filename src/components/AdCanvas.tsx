@@ -334,10 +334,10 @@ function SymptomQuestion({
             <div
               style={{ fontSize: 28, fontWeight: 700, color: colors.primary }}
             >
-              {brand.doctor}
+              {brand.headline}
             </div>
             <div style={{ fontSize: 22, color: colors.accent }}>
-              {brand.credential}
+              {brand.subheadline}
             </div>
           </div>
         </div>
@@ -445,7 +445,9 @@ function SocialProof({
             color: colors.primary,
           }}
         >
-          Google Reviews
+          {brand.reviewCount
+            ? `${brand.reviewRating || ""}★ · ${brand.reviewCount} reseñas en Google`
+            : "Google Reviews"}
         </div>
       </div>
 
@@ -562,11 +564,16 @@ function FaqCard({
               fontWeight: 700,
             }}
           >
-            DM
+            {brand.headline
+              .split(" ")
+              .filter((w) => w[0] !== w[0]?.toLowerCase())
+              .map((w) => w[0])
+              .join("")
+              .slice(0, 2)}
           </div>
           <div>
             <div style={{ fontSize: 26, fontWeight: 700, color: colors.primary }}>
-              {brand.doctor}
+              {brand.headline}
             </div>
             <div style={{ fontSize: 20, color: colors.accent }}>
               {brand.tagline}
@@ -689,10 +696,10 @@ function Educational({
           />
           <div>
             <div style={{ fontSize: 26, fontWeight: 700, color: "#FFFFFF" }}>
-              {brand.doctor}
+              {brand.headline}
             </div>
             <div style={{ fontSize: 20, color: colors.accent }}>
-              {brand.credential}
+              {brand.subheadline}
             </div>
           </div>
         </div>
@@ -795,7 +802,7 @@ function Scarcity({
             marginBottom: 24,
           }}
         >
-          {brand.doctor}
+          {brand.headline}
         </div>
         <div
           style={{
