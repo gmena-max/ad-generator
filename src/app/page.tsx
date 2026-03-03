@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useMemo } from "react";
 import { clients, defaultClientId } from "@/data/clients";
 import { templates, CopyContent, TemplateId } from "@/data/templates";
 import { AdCanvas } from "@/components/AdCanvas";
@@ -11,7 +11,9 @@ import { CopyEditor } from "@/components/CopyEditor";
 import { BulkGenerator } from "@/components/BulkGenerator";
 import { ExportPanel } from "@/components/ExportPanel";
 import { ImageUpload } from "@/components/ImageUpload";
+import { PersonaSelector } from "@/components/PersonaSelector";
 import { getPresetsForClient } from "@/data/presets";
+import { getPersonasForClient } from "@/data/personas";
 import { exportAndDownload, bulkExportAll } from "@/lib/export";
 
 export default function Home() {
@@ -23,17 +25,34 @@ export default function Home() {
   const [variations, setVariations] = useState<CopyContent[]>([]);
   const [isExporting, setIsExporting] = useState(false);
   const [image, setImage] = useState<string | null>(null);
+  const [personaId, setPersonaId] = useState<string | null>(null);
 
   const canvasRef = useRef<HTMLDivElement>(null);
   const bulkCanvasRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
   const brand = clients[clientId];
   const presets = getPresetsForClient(clientId);
+  const personas = getPersonasForClient(clientId);
+
+  const selectedPersona = useMemo(
+    () => personas.find((p) => p.id === personaId) || null,
+    [personas, personaId]
+  );
+
+  const recommendedTemplates = useMemo(
+    () => selectedPersona?.recommendedTemplates || [],
+    [selectedPersona]
+  );
 
   function handleTemplateChange(id: TemplateId) {
     setTemplateId(id);
     const t = templates.find((t) => t.id === id)!;
     setCopy(t.defaultCopy);
+  }
+
+  function handleClientChange(id: string) {
+    setClientId(id);
+    setPersonaId(null);
   }
 
   const handleExportCurrent = useCallback(async () => {
@@ -72,7 +91,7 @@ export default function Home() {
             <h1 className="text-lg font-bold text-gray-800">
               Lux Media Ad Generator
             </h1>
-            <ClientSelector selected={clientId} onChange={setClientId} />
+            <ClientSelector selected={clientId} onChange={handleClientChange} />
           </div>
           <div className="flex items-center gap-2">
             <div
@@ -95,9 +114,25 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Persona bar */}
+      {personas.length > 0 && (
+        <div className="border-b border-gray-200 bg-white px-6 py-3">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
+              Persona
+            </span>
+            <PersonaSelector
+              personas={personas}
+              selected={personaId}
+              onChange={setPersonaId}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Main content */}
       <div className="flex gap-6 p-6">
-        {/* Left panel — Templates + Copy */}
+        {/* Left panel — Templates + Image + Copy */}
         <div className="w-80 flex-shrink-0 space-y-6">
           <div>
             <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
@@ -106,6 +141,7 @@ export default function Home() {
             <TemplateSelector
               selected={templateId}
               onChange={handleTemplateChange}
+              recommendedIds={recommendedTemplates}
             />
           </div>
 
@@ -125,6 +161,7 @@ export default function Home() {
               copy={copy}
               onChange={setCopy}
               presets={presets}
+              personaId={personaId}
             />
           </div>
         </div>
