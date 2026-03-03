@@ -1,65 +1,193 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useRef, useCallback } from "react";
+import { clients, defaultClientId } from "@/data/clients";
+import { templates, CopyContent, TemplateId } from "@/data/templates";
+import { AdCanvas } from "@/components/AdCanvas";
+import { AdPreview } from "@/components/AdPreview";
+import { ClientSelector } from "@/components/ClientSelector";
+import { TemplateSelector } from "@/components/TemplateSelector";
+import { CopyEditor } from "@/components/CopyEditor";
+import { BulkGenerator } from "@/components/BulkGenerator";
+import { ExportPanel } from "@/components/ExportPanel";
+import { exportAndDownload, bulkExportAll } from "@/lib/export";
 
 export default function Home() {
+  const [clientId, setClientId] = useState(defaultClientId);
+  const [templateId, setTemplateId] = useState<TemplateId>("symptom-question");
+  const [copy, setCopy] = useState<CopyContent>(
+    templates.find((t) => t.id === "symptom-question")!.defaultCopy
+  );
+  const [variations, setVariations] = useState<CopyContent[]>([]);
+  const [isExporting, setIsExporting] = useState(false);
+
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const bulkCanvasRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+
+  const brand = clients[clientId];
+
+  function handleTemplateChange(id: TemplateId) {
+    setTemplateId(id);
+    const t = templates.find((t) => t.id === id)!;
+    setCopy(t.defaultCopy);
+  }
+
+  const handleExportCurrent = useCallback(async () => {
+    if (!canvasRef.current) return;
+    setIsExporting(true);
+    try {
+      await exportAndDownload(canvasRef.current, clientId, templateId, 0);
+    } catch (err) {
+      console.error("Export failed:", err);
+    }
+    setIsExporting(false);
+  }, [clientId, templateId]);
+
+  const handleExportAll = useCallback(async () => {
+    if (variations.length === 0) return;
+    setIsExporting(true);
+    try {
+      const nodes: HTMLElement[] = [];
+      for (let i = 0; i < variations.length; i++) {
+        const node = bulkCanvasRefs.current.get(i);
+        if (node) nodes.push(node);
+      }
+      await bulkExportAll(nodes, clientId, templateId);
+    } catch (err) {
+      console.error("Bulk export failed:", err);
+    }
+    setIsExporting(false);
+  }, [variations, clientId, templateId]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <div className="min-h-screen bg-gray-50">
+      {/* Top bar */}
+      <header className="border-b border-gray-200 bg-white px-6 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <h1 className="text-lg font-bold text-gray-800">
+              Lux Media Ad Generator
+            </h1>
+            <ClientSelector selected={clientId} onChange={setClientId} />
+          </div>
+          <div className="flex items-center gap-2">
+            <div
+              className="h-4 w-4 rounded"
+              style={{ backgroundColor: brand.colors.primary }}
+              title="Primary"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div
+              className="h-4 w-4 rounded"
+              style={{ backgroundColor: brand.colors.accent }}
+              title="Accent"
+            />
+            <div
+              className="h-4 w-4 rounded"
+              style={{ backgroundColor: brand.colors.cta }}
+              title="CTA"
+            />
+            <span className="ml-2 text-xs text-gray-400">{brand.name}</span>
+          </div>
         </div>
-      </main>
+      </header>
+
+      {/* Main content */}
+      <div className="flex gap-6 p-6">
+        {/* Left panel — Templates + Copy */}
+        <div className="w-80 flex-shrink-0 space-y-6">
+          <div>
+            <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+              Template
+            </h2>
+            <TemplateSelector
+              selected={templateId}
+              onChange={handleTemplateChange}
+            />
+          </div>
+
+          <div>
+            <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+              Copy
+            </h2>
+            <CopyEditor
+              templateId={templateId}
+              copy={copy}
+              onChange={setCopy}
+            />
+          </div>
+        </div>
+
+        {/* Center — Live preview */}
+        <div className="flex flex-1 flex-col items-center">
+          <h2 className="mb-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+            Preview
+          </h2>
+          <AdPreview>
+            <AdCanvas
+              ref={canvasRef}
+              brand={brand}
+              template={templateId}
+              copy={copy}
+            />
+          </AdPreview>
+        </div>
+
+        {/* Right panel — Bulk + Export */}
+        <div className="w-72 flex-shrink-0 space-y-6">
+          <BulkGenerator
+            variations={variations}
+            onChange={setVariations}
+            currentCopy={copy}
+          />
+          <ExportPanel
+            onExportCurrent={handleExportCurrent}
+            onExportAll={handleExportAll}
+            variationCount={variations.length}
+            isExporting={isExporting}
+          />
+        </div>
+      </div>
+
+      {/* Bulk variations gallery */}
+      {variations.length > 0 && (
+        <div className="border-t border-gray-200 bg-white p-6">
+          <h2 className="mb-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+            Batch Gallery ({variations.length} variations)
+          </h2>
+          <div className="flex gap-4 overflow-x-auto pb-4">
+            {variations.map((v, i) => (
+              <div key={i} className="flex-shrink-0">
+                <div
+                  className="overflow-hidden rounded-lg border border-gray-200 shadow-sm"
+                  style={{ width: 216, height: 270 }}
+                >
+                  <div
+                    style={{
+                      transform: "scale(0.2)",
+                      transformOrigin: "top left",
+                      width: 1080,
+                      height: 1350,
+                    }}
+                  >
+                    <AdCanvas
+                      ref={(el) => {
+                        if (el) bulkCanvasRefs.current.set(i, el);
+                        else bulkCanvasRefs.current.delete(i);
+                      }}
+                      brand={brand}
+                      template={templateId}
+                      copy={v}
+                    />
+                  </div>
+                </div>
+                <p className="mt-1 text-center text-xs text-gray-400">
+                  v{i + 1}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
