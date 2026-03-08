@@ -31,17 +31,17 @@ RULES:
 
 ## Section 1: Photo Pieces (5 pieces — no Gemini needed)
 
-These use real Jeaustin photos from Google Drive (`contenido-raw/`). Upload directly to the ad-generator — no AI generation required.
+These use real Jeaustin photos. All photos are in `assets/jeaustin-photos/drive-review/` numbered 01–51. Upload directly to the ad-generator — no AI generation required.
 
-| # | Drive Filename | What it shows | Template | Variant | Preset |
-|---|---------------|---------------|----------|---------|--------|
-| 1 | `38399b83-11ba-4807-a0bf-64ff411cac0f.jpg` | Night match, gray shirt, floodlights, walking on pitch | CoachHero | A | mf-01 |
-| 11 | `c7fef01e-8d74-4a3e-9c46-aa01063e0a93.jpg` | Night celebration, clapping above head, stadium crowd | CoachHero | C | mf-11 |
-| 14 | `IMG_0224.JPG` | Championship trophy in hand, J. CAMPOS #29 jersey, gold medal | StatInsight | C | mf-14 |
-| 16 | `WhatsApp Image 2026-03-03 at 20.42.06.jpeg` | FIFA CWC Japan 2005, medals, FIFA banner visible | StatInsight | A | mf-16 |
-| 19 | `cdbe0385-f066-47e6-b57b-cdd87a443bab.jpg` | Thumbs up, smiling, packed night stadium | StatInsight | A | mf-19 |
+| # | Local File | What it shows | Template | Variant | Preset |
+|---|-----------|---------------|----------|---------|--------|
+| 1 | `drive-review/08-38399b83.jpg` | Night match, gray shirt, floodlights, walking on pitch | CoachHero | A | mf-01 |
+| 11 | `drive-review/19-c7fef01e.jpg` | Night celebration, clapping above head, stadium crowd | CoachHero | C | mf-11 |
+| 14 | `drive-review/28-IMG_0224.jpg` | Championship trophy in hand, J. CAMPOS #29 jersey, gold medal | StatInsight | C | mf-14 |
+| 16 | `drive-review/44-wa-2042a.jpg` | FIFA CWC Japan 2005, medals, FIFA banner visible | StatInsight | A | mf-16 |
+| 19 | `drive-review/20-cdbe0385.jpg` | Thumbs up, smiling, packed night stadium | StatInsight | A | mf-19 |
 
-**Workflow:** Download photo from Drive → open ad-generator → select template + variant + preset → upload photo → export.
+**Workflow:** Open ad-generator → select template + variant + preset → upload photo from `drive-review/` → export.
 
 ---
 
@@ -262,11 +262,10 @@ VISUAL CONCEPT: Split composition — left side shows a brain outline in cyan wi
 
 ### Photo pieces (5 pieces: #1, #11, #14, #16, #19)
 
-1. Download photo from Google Drive (`contenido-raw/`) — see Section 1 table for filenames
-2. Open ad-generator (`localhost:3000`)
-3. Select template + variant + preset
-4. Upload the photo
-5. Export as PNG (1080x1350)
+1. Open ad-generator (`localhost:3000`)
+2. Select template + variant + preset
+3. Upload photo from `assets/jeaustin-photos/drive-review/` (see Section 1 table)
+4. Export as PNG (1080x1350)
 
 ### AI background pieces (15 pieces)
 
