@@ -27,90 +27,99 @@ export function MfPillarHighlight({
         {image && (
           <MfPhotoBackground
             image={image}
-            gradient="linear-gradient(to right, rgba(11,12,16,0.92) 0%, rgba(11,12,16,0.7) 50%, rgba(11,12,16,0.85) 100%)"
+            gradient="linear-gradient(to bottom, rgba(11,12,16,0.15) 0%, rgba(11,12,16,0.35) 30%, rgba(11,12,16,0.75) 55%, rgba(11,12,16,0.95) 75%, rgba(11,12,16,0.98) 100%)"
+            objectPosition="center 30%"
           />
         )}
-        <MfDotGrid />
+        <MfDotGrid opacity={image ? 0.015 : 0.03} />
 
-        {/* Large translucent pillar icon background-right — hidden when image present */}
-        <div
-          style={{
-            position: "absolute",
-            right: -60,
-            top: "50%",
-            transform: "translateY(-50%)",
-            fontSize: 500,
-            opacity: 0.04,
-            color: "#5BE0FF",
-            lineHeight: 1,
-            pointerEvents: "none",
-          }}
-        >
-          {!image &&
-            (pillarName === "Técnica"
+        {/* Large translucent pillar icon — hidden when image present */}
+        {!image && (
+          <div
+            style={{
+              position: "absolute",
+              right: -60,
+              top: "50%",
+              transform: "translateY(-50%)",
+              fontSize: 500,
+              opacity: 0.04,
+              color: "#5BE0FF",
+              lineHeight: 1,
+              pointerEvents: "none",
+            }}
+          >
+            {pillarName === "Técnica"
               ? "⚽"
               : pillarName === "Táctica"
                 ? "📋"
                 : pillarName === "Físico"
                   ? "💪"
-                  : "🧠")}
+                  : "🧠"}
+          </div>
+        )}
+
+        {/* Pillar badge — top-right, floats over image */}
+        <div style={{ position: "absolute", top: 48, right: 48 }}>
+          <MfPillarBadge pillar={pillarName} />
         </div>
 
-        {/* Content left-aligned */}
+        {/* Content — lower portion, image breathes above */}
         <div
           style={{
             position: "absolute",
-            top: 80,
-            left: 64,
-            right: 200,
-            bottom: 140,
+            left: 0,
+            right: 0,
+            top: "42%",
+            bottom: 120,
             display: "flex",
             flexDirection: "column",
-            gap: 32,
+            justifyContent: "center",
+            padding: "0 64px",
+            gap: 24,
           }}
         >
-          <MfPillarBadge pillar={pillarName} />
-
+          {/* Hook question */}
           <div
             style={{
-              fontSize: 56,
+              fontSize: 52,
               fontWeight: 800,
               color: "#FFFFFF",
               lineHeight: 1.15,
-              textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
+              textShadow: "0 2px 16px rgba(0,0,0,0.6)",
             }}
           >
             {copy.hook}
           </div>
 
-          {/* Numbered list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          {/* Numbered bullets */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {bullets.map((line, i) => (
               <div
                 key={i}
                 style={{
                   display: "flex",
                   alignItems: "flex-start",
-                  gap: 16,
+                  gap: 14,
                 }}
               >
                 <span
                   style={{
                     color: "#5BE0FF",
-                    fontSize: 28,
+                    fontSize: 22,
                     fontWeight: 700,
-                    minWidth: 36,
-                    textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
+                    minWidth: 32,
+                    opacity: 0.7,
+                    textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
                   }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span
                   style={{
-                    color: image ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.6)",
-                    fontSize: 26,
+                    color: "rgba(255,255,255,0.8)",
+                    fontSize: 24,
                     lineHeight: 1.4,
-                    textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
+                    textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
                   }}
                 >
                   {line}
@@ -119,17 +128,20 @@ export function MfPillarHighlight({
             ))}
           </div>
 
-          {/* CTA text */}
+          {/* CTA button */}
           <div
             style={{
-              marginTop: "auto",
-              fontSize: 24,
-              color: "#5BE0FF",
-              fontWeight: 600,
-              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
+              marginTop: 8,
+              display: "inline-flex",
+              alignSelf: "flex-start",
+              padding: "14px 32px",
+              borderRadius: 50,
+              backgroundColor: "#2076FF",
             }}
           >
-            {copy.cta}
+            <span style={{ color: "#FFFFFF", fontSize: 22, fontWeight: 700 }}>
+              {copy.cta} →
+            </span>
           </div>
         </div>
 

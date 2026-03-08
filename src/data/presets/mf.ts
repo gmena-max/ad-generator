@@ -36,7 +36,7 @@ export const mfPresets: CopyPreset[] = [
     copies: [
       {
         hook: "¿Por qué tu equipo juega bien en práctica pero falla en partidos?",
-        body: "La respuesta no está en la táctica.\nEstá en la preparación mental.\n\nPresión. Concentración. Constancia. Motivación.\n\nEl pilar sicológico es lo que separa a un equipo bueno de un equipo campeón.",
+        body: "Presión, concentración, constancia, motivación — los 4 ejes del pilar sicológico.\nLa táctica te pone en el campo. La mente decide si competís o te congelás.\nEl equipo que domina su sicología no depende de la suerte.",
         cta: "Descubrí cómo",
         stat: "Sicológico",
       },
