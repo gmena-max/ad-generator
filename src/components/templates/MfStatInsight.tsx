@@ -244,8 +244,14 @@ export function MfStatInsight({
         backgroundColor: "#0B0C10",
       }}
     >
-      {image && <MfPhotoBackground image={image} />}
-      <MfDotGrid />
+      {image && (
+        <MfPhotoBackground
+          image={image}
+          gradient="linear-gradient(to bottom, rgba(11,12,16,0.15) 0%, rgba(11,12,16,0.35) 25%, rgba(11,12,16,0.65) 50%, rgba(11,12,16,0.88) 72%, rgba(11,12,16,0.97) 100%)"
+          objectPosition="center 30%"
+        />
+      )}
+      <MfDotGrid opacity={image ? 0.015 : 0.03} />
 
       <div
         style={{
@@ -292,7 +298,7 @@ export function MfStatInsight({
             color: "#5BE0FF",
             lineHeight: 1,
             textShadow: image
-              ? "0 0 80px rgba(91,224,255,0.5), 0 4px 24px rgba(0,0,0,0.8)"
+              ? "0 0 120px rgba(91,224,255,0.4), 0 0 60px rgba(91,224,255,0.5), 0 4px 24px rgba(0,0,0,0.8)"
               : "0 0 60px rgba(91,224,255,0.35)",
           }}
         >
@@ -302,10 +308,10 @@ export function MfStatInsight({
         {/* Hook */}
         <div
           style={{
-            fontSize: 44,
+            fontSize: 46,
             fontWeight: 700,
             color: "#FFFFFF",
-            lineHeight: 1.2,
+            lineHeight: 1.15,
             maxWidth: 750,
             textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
           }}
@@ -316,9 +322,9 @@ export function MfStatInsight({
         {/* Body */}
         <div
           style={{
-            fontSize: 26,
-            color: image ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.55)",
-            lineHeight: 1.5,
+            fontSize: 28,
+            color: image ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.55)",
+            lineHeight: 1.45,
             maxWidth: 650,
             textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
           }}
@@ -336,8 +342,7 @@ export function MfStatInsight({
             marginTop: 16,
           }}
         >
-          <MfCredentialBadge text="8x Campeón" />
-          <MfCredentialBadge text="30+ años" />
+          <MfCredentialBadge text="2–3 años de desarrollo perdidos" />
         </div>
 
         {/* CTA pill */}
