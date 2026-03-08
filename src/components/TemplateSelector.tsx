@@ -17,6 +17,11 @@ const TEMPLATE_ICONS: Record<TemplateId, string> = {
   "scarcity": "!!",
   "photo-hero": "PH",
   "testimonial": "T",
+  "mf-coach-hero": "MF",
+  "mf-pillar-highlight": "4P",
+  "mf-quote-card": "MQ",
+  "mf-stat-insight": "M#",
+  "mf-question-hook": "M?",
 };
 
 export function TemplateSelector({ selected, onChange, recommendedIds }: Props) {

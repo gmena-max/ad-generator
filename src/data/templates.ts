@@ -1,4 +1,4 @@
-export type TemplateId = "stat-authority" | "symptom-question" | "social-proof" | "faq-card" | "educational" | "scarcity" | "photo-hero" | "testimonial";
+export type TemplateId = "stat-authority" | "symptom-question" | "social-proof" | "faq-card" | "educational" | "scarcity" | "photo-hero" | "testimonial" | "mf-coach-hero" | "mf-pillar-highlight" | "mf-quote-card" | "mf-stat-insight" | "mf-question-hook";
 
 export type CopyContent = {
   hook: string;
@@ -117,6 +117,71 @@ export const templates: AdTemplate[] = [
       hook: "Espacios Limitados",
       body: "Valoración oftalmológica completa con el Dr. Diego Mena. Alajuela Centro.",
       cta: "WhatsApp 6439-8221",
+    },
+  },
+  // --- Mente Futbol templates ---
+  {
+    id: "mf-coach-hero",
+    name: "MF Coach Hero",
+    description: "Jeaustin Sr photo hero — full-bleed, split, or cinematic variants",
+    fields: ["hook", "body", "cta", "stat"],
+    campaignStage: "cold",
+    defaultCopy: {
+      hook: "El DT más ganador de Costa Rica ahora te enseña",
+      body: "8 campeonatos. 30+ años formando campeones.",
+      cta: "Descubrí tu perfil mental → mentefutbol.com",
+      stat: "8x Campeón",
+    },
+  },
+  {
+    id: "mf-pillar-highlight",
+    name: "MF Pillar Highlight",
+    description: "Single-pillar educational card — centered, left-aligned, or split variants",
+    fields: ["hook", "body", "cta", "stat"],
+    campaignStage: "cold",
+    defaultCopy: {
+      hook: "¿Por qué tu equipo juega bien en práctica pero falla en partidos?",
+      body: "Presión. Concentración. Constancia. Motivación.\nEl pilar sicológico es lo que separa a un equipo bueno de un equipo campeón.",
+      cta: "Descubrí cómo → mentefutbol.com",
+      stat: "Sicológico",
+    },
+  },
+  {
+    id: "mf-quote-card",
+    name: "MF Quote Card",
+    description: "Jeaustin Sr wisdom quote — centered, side-accent, or card-in-card variants",
+    fields: ["hook", "body", "cta"],
+    campaignStage: "warm",
+    defaultCopy: {
+      hook: "Jeaustin Campos — 8x Campeón Nacional",
+      body: "No gané 8 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
+      cta: "mentefutbol.com",
+    },
+  },
+  {
+    id: "mf-stat-insight",
+    name: "MF Stat Insight",
+    description: "Big data/fact card — centered stat, left-aligned, or glowing circle variants",
+    fields: ["stat", "hook", "body", "cta"],
+    campaignStage: "cold",
+    defaultCopy: {
+      stat: "87%",
+      hook: "de jugadores sin metodología mental pierden 2–3 años de desarrollo",
+      body: "El talento no alcanza. Sin preparación mental estructurada, tus jugadores compiten con media capacidad.",
+      cta: "Cambiá eso → mentefutbol.com",
+    },
+  },
+  {
+    id: "mf-question-hook",
+    name: "MF Question Hook",
+    description: "Bold question for engagement — centered, asymmetric, or minimal gradient variants",
+    fields: ["hook", "body", "cta", "stat"],
+    campaignStage: "cold",
+    defaultCopy: {
+      hook: "¿Te ponés nervioso cuando el partido importa de verdad?",
+      body: "No es falta de talento. Es falta de preparación mental.",
+      cta: "Empezá acá → mentefutbol.com",
+      stat: "Sicológico",
     },
   },
 ];

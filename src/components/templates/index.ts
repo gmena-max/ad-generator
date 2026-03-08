@@ -9,3 +9,8 @@ export { Testimonial } from "./Testimonial";
 export { FaqCard } from "./FaqCard";
 export { Educational } from "./Educational";
 export { Scarcity } from "./Scarcity";
+export { MfCoachHero } from "./MfCoachHero";
+export { MfPillarHighlight } from "./MfPillarHighlight";
+export { MfQuoteCard } from "./MfQuoteCard";
+export { MfStatInsight } from "./MfStatInsight";
+export { MfQuestionHook } from "./MfQuestionHook";

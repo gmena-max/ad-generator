@@ -26,6 +26,7 @@ export default function Home() {
   const [isExporting, setIsExporting] = useState(false);
   const [image, setImage] = useState<string | null>(null);
   const [personaId, setPersonaId] = useState<string | null>(null);
+  const [variant, setVariant] = useState<"a" | "b" | "c">("a");
 
   const canvasRef = useRef<HTMLDivElement>(null);
   const bulkCanvasRefs = useRef<Map<number, HTMLDivElement>>(new Map());
@@ -152,6 +153,29 @@ export default function Home() {
             <ImageUpload image={image} onChange={setImage} />
           </div>
 
+          {templateId.startsWith("mf-") && (
+            <div>
+              <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+                Layout Variant
+              </h2>
+              <div className="flex gap-2">
+                {(["a", "b", "c"] as const).map((v) => (
+                  <button
+                    key={v}
+                    onClick={() => setVariant(v)}
+                    className={`flex-1 rounded-lg border-2 px-4 py-2 text-sm font-bold uppercase transition-all ${
+                      variant === v
+                        ? "border-blue-500 bg-blue-50 text-blue-700"
+                        : "border-gray-200 bg-white text-gray-500 hover:border-gray-300"
+                    }`}
+                  >
+                    {v}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div>
             <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
               Copy
@@ -178,6 +202,7 @@ export default function Home() {
               template={templateId}
               copy={copy}
               image={image ?? undefined}
+              variant={variant}
             />
           </AdPreview>
         </div>
@@ -228,6 +253,7 @@ export default function Home() {
                       template={templateId}
                       copy={v}
                       image={image ?? undefined}
+                      variant={variant}
                     />
                   </div>
                 </div>

@@ -12,21 +12,33 @@ import {
   FaqCard,
   Educational,
   Scarcity,
+  MfCoachHero,
+  MfPillarHighlight,
+  MfQuoteCard,
+  MfStatInsight,
+  MfQuestionHook,
 } from "./templates";
+import type { MfVariant } from "./templates/mf/types";
 
 type AdCanvasProps = {
   brand: ClientBrand;
   template: TemplateId;
   copy: CopyContent;
   image?: string;
+  variant?: MfVariant;
 };
 
 const AD_WIDTH = 1080;
 const AD_HEIGHT = 1350;
 
+const isMfTemplate = (id: string) => id.startsWith("mf-");
+
 export const AdCanvas = forwardRef<HTMLDivElement, AdCanvasProps>(
-  function AdCanvas({ brand, template, copy, image }, ref) {
+  function AdCanvas({ brand, template, copy, image, variant }, ref) {
     const { colors } = brand;
+    const fontFamily = isMfTemplate(template)
+      ? "var(--font-geist), 'Geist', Arial, sans-serif"
+      : "'Inter', Arial, Helvetica, sans-serif";
 
     return (
       <div
@@ -36,7 +48,7 @@ export const AdCanvas = forwardRef<HTMLDivElement, AdCanvasProps>(
           height: AD_HEIGHT,
           position: "relative",
           overflow: "hidden",
-          fontFamily: "'Inter', Arial, Helvetica, sans-serif",
+          fontFamily,
         }}
       >
         {template === "photo-hero" && (
@@ -62,6 +74,21 @@ export const AdCanvas = forwardRef<HTMLDivElement, AdCanvasProps>(
         )}
         {template === "scarcity" && (
           <Scarcity brand={brand} copy={copy} image={image} colors={colors} />
+        )}
+        {template === "mf-coach-hero" && (
+          <MfCoachHero brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
+        )}
+        {template === "mf-pillar-highlight" && (
+          <MfPillarHighlight brand={brand} copy={copy} colors={colors} variant={variant} />
+        )}
+        {template === "mf-quote-card" && (
+          <MfQuoteCard brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
+        )}
+        {template === "mf-stat-insight" && (
+          <MfStatInsight brand={brand} copy={copy} colors={colors} variant={variant} />
+        )}
+        {template === "mf-question-hook" && (
+          <MfQuestionHook brand={brand} copy={copy} colors={colors} variant={variant} />
         )}
       </div>
     );

@@ -1,0 +1,68 @@
+import { Persona } from "./types";
+
+export const mfPersonas: Persona[] = [
+  {
+    id: "jugador-joven",
+    clientId: "mf",
+    name: "El Jugador Joven",
+    description: "Jugador de 10–19 años en formación. Talento pero falta fortaleza mental.",
+    ageRange: "10–19",
+    painPoints: [
+      "Se pone nervioso en partidos importantes",
+      "Se frustra cuando las cosas no salen",
+      "No sabe manejar la presión de competir",
+      "Tiene talento pero le falta constancia",
+    ],
+    hookType: "question",
+    messageAngle: "Tu talento necesita una mente fuerte para brillar",
+    recommendedTemplates: ["mf-question-hook", "mf-quote-card", "mf-coach-hero"],
+  },
+  {
+    id: "jugador-adulto",
+    clientId: "mf",
+    name: "El Jugador Adulto",
+    description: "Jugador de 20–35 años. Presión competitiva y estancamiento.",
+    ageRange: "20–35",
+    painPoints: [
+      "En práctica juega bien, en partidos falla",
+      "Se siente estancado en su nivel",
+      "Ansiedad en momentos decisivos",
+      "Pierde concentración en minutos finales",
+    ],
+    hookType: "pain",
+    messageAngle: "La diferencia entre tu nivel actual y el siguiente está en tu cabeza",
+    recommendedTemplates: ["mf-question-hook", "mf-pillar-highlight", "mf-stat-insight"],
+  },
+  {
+    id: "entrenador",
+    clientId: "mf",
+    name: "El Entrenador",
+    description: "Entrenador de academia o semi-pro de 28–55 años. Busca metodología mental.",
+    ageRange: "28–55",
+    painPoints: [
+      "Equipo inconsistente: juega bien en práctica, falla en competencia",
+      "No tiene herramientas para trabajar la parte mental",
+      "Jugadores que se frustran y pierden motivación",
+      "Falta de metodología estructurada",
+    ],
+    hookType: "pain",
+    messageAngle: "Tu equipo tiene talento. ¿Tiene mentalidad de campeón?",
+    recommendedTemplates: ["mf-pillar-highlight", "mf-stat-insight", "mf-coach-hero"],
+  },
+  {
+    id: "padre",
+    clientId: "mf",
+    name: "El Padre/Madre",
+    description: "Padre/madre de jugador de 30–50 años. Quiere apoyar sin presionar.",
+    ageRange: "30–50",
+    painPoints: [
+      "Hijo con talento pero se frustra fácilmente",
+      "No sabe cómo apoyar sin presionar",
+      "Miedo a que pierda la pasión por el deporte",
+      "No entiende por qué rinde menos en partidos",
+    ],
+    hookType: "question",
+    messageAngle: "Apoyá a tu hijo sin presionarlo — con la metodología de un campeón",
+    recommendedTemplates: ["mf-question-hook", "mf-pillar-highlight", "mf-quote-card"],
+  },
+];

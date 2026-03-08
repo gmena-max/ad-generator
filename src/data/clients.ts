@@ -55,6 +55,23 @@ export const clients: Record<string, ClientBrand> = {
     subheadline: "Academia de programación",
     tagline: "Aprende a programar desde cero",
   },
+  mf: {
+    id: "mf",
+    name: "Mente Futbol",
+    colors: {
+      primary: "#0B0C10",
+      accent: "#5BE0FF",
+      cta: "#2076FF",
+      background: "#040447",
+      text: "#FFFFFF",
+    },
+    logo: "/clients/mf/logo.png",
+    logoWhite: "/clients/mf/logo-white.png",
+    phone: "mentefutbol.com",
+    headline: "Jeaustin Campos",
+    subheadline: "8x Campeón Nacional",
+    tagline: "La psicología del fútbol, por quien lo vivió 7 veces",
+  },
 };
 
 export const defaultClientId = "oft";
