@@ -10,7 +10,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "El DT más ganador de Costa Rica ahora te enseña",
         body: "8 campeonatos. 30+ años formando campeones. Jeaustin Campos te revela la metodología mental que usó para ganar.",
-        cta: "Descubrí tu perfil mental → mentefutbol.com",
+        cta: "Descubrí tu perfil mental",
         stat: "8x Campeón",
       },
     ],
@@ -24,7 +24,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "Jeaustin Campos — 8x Campeón Nacional",
         body: "No gané 8 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
-        cta: "mentefutbol.com",
+        cta: "Aprendé del campeón",
       },
     ],
   },
@@ -37,7 +37,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "¿Por qué tu equipo juega bien en práctica pero falla en partidos?",
         body: "La respuesta no está en la táctica.\nEstá en la preparación mental.\n\nPresión. Concentración. Constancia. Motivación.\n\nEl pilar sicológico es lo que separa a un equipo bueno de un equipo campeón.",
-        cta: "Descubrí cómo → mentefutbol.com",
+        cta: "Descubrí cómo",
         stat: "Sicológico",
       },
     ],
@@ -51,7 +51,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "de jugadores sin metodología mental pierden 2–3 años de desarrollo",
         body: "El talento no alcanza. Sin preparación mental estructurada, tus jugadores compiten con media capacidad.",
-        cta: "Cambiá eso → mentefutbol.com",
+        cta: "Cambiá eso",
         stat: "87%",
       },
     ],
@@ -65,7 +65,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "¿Te ponés nervioso cuando el partido importa de verdad?",
         body: "No es falta de talento. Es falta de preparación mental. Los campeones no nacen sin nervios — aprenden a usarlos.",
-        cta: "Empezá acá → mentefutbol.com",
+        cta: "Empezá acá",
       },
     ],
   },
@@ -78,7 +78,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "Tu equipo no pierde por táctica. Pierde por no saber LEER el partido.",
         body: "Posicionamiento. Lectura del juego. Transiciones.\n\nLa táctica sin inteligencia emocional es un plan que se cae en el minuto 70.",
-        cta: "Aprendé la metodología → mentefutbol.com",
+        cta: "Aprendé la metodología",
         stat: "Táctica",
       },
     ],
@@ -92,7 +92,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "Jeaustin Campos — 8x Campeón Nacional",
         body: "La diferencia entre un jugador bueno y un campeón no está en las piernas. Está en la cabeza.",
-        cta: "mentefutbol.com",
+        cta: "Descubrí la diferencia",
       },
     ],
   },
@@ -105,7 +105,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "años formando campeones: Keylor Navas, Celso Borges, Jewison Bennette",
         body: "La experiencia de un récord no se estudia en libros. Se vive en la cancha. Ahora esa metodología es tuya.",
-        cta: "Conocé la metodología → mentefutbol.com",
+        cta: "Conocé la metodología",
         stat: "30+",
       },
     ],
@@ -119,7 +119,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "¿Tu hijo tiene talento pero se frustra cuando las cosas no salen?",
         body: "No es falta de ganas. Es que nadie le enseñó a manejar la presión. Con la metodología correcta, su talento puede brillar.",
-        cta: "Apoyalo con ciencia → mentefutbol.com",
+        cta: "Apoyalo con ciencia",
         stat: "Sicológico",
       },
     ],
@@ -133,7 +133,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "Sos rápido. Sos fuerte. Pero en el minuto 85, ¿tu mente aguanta?",
         body: "La velocidad y la fuerza sin fortaleza mental son armas que fallan cuando más las necesitás.\n\nEl pilar físico no es solo el cuerpo — es la mente que lo controla.",
-        cta: "Fortalecé tu mente → mentefutbol.com",
+        cta: "Fortalecé tu mente",
         stat: "Físico",
       },
     ],
@@ -147,7 +147,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "El talento te abre la puerta. La mente es la que te deja entrar.",
         body: "Jeaustin Campos — 8 campeonatos, 30+ años formando cracks. Ahora te enseña lo que no te enseñan en la cancha.",
-        cta: "Empezá gratis → mentefutbol.com",
+        cta: "Empezá gratis",
         stat: "8x Campeón",
       },
     ],
@@ -161,7 +161,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "Los 4 Pilares del Fútbol",
         body: "Técnica — control, pase, regate, definición\nTáctica — posicionamiento, lectura, formaciones\nFísico — velocidad, resistencia, fuerza\nSicológico — presión, concentración, constancia",
-        cta: "¿Cuál es el más débil de tu hijo? → mentefutbol.com",
+        cta: "¿Cuál es el más débil de tu hijo?",
         stat: "4 Pilares",
       },
     ],
@@ -175,7 +175,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "Técnica sin mentalidad es un truco. Con mentalidad, es un arma.",
         body: "",
-        cta: "mentefutbol.com",
+        cta: "Hacé el quiz mental",
         stat: "Técnica",
       },
     ],
@@ -189,7 +189,7 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "campeonatos nacionales — la metodología detrás del récord de Costa Rica",
         body: "Jeaustin Campos no ganó por suerte. Ganó con un sistema mental que ahora podés aprender.",
-        cta: "Descubrí el sistema → mentefutbol.com",
+        cta: "Descubrí el sistema",
         stat: "8",
       },
     ],
@@ -203,7 +203,77 @@ export const mfPresets: CopyPreset[] = [
       {
         hook: "Jeaustin Campos — 8x Campeón Nacional",
         body: "La constancia mental gana más partidos que cualquier jugada ensayada.",
-        cta: "mentefutbol.com",
+        cta: "Empezá hoy",
+      },
+    ],
+  },
+  // #16 — StatInsight — 3er lugar Mundial de Clubes FIFA
+  {
+    personaId: "all",
+    framework: "AIDA",
+    label: "Stat 3er lugar — Mundial de Clubes",
+    copies: [
+      {
+        hook: "lugar en el Mundial de Clubes FIFA 2005 — Saprissa vs. los gigantes del mundo",
+        body: "Jeaustin Campos llevó a un equipo centroamericano al podio mundial. La preparación mental fue la diferencia.",
+        cta: "Aprendé del DT que compitió contra el mundo",
+        stat: "3er",
+      },
+    ],
+  },
+  // #17 — StatInsight — Selecciones dirigidas
+  {
+    personaId: "entrenador",
+    framework: "AIDA",
+    label: "Stat 3 selecciones — Internacional",
+    copies: [
+      {
+        hook: "selecciones nacionales dirigidas — Costa Rica, Puerto Rico, Honduras",
+        body: "No cualquier DT cruza fronteras. La metodología mental de Jeaustin Campos trasciende culturas y ligas.",
+        cta: "Accedé a esa metodología",
+        stat: "3",
+      },
+    ],
+  },
+  // #18 — StatInsight — Jugadores formados
+  {
+    personaId: "jugador-joven",
+    framework: "AIDA",
+    label: "Stat 200+ jugadores formados",
+    copies: [
+      {
+        hook: "jugadores formados — de ligas menores a selecciones nacionales y clubes europeos",
+        body: "Keylor Navas. Celso Borges. Jewison Bennette. Todos pasaron por las manos de un DT que prioriza la mente.",
+        cta: "Tu turno",
+        stat: "200+",
+      },
+    ],
+  },
+  // #19 — StatInsight — Finales jugadas
+  {
+    personaId: "all",
+    framework: "AIDA",
+    label: "Stat 12 finales — Presión máxima",
+    copies: [
+      {
+        hook: "finales nacionales dirigidas — más que cualquier otro DT activo en Centroamérica",
+        body: "La final es donde todo se define. Jeaustin Campos sabe exactamente qué pasa en la cabeza de un jugador cuando todo está en juego.",
+        cta: "Preparate para tu final",
+        stat: "12",
+      },
+    ],
+  },
+  // #20 — StatInsight — Porcentaje mentalidad
+  {
+    personaId: "jugador-adulto",
+    framework: "PAS",
+    label: "Stat 70% — El fútbol es mental",
+    copies: [
+      {
+        hook: "del rendimiento en partidos decisivos depende de la fortaleza mental",
+        body: "Técnica la tenés. Físico lo trabajás. Pero sin mente, todo se cae cuando más importa.",
+        cta: "Entrenala",
+        stat: "70%",
       },
     ],
   },

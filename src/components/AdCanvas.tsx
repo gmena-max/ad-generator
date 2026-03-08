@@ -85,7 +85,7 @@ export const AdCanvas = forwardRef<HTMLDivElement, AdCanvasProps>(
           <MfQuoteCard brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
         )}
         {template === "mf-stat-insight" && (
-          <MfStatInsight brand={brand} copy={copy} colors={colors} variant={variant} />
+          <MfStatInsight brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
         )}
         {template === "mf-question-hook" && (
           <MfQuestionHook brand={brand} copy={copy} colors={colors} variant={variant} />

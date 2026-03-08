@@ -1,6 +1,6 @@
 # Nano Banana 2 — Mente Futbol Statics Generation Prompts
 
-> 15 social media statics for @mentefutbol.oficial
+> 20 social media statics for @mentefutbol.oficial
 > Source of truth: this repo's code (presets, templates, brand book)
 > Format: 1080x1350 (4:5 aspect ratio) for Instagram feed
 
@@ -58,7 +58,7 @@ TEXT (copy EXACTLY — every accent matters):
 - HOOK (large, bold, white, bottom area): "El DT más ganador de Costa Rica ahora te enseña"
 - BODY (smaller, white at 55% opacity): "8 campeonatos. 30+ años formando campeones. Jeaustin Campos te revela la metodología mental que usó para ganar."
 - CREDENTIAL BADGES (small cyan-bordered pills): "8x Campeón" | "30+ años" | "Keylor · Celso · Jewison"
-- CTA (white text on #2076FF blue pill): "Descubrí tu perfil mental → mentefutbol.com"
+- CTA (white text on #2076FF blue pill): "Descubrí tu perfil mental"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -70,7 +70,7 @@ TEXT (copy EXACTLY — every accent matters):
 Generate a social media static (1080x1350, 4:5) for Mente Futbol.
 
 TEMPLATE TYPE: Quote Card — Large italicized quote centered, attribution below with cyan divider line.
-LAYOUT: Near-black background (#0B0C10) with subtle dot grid texture. Giant decorative opening quotation mark in cyan at very low opacity (12%) top-left. Quote text centered vertically. Attribution below quote with a short cyan horizontal line above it. Horizontal white logo centered near bottom at low opacity.
+LAYOUT: Near-black background (#0B0C10) with subtle dot grid texture. Giant decorative opening quotation mark in cyan at very low opacity (12%) top-left. Quote text centered vertically. Attribution below quote with a short cyan horizontal line above it.
 
 VISUAL CONCEPT: Stadium tunnel entrance atmosphere. Subtle radial cyan glow emanating from center, fading into dark vignette at edges. Moody, atmospheric — like standing in a tunnel looking toward the pitch lights.
 
@@ -78,6 +78,7 @@ TEXT (copy EXACTLY):
 - QUOTE (large, white, italic, centered): "No gané 8 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad."
 - ATTRIBUTION (smaller, white at 70% opacity): "Jeaustin Campos — 8x Campeón Nacional"
 - CREDENTIAL (cyan, small): "8x Campeón Nacional"
+- CTA (white text on #2076FF blue pill): "Aprendé del campeón"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -101,7 +102,7 @@ TEXT (copy EXACTLY):
   Line 2: "Está en la preparación mental."
   Line 3: "Presión. Concentración. Constancia. Motivación."
   Line 4: "El pilar sicológico es lo que separa a un equipo bueno de un equipo campeón."
-- CTA (white text on #2076FF blue pill): "Descubrí cómo → mentefutbol.com"
+- CTA (white text on #2076FF blue pill): "Descubrí cómo"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -123,7 +124,7 @@ TEXT (copy EXACTLY):
 - HOOK (large, white, below stat): "de jugadores sin metodología mental pierden 2–3 años de desarrollo"
 - BODY (smaller, white at 55% opacity): "El talento no alcanza. Sin preparación mental estructurada, tus jugadores compiten con media capacidad."
 - CREDENTIAL BADGES: "8x Campeón" | "30+ años"
-- CTA (white text on #2076FF blue pill): "Cambiá eso → mentefutbol.com"
+- CTA (white text on #2076FF blue pill): "Cambiá eso"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -142,7 +143,7 @@ VISUAL CONCEPT: Stadium tunnel perspective — long dark corridor with a single 
 TEXT (copy EXACTLY):
 - HOOK (large, bold, white, centered): "¿Te ponés nervioso cuando el partido importa de verdad?"
 - BODY (smaller, white at 55% opacity, centered): "No es falta de talento. Es falta de preparación mental. Los campeones no nacen sin nervios — aprenden a usarlos."
-- CTA (white text on #2076FF blue pill): "Empezá acá → mentefutbol.com"
+- CTA (white text on #2076FF blue pill): "Empezá acá"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -154,7 +155,7 @@ TEXT (copy EXACTLY):
 Generate a social media static (1080x1350, 4:5) for Mente Futbol.
 
 TEMPLATE TYPE: Pillar Highlight — Left-aligned variant with large translucent emoji in background.
-LAYOUT: Near-black background with dot grid. Giant translucent clipboard emoji (📋) at very low opacity (4%) on the right side. Pillar badge top-left. Hook text left-aligned, large, bold. Body split into numbered bullet lines with cyan numbers. CTA text in cyan (not button) at bottom-left. Logo bottom-left at low opacity.
+LAYOUT: Near-black background with dot grid. Giant translucent clipboard emoji (📋) at very low opacity (4%) on the right side. Pillar badge top-left. Hook text left-aligned, large, bold. Body split into numbered bullet lines with cyan numbers. CTA text in cyan (not button) at bottom-left. Brand bar at bottom.
 
 VISUAL CONCEPT: Tactical formation dots connected by thin cyan lines — like a coach's whiteboard but dark and premium. Abstract dots in formation shapes (4-3-3, 4-4-2) with connecting lines. Clean, strategic, intelligent feel.
 
@@ -164,7 +165,7 @@ TEXT (copy EXACTLY):
 - BODY (numbered lines):
   01: "Posicionamiento. Lectura del juego. Transiciones."
   02: "La táctica sin inteligencia emocional es un plan que se cae en el minuto 70."
-- CTA (cyan text, no button): "Aprendé la metodología → mentefutbol.com"
+- CTA (cyan text, no button): "Aprendé la metodología"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -183,6 +184,7 @@ VISUAL CONCEPT: A football resting on dark grass, lit by a single cyan rim light
 TEXT (copy EXACTLY):
 - QUOTE (large, white, italic, centered inside card): "La diferencia entre un jugador bueno y un campeón no está en las piernas. Está en la cabeza."
 - ATTRIBUTION (below card, centered, with cyan lines flanking): "Jeaustin Campos — 8x Campeón Nacional"
+- CTA (white text on #2076FF blue pill): "Descubrí la diferencia"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -194,7 +196,7 @@ TEXT (copy EXACTLY):
 Generate a social media static (1080x1350, 4:5) for Mente Futbol.
 
 TEMPLATE TYPE: Stat Insight — Left-aligned variant with giant ghost stat in background.
-LAYOUT: Near-black background with dot grid. Giant "30+" text at very low opacity (8%) top-right as decorative element. Visible "30+" stat in large cyan with glow, left-aligned. Hook text below in white. Body text below at reduced opacity. CTA text in cyan. Logo bottom-left at low opacity. Brand bar at bottom.
+LAYOUT: Near-black background with dot grid. Giant "30+" text at very low opacity (8%) top-right as decorative element. Visible "30+" stat in large cyan with glow, left-aligned. Hook text below in white. Body text below at reduced opacity. CTA text in cyan. Brand bar at bottom.
 
 VISUAL CONCEPT: Horizontal light streaks in varying shades of cyan, creating a timeline feel — like light trails from moving vehicles at night but abstract. Lines sweep left to right suggesting progression through time. Dark, sleek, forward-moving.
 
@@ -202,7 +204,7 @@ TEXT (copy EXACTLY):
 - STAT (large, cyan #5BE0FF, bold, glow): "30+"
 - HOOK (large, white, left-aligned): "años formando campeones: Keylor Navas, Celso Borges, Jewison Bennette"
 - BODY (smaller, white at 55% opacity): "La experiencia de un récord no se estudia en libros. Se vive en la cancha. Ahora esa metodología es tuya."
-- CTA (cyan text): "Conocé la metodología → mentefutbol.com"
+- CTA (cyan text): "Conocé la metodología"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -214,7 +216,7 @@ TEXT (copy EXACTLY):
 Generate a social media static (1080x1350, 4:5) for Mente Futbol.
 
 TEMPLATE TYPE: Question Hook — Asymmetric variant with question top-left and answer card bottom-right.
-LAYOUT: Near-black background with dot grid. Pillar badge ("Sicológico") top-right. Large bold question text top-left area. Answer tease inside a deep navy (#040447) rounded card at bottom-right with cyan left-border. CTA text in cyan inside the card. Logo bottom-left. Brand bar at bottom.
+LAYOUT: Near-black background with dot grid. Pillar badge ("Sicológico") top-right. Large bold question text top-left area. Answer tease inside a deep navy (#040447) rounded card at bottom-right with cyan left-border. CTA text in cyan inside the card. Brand bar at bottom.
 
 VISUAL CONCEPT: Youth football boots on a dark field, a single cyan light source creating dramatic shadows. The boots suggest hesitation, not movement — one foot slightly ahead of the other. Intimate, emotional, parent-perspective.
 
@@ -222,7 +224,7 @@ TEXT (copy EXACTLY):
 - PILLAR BADGE (cyan pill, top-right): "🧠 Sicológico"
 - HOOK (large, bold, white, top-left): "¿Tu hijo tiene talento pero se frustra cuando las cosas no salen?"
 - BODY (inside dark card, white at 60% opacity): "No es falta de ganas. Es que nadie le enseñó a manejar la presión. Con la metodología correcta, su talento puede brillar."
-- CTA (cyan text inside card): "Apoyalo con ciencia → mentefutbol.com"
+- CTA (cyan text inside card): "Apoyalo con ciencia"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -244,7 +246,7 @@ TEXT (copy EXACTLY):
 - BODY (inside navy card, bullet points with cyan diamond markers):
   Line 1: "La velocidad y la fuerza sin fortaleza mental son armas que fallan cuando más las necesitás."
   Line 2: "El pilar físico no es solo el cuerpo — es la mente que lo controla."
-- CTA (white text on #2076FF blue pill, inside card): "Fortalecé tu mente → mentefutbol.com"
+- CTA (white text on #2076FF blue pill, inside card): "Fortalecé tu mente"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -286,7 +288,7 @@ TEXT (copy EXACTLY):
   Card 2: "Táctica — posicionamiento, lectura, formaciones"
   Card 3: "Físico — velocidad, resistencia, fuerza"
   Card 4: "Sicológico — presión, concentración, constancia"
-- CTA (white text on #2076FF blue pill): "¿Cuál es el más débil de tu hijo? → mentefutbol.com"
+- CTA (white text on #2076FF blue pill): "¿Cuál es el más débil de tu hijo?"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -298,16 +300,16 @@ TEXT (copy EXACTLY):
 Generate a social media static (1080x1350, 4:5) for Mente Futbol.
 
 TEMPLATE TYPE: Question Hook — Minimal gradient variant with only hook text centered, no body text.
-LAYOUT: Diagonal gradient background from deep navy (#040447) to near-black (#0B0C10). Subtle dot grid overlay. Large cyan glow halo behind text (radial gradient, very subtle — 8% opacity). Single bold statement centered vertically. "mentefutbol.com" in white at low opacity near bottom. Brand bar at very bottom.
+LAYOUT: Diagonal gradient background from deep navy (#040447) to near-black (#0B0C10). Subtle dot grid overlay. Large cyan glow halo behind text (radial gradient, very subtle — 8% opacity). Single bold statement centered vertically. Brand bar at very bottom.
 
 VISUAL CONCEPT: A football dissolving into cyan particles — the ball on the left is solid, and toward the right it breaks apart into glowing cyan dots/particles that scatter and fade. Represents technique without mentality falling apart. Abstract, high-end, dynamic.
 
 TEXT (copy EXACTLY):
 - HOOK (large, bold, white, centered, text-shadow with cyan tint): "Técnica sin mentalidad es un truco. Con mentalidad, es un arma."
-- URL (white at 40% opacity, centered near bottom): "mentefutbol.com"
+- CTA (white text on #2076FF blue pill): "Hacé el quiz mental"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 
-NOTE: This piece has NO body text and NO CTA button — just the statement and the URL. Keep it clean and powerful.
+NOTE: This piece has NO body text — just the statement, CTA, and brand bar. Keep it clean and powerful.
 ```
 
 ---
@@ -326,7 +328,7 @@ TEXT (copy EXACTLY):
 - STAT (massive, inside glowing circle, cyan #5BE0FF, bold): "8"
 - HOOK (large, white, centered below circle): "campeonatos nacionales — la metodología detrás del récord de Costa Rica"
 - BODY (smaller, white at 50% opacity, centered): "Jeaustin Campos no ganó por suerte. Ganó con un sistema mental que ahora podés aprender."
-- CTA (cyan text, centered): "Descubrí el sistema → mentefutbol.com"
+- CTA (cyan text, centered): "Descubrí el sistema"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -345,6 +347,109 @@ VISUAL CONCEPT: One-point perspective corridor — a long symmetric hallway/tunn
 TEXT (copy EXACTLY):
 - QUOTE (large, white, italic, left-aligned): "La constancia mental gana más partidos que cualquier jugada ensayada."
 - ATTRIBUTION (white at 55% opacity, with cyan line): "Jeaustin Campos — 8x Campeón Nacional"
+- CTA (white text on #2076FF blue pill): "Empezá hoy"
+- BRAND BAR (bottom strip): "mentefutbol.com"
+```
+
+---
+
+## Piece #16 — Stat 3er lugar — Mundial de Clubes (StatInsight)
+
+```
+Generate a social media static (1080x1350, 4:5) for Mente Futbol.
+
+TEMPLATE TYPE: Stat Insight — Massive stat number as hero element, supporting text below.
+LAYOUT: Near-black background with dot grid. Small "DATO" badge (cyan text, letter-spacing) at top-center. Giant stat text in cyan with glow effect centered. Hook text below stat in white. Body text below hook at reduced opacity. Blue CTA pill button. Brand bar at bottom.
+
+VISUAL CONCEPT: A giant globe or world map rendered in dark navy with cyan-glowing continental outlines. Central America highlighted brighter. A single spotlight beam on Costa Rica. International, aspirational, "small country, big achievement" energy. Dark background with subtle star-field dots.
+
+TEXT (copy EXACTLY):
+- DATO BADGE (small, cyan, uppercase, letter-spaced): "DATO"
+- STAT (massive 160px, cyan #5BE0FF, bold, glow effect): "3er"
+- HOOK (large, white, below stat): "lugar en el Mundial de Clubes FIFA 2005 — Saprissa vs. los gigantes del mundo"
+- BODY (smaller, white at 55% opacity): "Jeaustin Campos llevó a un equipo centroamericano al podio mundial. La preparación mental fue la diferencia."
+- CTA (white text on #2076FF blue pill): "Aprendé del DT que compitió contra el mundo"
+- BRAND BAR (bottom strip): "mentefutbol.com"
+```
+
+---
+
+## Piece #17 — Stat 3 selecciones (StatInsight)
+
+```
+Generate a social media static (1080x1350, 4:5) for Mente Futbol.
+
+TEMPLATE TYPE: Stat Insight — Left-aligned variant with giant ghost stat in background.
+LAYOUT: Near-black background with dot grid. Giant "3" text at very low opacity (8%) top-right as decorative element. Visible "3" stat in large cyan with glow, left-aligned. Hook text below in white. Body text below at reduced opacity. CTA text in cyan. Brand bar at bottom.
+
+VISUAL CONCEPT: Three national flags (Costa Rica, Puerto Rico, Honduras) abstracted into flowing fabric ribbons with cyan tint, intertwining against a near-black background. The flags are ghostly, almost translucent — more texture than literal. Suggests international reach without being overly literal.
+
+TEXT (copy EXACTLY):
+- STAT (large, cyan #5BE0FF, bold, glow): "3"
+- HOOK (large, white, left-aligned): "selecciones nacionales dirigidas — Costa Rica, Puerto Rico, Honduras"
+- BODY (smaller, white at 55% opacity): "No cualquier DT cruza fronteras. La metodología mental de Jeaustin Campos trasciende culturas y ligas."
+- CTA (cyan text): "Accedé a esa metodología"
+- BRAND BAR (bottom strip): "mentefutbol.com"
+```
+
+---
+
+## Piece #18 — Stat 200+ jugadores formados (StatInsight)
+
+```
+Generate a social media static (1080x1350, 4:5) for Mente Futbol.
+
+TEMPLATE TYPE: Stat Insight — Glowing circle variant with stat inside a circular border.
+LAYOUT: Near-black background with heavier dot grid (4% opacity). Large glowing circle centered (280px diameter, 2px cyan border, cyan box-shadow glow). Massive "200+" stat inside the circle in cyan. Hook text below the circle centered. Body text below at reduced opacity. CTA text in cyan. Brand bar.
+
+VISUAL CONCEPT: A constellation of 200+ small glowing cyan dots scattered across the dark background, each representing a player formed. Some dots are brighter (the stars — Keylor, Celso, Jewison), connected by faint cyan lines. Feels like a galaxy of talent. Expansive, legacy-focused.
+
+TEXT (copy EXACTLY):
+- STAT (massive, inside glowing circle, cyan #5BE0FF, bold): "200+"
+- HOOK (large, white, centered below circle): "jugadores formados — de ligas menores a selecciones nacionales y clubes europeos"
+- BODY (smaller, white at 50% opacity, centered): "Keylor Navas. Celso Borges. Jewison Bennette. Todos pasaron por las manos de un DT que prioriza la mente."
+- CTA (cyan text, centered): "Tu turno"
+- BRAND BAR (bottom strip): "mentefutbol.com"
+```
+
+---
+
+## Piece #19 — Stat 12 finales (StatInsight)
+
+```
+Generate a social media static (1080x1350, 4:5) for Mente Futbol.
+
+TEMPLATE TYPE: Stat Insight — Massive stat number as hero element, supporting text below.
+LAYOUT: Near-black background with dot grid. Small "DATO" badge (cyan text, letter-spacing) at top-center. Giant stat number in cyan with glow effect centered. Hook text below stat in white. Body text below hook at reduced opacity. Blue CTA pill button. Brand bar at bottom.
+
+VISUAL CONCEPT: A stadium at night seen from above, the pitch a dark rectangle with glowing cyan boundary lines. Fireworks or confetti particles frozen mid-air, rendered in cyan and white — the moment a final is won. Dramatic, high-stakes, celebratory but restrained. Premium feel.
+
+TEXT (copy EXACTLY):
+- DATO BADGE (small, cyan, uppercase, letter-spaced): "DATO"
+- STAT (massive 180px, cyan #5BE0FF, bold, glow effect): "12"
+- HOOK (large, white, below stat): "finales nacionales dirigidas — más que cualquier otro DT activo en Centroamérica"
+- BODY (smaller, white at 55% opacity): "La final es donde todo se define. Jeaustin Campos sabe exactamente qué pasa en la cabeza de un jugador cuando todo está en juego."
+- CTA (white text on #2076FF blue pill): "Preparate para tu final"
+- BRAND BAR (bottom strip): "mentefutbol.com"
+```
+
+---
+
+## Piece #20 — Stat 70% — El fútbol es mental (StatInsight)
+
+```
+Generate a social media static (1080x1350, 4:5) for Mente Futbol.
+
+TEMPLATE TYPE: Stat Insight — Left-aligned variant with giant ghost stat in background.
+LAYOUT: Near-black background with dot grid. Giant "70%" text at very low opacity (8%) top-right as decorative element. Visible "70%" stat in large cyan with glow, left-aligned. Hook text below in white. Body text below at reduced opacity. CTA text in cyan. Brand bar at bottom.
+
+VISUAL CONCEPT: Split composition — left side shows a brain outline in cyan wireframe, right side shows a football in matching wireframe. They're connected by a pulsing cyan line at the center. The brain is larger/brighter, visually dominant. Represents that the mental side outweighs the physical. Dark, scientific, premium.
+
+TEXT (copy EXACTLY):
+- STAT (large, cyan #5BE0FF, bold, glow): "70%"
+- HOOK (large, white, left-aligned): "del rendimiento en partidos decisivos depende de la fortaleza mental"
+- BODY (smaller, white at 55% opacity): "Técnica la tenés. Físico lo trabajás. Pero sin mente, todo se cae cuando más importa."
+- CTA (cyan text): "Entrenala"
 - BRAND BAR (bottom strip): "mentefutbol.com"
 ```
 
@@ -369,6 +474,11 @@ TEXT (copy EXACTLY):
 | 13 | Técnica sin mentalidad | QuestionHook | C | Football dissolving into particles |
 | 14 | Stat 8 campeonatos | StatInsight | C | 8 trophy silhouettes, cyan backlight |
 | 15 | Constancia mental | QuoteCard | B | One-point perspective corridor |
+| 16 | Stat 3er lugar — Mundial | StatInsight | A | Globe with Central America highlighted |
+| 17 | Stat 3 selecciones | StatInsight | B | Abstracted flag ribbons, cyan tint |
+| 18 | Stat 200+ jugadores | StatInsight | C | Constellation of glowing dots |
+| 19 | Stat 12 finales | StatInsight | A | Stadium aerial, frozen confetti |
+| 20 | Stat 70% — Mental | StatInsight | B | Brain + football wireframe, connected |
 
 ---
 
@@ -401,7 +511,7 @@ Generate ONLY the background visual. Leave clean negative space for text overlay
 
 ```
 assets/statics/2026-03/ig-feed/mf-01-coach-hero.png
-assets/statics/2026-03/ig-feed/mf-02-quote-card.png
+assets/statics/2026-03/ig-feed/mf-02-quote-mejores.png
 assets/statics/2026-03/ig-feed/mf-03-pillar-sicologico.png
 assets/statics/2026-03/ig-feed/mf-04-stat-87.png
 assets/statics/2026-03/ig-feed/mf-05-question-nervioso.png
@@ -415,4 +525,9 @@ assets/statics/2026-03/ig-feed/mf-12-pillar-4pilares.png
 assets/statics/2026-03/ig-feed/mf-13-question-tecnica.png
 assets/statics/2026-03/ig-feed/mf-14-stat-8.png
 assets/statics/2026-03/ig-feed/mf-15-quote-constancia.png
+assets/statics/2026-03/ig-feed/mf-16-stat-mundial.png
+assets/statics/2026-03/ig-feed/mf-17-stat-selecciones.png
+assets/statics/2026-03/ig-feed/mf-18-stat-jugadores.png
+assets/statics/2026-03/ig-feed/mf-19-stat-finales.png
+assets/statics/2026-03/ig-feed/mf-20-stat-70.png
 ```

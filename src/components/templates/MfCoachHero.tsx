@@ -209,21 +209,6 @@ export function MfCoachHero({
           </div>
         </div>
 
-        {/* Large logo watermark center-bottom */}
-        <img
-          src={brand.logoWhite}
-          alt=""
-          style={{
-            position: "absolute",
-            bottom: 160,
-            left: "50%",
-            transform: "translateX(-50%)",
-            height: 50,
-            objectFit: "contain",
-            opacity: 0.4,
-          }}
-        />
-
         <MfBrandBar brand={brand} />
       </div>
     );

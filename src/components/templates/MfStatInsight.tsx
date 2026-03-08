@@ -3,9 +3,39 @@ import { MfDotGrid } from "./mf/MfDotGrid";
 import { MfBrandBar } from "./mf/MfBrandBar";
 import { MfCredentialBadge } from "./mf/MfCredentialBadge";
 
+/** Full-bleed background image with dark gradient overlay */
+function PhotoBackground({ image }: { image: string }) {
+  return (
+    <>
+      <img
+        src={image}
+        alt=""
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center 20%",
+        }}
+      />
+      {/* Heavy gradient overlay — dark at bottom for text, lighter at top to show face */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to bottom, rgba(11,12,16,0.45) 0%, rgba(11,12,16,0.7) 40%, rgba(11,12,16,0.92) 70%, rgba(11,12,16,0.98) 100%)",
+        }}
+      />
+    </>
+  );
+}
+
 export function MfStatInsight({
   brand,
   copy,
+  image,
   variant = "a",
 }: MfTemplateProps) {
   const stat = copy.stat || "8";
@@ -21,24 +51,27 @@ export function MfStatInsight({
           overflow: "hidden",
         }}
       >
+        {image && <PhotoBackground image={image} />}
         <MfDotGrid opacity={0.025} />
 
-        {/* Stat top-right (giant, cropped) */}
-        <div
-          style={{
-            position: "absolute",
-            top: -40,
-            right: -20,
-            fontSize: 360,
-            fontWeight: 900,
-            color: "#5BE0FF",
-            opacity: 0.08,
-            lineHeight: 1,
-            pointerEvents: "none",
-          }}
-        >
-          {stat}
-        </div>
+        {/* Stat top-right (giant, cropped) — hidden when image present */}
+        {!image && (
+          <div
+            style={{
+              position: "absolute",
+              top: -40,
+              right: -20,
+              fontSize: 360,
+              fontWeight: 900,
+              color: "#5BE0FF",
+              opacity: 0.08,
+              lineHeight: 1,
+              pointerEvents: "none",
+            }}
+          >
+            {stat}
+          </div>
+        )}
 
         {/* Content left-aligned center */}
         <div
@@ -50,8 +83,8 @@ export function MfStatInsight({
             bottom: 120,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-            padding: "0 64px",
+            justifyContent: image ? "flex-end" : "center",
+            padding: image ? "0 64px 60px" : "0 64px",
             gap: 28,
           }}
         >
@@ -62,7 +95,9 @@ export function MfStatInsight({
               fontWeight: 900,
               color: "#5BE0FF",
               lineHeight: 1,
-              textShadow: "0 0 40px rgba(91,224,255,0.3)",
+              textShadow: image
+                ? "0 0 60px rgba(91,224,255,0.5), 0 2px 20px rgba(0,0,0,0.8)"
+                : "0 0 40px rgba(91,224,255,0.3)",
             }}
           >
             {stat}
@@ -75,6 +110,7 @@ export function MfStatInsight({
               color: "#FFFFFF",
               lineHeight: 1.2,
               maxWidth: 700,
+              textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
             }}
           >
             {copy.hook}
@@ -83,9 +119,10 @@ export function MfStatInsight({
           <div
             style={{
               fontSize: 26,
-              color: "rgba(255,255,255,0.55)",
+              color: image ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.55)",
               lineHeight: 1.5,
               maxWidth: 650,
+              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
             }}
           >
             {copy.body}
@@ -98,25 +135,12 @@ export function MfStatInsight({
               fontSize: 24,
               color: "#5BE0FF",
               fontWeight: 600,
+              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
             }}
           >
             {copy.cta}
           </div>
         </div>
-
-        {/* Horizontal logo bottom-left */}
-        <img
-          src={brand.logoWhite}
-          alt=""
-          style={{
-            position: "absolute",
-            bottom: 140,
-            left: 64,
-            height: 36,
-            objectFit: "contain",
-            opacity: 0.5,
-          }}
-        />
 
         <MfBrandBar brand={brand} />
       </div>
@@ -133,6 +157,7 @@ export function MfStatInsight({
           backgroundColor: "#0B0C10",
         }}
       >
+        {image && <PhotoBackground image={image} />}
         <MfDotGrid opacity={0.04} />
 
         {/* Stat inside glowing circle center */}
@@ -155,8 +180,11 @@ export function MfStatInsight({
               height: 280,
               borderRadius: "50%",
               border: "2px solid rgba(91,224,255,0.3)",
-              boxShadow:
-                "0 0 60px rgba(91,224,255,0.2), inset 0 0 40px rgba(91,224,255,0.05)",
+              boxShadow: image
+                ? "0 0 80px rgba(91,224,255,0.3), inset 0 0 50px rgba(91,224,255,0.08)"
+                : "0 0 60px rgba(91,224,255,0.2), inset 0 0 40px rgba(91,224,255,0.05)",
+              backgroundColor: image ? "rgba(11,12,16,0.6)" : undefined,
+              backdropFilter: image ? "blur(8px)" : undefined,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -167,7 +195,9 @@ export function MfStatInsight({
                 fontSize: 140,
                 fontWeight: 900,
                 color: "#5BE0FF",
-                textShadow: "0 0 40px rgba(91,224,255,0.4)",
+                textShadow: image
+                  ? "0 0 50px rgba(91,224,255,0.5), 0 2px 20px rgba(0,0,0,0.8)"
+                  : "0 0 40px rgba(91,224,255,0.4)",
               }}
             >
               {stat}
@@ -184,6 +214,7 @@ export function MfStatInsight({
               textAlign: "center",
               maxWidth: 700,
               padding: "0 40px",
+              textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
             }}
           >
             {copy.hook}
@@ -192,11 +223,12 @@ export function MfStatInsight({
           <div
             style={{
               fontSize: 26,
-              color: "rgba(255,255,255,0.5)",
+              color: image ? "rgba(255,255,255,0.65)" : "rgba(255,255,255,0.5)",
               lineHeight: 1.5,
               textAlign: "center",
               maxWidth: 600,
               padding: "0 40px",
+              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
             }}
           >
             {copy.body}
@@ -218,6 +250,7 @@ export function MfStatInsight({
               color: "#5BE0FF",
               fontSize: 24,
               fontWeight: 600,
+              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
             }}
           >
             {copy.cta}
@@ -239,6 +272,7 @@ export function MfStatInsight({
         backgroundColor: "#0B0C10",
       }}
     >
+      {image && <PhotoBackground image={image} />}
       <MfDotGrid />
 
       <div
@@ -249,9 +283,9 @@ export function MfStatInsight({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: image ? "flex-end" : "center",
           textAlign: "center",
-          padding: "0 64px",
+          padding: image ? "0 64px 40px" : "0 64px",
           gap: 24,
         }}
       >
@@ -261,7 +295,8 @@ export function MfStatInsight({
             padding: "8px 24px",
             borderRadius: 50,
             border: "1.5px solid rgba(91,224,255,0.3)",
-            backgroundColor: "rgba(4,4,71,0.4)",
+            backgroundColor: image ? "rgba(11,12,16,0.5)" : "rgba(4,4,71,0.4)",
+            backdropFilter: image ? "blur(4px)" : undefined,
           }}
         >
           <span
@@ -284,7 +319,9 @@ export function MfStatInsight({
             fontWeight: 900,
             color: "#5BE0FF",
             lineHeight: 1,
-            textShadow: "0 0 60px rgba(91,224,255,0.35)",
+            textShadow: image
+              ? "0 0 80px rgba(91,224,255,0.5), 0 4px 24px rgba(0,0,0,0.8)"
+              : "0 0 60px rgba(91,224,255,0.35)",
           }}
         >
           {stat}
@@ -298,6 +335,7 @@ export function MfStatInsight({
             color: "#FFFFFF",
             lineHeight: 1.2,
             maxWidth: 750,
+            textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
           }}
         >
           {copy.hook}
@@ -307,9 +345,10 @@ export function MfStatInsight({
         <div
           style={{
             fontSize: 26,
-            color: "rgba(255,255,255,0.55)",
+            color: image ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.55)",
             lineHeight: 1.5,
             maxWidth: 650,
+            textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
           }}
         >
           {copy.body}

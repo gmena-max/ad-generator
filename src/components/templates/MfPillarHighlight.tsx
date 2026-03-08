@@ -120,20 +120,6 @@ export function MfPillarHighlight({
           </div>
         </div>
 
-        {/* Logo bottom-left */}
-        <img
-          src={brand.logoWhite}
-          alt=""
-          style={{
-            position: "absolute",
-            bottom: 140,
-            left: 64,
-            height: 36,
-            objectFit: "contain",
-            opacity: 0.5,
-          }}
-        />
-
         <MfBrandBar brand={brand} />
       </div>
     );

@@ -339,21 +339,6 @@ export function MfQuoteCard({
         </div>
       </div>
 
-      {/* Horizontal logo bottom */}
-      <img
-        src={brand.logoWhite}
-        alt=""
-        style={{
-          position: "absolute",
-          bottom: 140,
-          left: "50%",
-          transform: "translateX(-50%)",
-          height: 36,
-          objectFit: "contain",
-          opacity: 0.4,
-        }}
-      />
-
       <MfBrandBar brand={brand} />
     </div>
   );

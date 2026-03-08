@@ -129,7 +129,7 @@ export const templates: AdTemplate[] = [
     defaultCopy: {
       hook: "El DT más ganador de Costa Rica ahora te enseña",
       body: "8 campeonatos. 30+ años formando campeones.",
-      cta: "Descubrí tu perfil mental → mentefutbol.com",
+      cta: "Descubrí tu perfil mental",
       stat: "8x Campeón",
     },
   },
@@ -142,7 +142,7 @@ export const templates: AdTemplate[] = [
     defaultCopy: {
       hook: "¿Por qué tu equipo juega bien en práctica pero falla en partidos?",
       body: "Presión. Concentración. Constancia. Motivación.\nEl pilar sicológico es lo que separa a un equipo bueno de un equipo campeón.",
-      cta: "Descubrí cómo → mentefutbol.com",
+      cta: "Descubrí cómo",
       stat: "Sicológico",
     },
   },
@@ -155,7 +155,7 @@ export const templates: AdTemplate[] = [
     defaultCopy: {
       hook: "Jeaustin Campos — 8x Campeón Nacional",
       body: "No gané 8 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
-      cta: "mentefutbol.com",
+      cta: "Aprendé del campeón",
     },
   },
   {
@@ -168,7 +168,7 @@ export const templates: AdTemplate[] = [
       stat: "87%",
       hook: "de jugadores sin metodología mental pierden 2–3 años de desarrollo",
       body: "El talento no alcanza. Sin preparación mental estructurada, tus jugadores compiten con media capacidad.",
-      cta: "Cambiá eso → mentefutbol.com",
+      cta: "Cambiá eso",
     },
   },
   {
@@ -180,7 +180,7 @@ export const templates: AdTemplate[] = [
     defaultCopy: {
       hook: "¿Te ponés nervioso cuando el partido importa de verdad?",
       body: "No es falta de talento. Es falta de preparación mental.",
-      cta: "Empezá acá → mentefutbol.com",
+      cta: "Empezá acá",
       stat: "Sicológico",
     },
   },

@@ -88,20 +88,6 @@ export function MfQuestionHook({
           </div>
         )}
 
-        {/* Logo bottom-left */}
-        <img
-          src={brand.logoWhite}
-          alt=""
-          style={{
-            position: "absolute",
-            bottom: 140,
-            left: 48,
-            height: 36,
-            objectFit: "contain",
-            opacity: 0.5,
-          }}
-        />
-
         <MfBrandBar brand={brand} />
       </div>
     );
@@ -172,27 +158,6 @@ export function MfQuestionHook({
           >
             {copy.hook}
           </div>
-        </div>
-
-        {/* mentefutbol.com at bottom */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 148,
-            left: 0,
-            right: 0,
-            textAlign: "center",
-          }}
-        >
-          <span
-            style={{
-              color: "rgba(255,255,255,0.4)",
-              fontSize: 24,
-              fontWeight: 500,
-            }}
-          >
-            mentefutbol.com
-          </span>
         </div>
 
         <MfBrandBar brand={brand} />
