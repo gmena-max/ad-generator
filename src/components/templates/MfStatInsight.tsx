@@ -2,35 +2,7 @@ import { MfTemplateProps } from "./mf/types";
 import { MfDotGrid } from "./mf/MfDotGrid";
 import { MfBrandBar } from "./mf/MfBrandBar";
 import { MfCredentialBadge } from "./mf/MfCredentialBadge";
-
-/** Full-bleed background image with dark gradient overlay */
-function PhotoBackground({ image }: { image: string }) {
-  return (
-    <>
-      <img
-        src={image}
-        alt=""
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center 20%",
-        }}
-      />
-      {/* Heavy gradient overlay — dark at bottom for text, lighter at top to show face */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to bottom, rgba(11,12,16,0.45) 0%, rgba(11,12,16,0.7) 40%, rgba(11,12,16,0.92) 70%, rgba(11,12,16,0.98) 100%)",
-        }}
-      />
-    </>
-  );
-}
+import { MfPhotoBackground } from "./mf/MfPhotoBackground";
 
 export function MfStatInsight({
   brand,
@@ -51,7 +23,7 @@ export function MfStatInsight({
           overflow: "hidden",
         }}
       >
-        {image && <PhotoBackground image={image} />}
+        {image && <MfPhotoBackground image={image} />}
         <MfDotGrid opacity={0.025} />
 
         {/* Stat top-right (giant, cropped) — hidden when image present */}
@@ -157,7 +129,7 @@ export function MfStatInsight({
           backgroundColor: "#0B0C10",
         }}
       >
-        {image && <PhotoBackground image={image} />}
+        {image && <MfPhotoBackground image={image} />}
         <MfDotGrid opacity={0.04} />
 
         {/* Stat inside glowing circle center */}
@@ -272,7 +244,7 @@ export function MfStatInsight({
         backgroundColor: "#0B0C10",
       }}
     >
-      {image && <PhotoBackground image={image} />}
+      {image && <MfPhotoBackground image={image} />}
       <MfDotGrid />
 
       <div

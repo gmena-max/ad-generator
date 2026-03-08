@@ -68,9 +68,9 @@ VISUAL CONCEPT: Stadium tunnel entrance atmosphere. Subtle radial cyan glow eman
 ```
 Generate a background image (1080x1350, 4:5) for Mente Futbol.
 
-COMPOSITION: Educational card — content will be centered vertically. Keep background texture subtle so text remains legible over the entire image.
+COMPOSITION: Educational card — content will be centered vertically with bullet points. Keep background moody and dark so white text remains legible over the entire image. Avoid bright areas in the center.
 
-VISUAL CONCEPT: Abstract neural network pattern in cyan (#5BE0FF) on near-black (#0B0C10). Synaptic connections firing — abstract glowing nodes connected by thin lines. NOT anatomical — purely abstract, elegant, minimal. Subtle dot grid texture underneath.
+VISUAL CONCEPT: Empty football locker room, pre-game atmosphere. Dark, moody, cinematic lighting — a single warm overhead light casting dramatic shadows. Team jerseys hanging on hooks along the wall, an empty bench in the foreground. The tension of the moment BEFORE the match. Color palette: near-black (#0B0C10) dominant, subtle cyan (#5BE0FF) accent from a secondary light source or reflection on metal lockers. NO people, NO text, NO logos on jerseys. Think Champions League broadcast cinematography — premium, atmospheric, quiet tension.
 ```
 
 ---

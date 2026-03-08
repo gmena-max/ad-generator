@@ -2,10 +2,12 @@ import { MfTemplateProps } from "./mf/types";
 import { MfDotGrid } from "./mf/MfDotGrid";
 import { MfBrandBar } from "./mf/MfBrandBar";
 import { MfPillarBadge } from "./mf/MfPillarBadge";
+import { MfPhotoBackground } from "./mf/MfPhotoBackground";
 
 export function MfPillarHighlight({
   brand,
   copy,
+  image,
   variant = "a",
 }: MfTemplateProps) {
   const bullets = copy.body.split("\n").filter(Boolean);
@@ -22,9 +24,15 @@ export function MfPillarHighlight({
           overflow: "hidden",
         }}
       >
+        {image && (
+          <MfPhotoBackground
+            image={image}
+            gradient="linear-gradient(to right, rgba(11,12,16,0.92) 0%, rgba(11,12,16,0.7) 50%, rgba(11,12,16,0.85) 100%)"
+          />
+        )}
         <MfDotGrid />
 
-        {/* Large translucent pillar icon background-right */}
+        {/* Large translucent pillar icon background-right — hidden when image present */}
         <div
           style={{
             position: "absolute",
@@ -38,13 +46,14 @@ export function MfPillarHighlight({
             pointerEvents: "none",
           }}
         >
-          {pillarName === "Técnica"
-            ? "⚽"
-            : pillarName === "Táctica"
-              ? "📋"
-              : pillarName === "Físico"
-                ? "💪"
-                : "🧠"}
+          {!image &&
+            (pillarName === "Técnica"
+              ? "⚽"
+              : pillarName === "Táctica"
+                ? "📋"
+                : pillarName === "Físico"
+                  ? "💪"
+                  : "🧠")}
         </div>
 
         {/* Content left-aligned */}
@@ -68,6 +77,7 @@ export function MfPillarHighlight({
               fontWeight: 800,
               color: "#FFFFFF",
               lineHeight: 1.15,
+              textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
             }}
           >
             {copy.hook}
@@ -90,15 +100,17 @@ export function MfPillarHighlight({
                     fontSize: 28,
                     fontWeight: 700,
                     minWidth: 36,
+                    textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
                   }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span
                   style={{
-                    color: "rgba(255,255,255,0.6)",
+                    color: image ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.6)",
                     fontSize: 26,
                     lineHeight: 1.4,
+                    textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
                   }}
                 >
                   {line}
@@ -114,6 +126,7 @@ export function MfPillarHighlight({
               fontSize: 24,
               color: "#5BE0FF",
               fontWeight: 600,
+              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
             }}
           >
             {copy.cta}
@@ -135,6 +148,12 @@ export function MfPillarHighlight({
           backgroundColor: "#0B0C10",
         }}
       >
+        {image && (
+          <MfPhotoBackground
+            image={image}
+            gradient="linear-gradient(to bottom, rgba(11,12,16,0.5) 0%, rgba(11,12,16,0.7) 45%, rgba(11,12,16,0.85) 100%)"
+          />
+        )}
         <MfDotGrid opacity={0.02} />
 
         {/* Top half — large hook on dark bg */}
@@ -159,6 +178,7 @@ export function MfPillarHighlight({
               fontWeight: 800,
               color: "#FFFFFF",
               lineHeight: 1.15,
+              textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
             }}
           >
             {copy.hook}
@@ -173,7 +193,8 @@ export function MfPillarHighlight({
             left: 40,
             right: 40,
             top: "48%",
-            backgroundColor: "#040447",
+            backgroundColor: image ? "rgba(4,4,71,0.55)" : "#040447",
+            backdropFilter: image ? "blur(12px)" : undefined,
             borderRadius: 32,
             padding: "48px 56px",
             display: "flex",
@@ -245,6 +266,12 @@ export function MfPillarHighlight({
         backgroundColor: "#0B0C10",
       }}
     >
+      {image && (
+        <MfPhotoBackground
+          image={image}
+          gradient="radial-gradient(ellipse at center, rgba(11,12,16,0.55) 0%, rgba(11,12,16,0.9) 100%)"
+        />
+      )}
       <MfDotGrid />
 
       <div
@@ -268,6 +295,7 @@ export function MfPillarHighlight({
             color: "#FFFFFF",
             lineHeight: 1.15,
             textAlign: "center",
+            textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
           }}
         >
           {copy.hook}
@@ -290,16 +318,18 @@ export function MfPillarHighlight({
                 display: "flex",
                 alignItems: "center",
                 padding: "20px 28px",
-                backgroundColor: "rgba(4,4,71,0.5)",
+                backgroundColor: image ? "rgba(4,4,71,0.45)" : "rgba(4,4,71,0.5)",
+                backdropFilter: image ? "blur(8px)" : undefined,
                 borderRadius: 16,
                 borderLeft: "4px solid #5BE0FF",
               }}
             >
               <span
                 style={{
-                  color: "rgba(255,255,255,0.65)",
+                  color: image ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.65)",
                   fontSize: 26,
                   lineHeight: 1.4,
+                  textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
                 }}
               >
                 {line}

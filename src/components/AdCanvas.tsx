@@ -20,32 +20,38 @@ import {
 } from "./templates";
 import type { MfVariant } from "./templates/mf/types";
 
+type AspectRatio = "4:5" | "1:1";
+
 type AdCanvasProps = {
   brand: ClientBrand;
   template: TemplateId;
   copy: CopyContent;
   image?: string;
   variant?: MfVariant;
+  aspectRatio?: AspectRatio;
 };
 
-const AD_WIDTH = 1080;
-const AD_HEIGHT = 1350;
+const DIMENSIONS: Record<AspectRatio, { width: number; height: number }> = {
+  "4:5": { width: 1080, height: 1350 },
+  "1:1": { width: 1080, height: 1080 },
+};
 
 const isMfTemplate = (id: string) => id.startsWith("mf-");
 
 export const AdCanvas = forwardRef<HTMLDivElement, AdCanvasProps>(
-  function AdCanvas({ brand, template, copy, image, variant }, ref) {
+  function AdCanvas({ brand, template, copy, image, variant, aspectRatio = "4:5" }, ref) {
     const { colors } = brand;
     const fontFamily = isMfTemplate(template)
       ? "var(--font-geist), 'Geist', Arial, sans-serif"
       : "'Inter', Arial, Helvetica, sans-serif";
+    const { width, height } = DIMENSIONS[aspectRatio];
 
     return (
       <div
         ref={ref}
         style={{
-          width: AD_WIDTH,
-          height: AD_HEIGHT,
+          width,
+          height,
           position: "relative",
           overflow: "hidden",
           fontFamily,
@@ -79,7 +85,7 @@ export const AdCanvas = forwardRef<HTMLDivElement, AdCanvasProps>(
           <MfCoachHero brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
         )}
         {template === "mf-pillar-highlight" && (
-          <MfPillarHighlight brand={brand} copy={copy} colors={colors} variant={variant} />
+          <MfPillarHighlight brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
         )}
         {template === "mf-quote-card" && (
           <MfQuoteCard brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
@@ -88,7 +94,7 @@ export const AdCanvas = forwardRef<HTMLDivElement, AdCanvasProps>(
           <MfStatInsight brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
         )}
         {template === "mf-question-hook" && (
-          <MfQuestionHook brand={brand} copy={copy} colors={colors} variant={variant} />
+          <MfQuestionHook brand={brand} copy={copy} image={image} colors={colors} variant={variant} />
         )}
       </div>
     );

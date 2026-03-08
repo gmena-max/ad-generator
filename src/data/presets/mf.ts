@@ -22,7 +22,7 @@ export const mfPresets: CopyPreset[] = [
     label: "Quote — No gané por tener los mejores",
     copies: [
       {
-        hook: "Jeaustin Campos — 8x Campeón Nacional",
+        hook: "¿Cuando caminás hacia la cancha... ya ganaste o ya perdiste?",
         body: "No gané 8 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
         cta: "Aprendé del campeón",
       },
