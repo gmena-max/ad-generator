@@ -31,17 +31,17 @@ RULES:
 
 ## Section 1: Photo Pieces (5 pieces — no Gemini needed)
 
-These use real Jeaustin photos. Upload directly to the ad-generator — no AI generation required.
+These use real Jeaustin photos from Google Drive (`contenido-raw/`). Upload directly to the ad-generator — no AI generation required.
 
-| # | Photo File | Template | Variant | Preset |
-|---|-----------|----------|---------|--------|
-| 1 | `assets/jeaustin-photos/jeaustin-sideline.png` | CoachHero | A | mf-01 |
-| 11 | `assets/jeaustin-photos/whatsapp-01.jpeg` | CoachHero | C | mf-11 |
-| 14 | `assets/jeaustin-photos/whatsapp-19.jpeg` | StatInsight | C | mf-14 |
-| 16 | `assets/jeaustin-photos/whatsapp-16.jpeg` | StatInsight | A | mf-16 |
-| 19 | `assets/jeaustin-photos/IMG_0222.jpg` | StatInsight | A | mf-19 |
+| # | Drive Filename | What it shows | Template | Variant | Preset |
+|---|---------------|---------------|----------|---------|--------|
+| 1 | `38399b83-11ba-4807-a0bf-64ff411cac0f.jpg` | Night match, gray shirt, floodlights, walking on pitch | CoachHero | A | mf-01 |
+| 11 | `c7fef01e-8d74-4a3e-9c46-aa01063e0a93.jpg` | Night celebration, clapping above head, stadium crowd | CoachHero | C | mf-11 |
+| 14 | `IMG_0224.JPG` | Championship trophy in hand, J. CAMPOS #29 jersey, gold medal | StatInsight | C | mf-14 |
+| 16 | `WhatsApp Image 2026-03-03 at 20.42.06.jpeg` | FIFA CWC Japan 2005, medals, FIFA banner visible | StatInsight | A | mf-16 |
+| 19 | `cdbe0385-f066-47e6-b57b-cdd87a443bab.jpg` | Thumbs up, smiling, packed night stadium | StatInsight | A | mf-19 |
 
-**Workflow:** Open ad-generator → select template + variant + preset → upload photo → export.
+**Workflow:** Download photo from Drive → open ad-generator → select template + variant + preset → upload photo → export.
 
 ---
 
@@ -235,7 +235,7 @@ VISUAL CONCEPT: Split composition — left side shows a brain outline in cyan wi
 
 | # | Source | Template | Variant | Visual Concept |
 |---|--------|----------|---------|----------------|
-| 1 | **PHOTO:** `jeaustin-sideline.png` | CoachHero | A | Sideline authority shot |
+| 1 | **PHOTO:** Night match, floodlights, gray shirt | CoachHero | A | Night stadium authority walk |
 | 2 | AI | QuoteCard | A | Stadium tunnel, radial cyan glow |
 | 3 | AI | PillarHighlight | A | Abstract neural network in cyan |
 | 4 | AI | StatInsight | A | Aerial pitch, lines glowing cyan |
@@ -245,15 +245,15 @@ VISUAL CONCEPT: Split composition — left side shows a brain outline in cyan wi
 | 8 | AI | StatInsight | B | Horizontal cyan light streaks |
 | 9 | AI | QuestionHook | B | Youth boots, single cyan light |
 | 10 | AI | PillarHighlight | C | Heartbeat pulse fading right |
-| 11 | **PHOTO:** `whatsapp-01.jpeg` | CoachHero | C | Coaching on field, CR gear |
+| 11 | **PHOTO:** Night celebration, clapping, stadium | CoachHero | C | Victory celebration, crowd |
 | 12 | AI | PillarHighlight | A | 4 wireframe icons at low opacity |
 | 13 | AI | QuestionHook | C | Football dissolving into particles |
-| 14 | **PHOTO:** `whatsapp-19.jpeg` | StatInsight | C | Championship celebration, trophy |
+| 14 | **PHOTO:** Trophy + J.CAMPOS #29 jersey, medal | StatInsight | C | Championship trophy in hand |
 | 15 | AI | QuoteCard | B | One-point perspective corridor |
-| 16 | **PHOTO:** `whatsapp-16.jpeg` | StatInsight | A | FIFA Club World Cup 2005 ceremony |
+| 16 | **PHOTO:** FIFA CWC Japan 2005, medals, banner | StatInsight | A | FIFA Japan 2005 medal ceremony |
 | 17 | AI | StatInsight | B | Abstracted flag ribbons, cyan tint |
 | 18 | AI | StatInsight | C | Constellation of glowing dots |
-| 19 | **PHOTO:** `IMG_0222.jpg` | StatInsight | A | Victory celebration, lifted |
+| 19 | **PHOTO:** Thumbs up, packed night stadium | StatInsight | A | Night match confidence, crowd |
 | 20 | AI | StatInsight | B | Brain + football wireframe, connected |
 
 ---
@@ -262,10 +262,11 @@ VISUAL CONCEPT: Split composition — left side shows a brain outline in cyan wi
 
 ### Photo pieces (5 pieces: #1, #11, #14, #16, #19)
 
-1. Open ad-generator (`localhost:3000`)
-2. Select template + variant + preset
-3. Upload the real photo
-4. Export as PNG (1080x1350)
+1. Download photo from Google Drive (`contenido-raw/`) — see Section 1 table for filenames
+2. Open ad-generator (`localhost:3000`)
+3. Select template + variant + preset
+4. Upload the photo
+5. Export as PNG (1080x1350)
 
 ### AI background pieces (15 pieces)
 
