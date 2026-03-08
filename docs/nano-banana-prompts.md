@@ -233,28 +233,30 @@ VISUAL CONCEPT: Split composition — left side shows a brain outline in cyan wi
 
 ## Quick Reference Table
 
-| # | Source | Template | Variant | Visual Concept |
-|---|--------|----------|---------|----------------|
-| 1 | **PHOTO:** Night match, floodlights, gray shirt | CoachHero | A | Night stadium authority walk |
-| 2 | AI | QuoteCard | A | Stadium tunnel, radial cyan glow |
-| 3 | AI | PillarHighlight | A | Abstract neural network in cyan |
-| 4 | AI | StatInsight | A | Aerial pitch, lines glowing cyan |
-| 5 | AI | QuestionHook | A | Stadium tunnel perspective |
-| 6 | AI | PillarHighlight | B | Tactical formation dots + lines |
-| 7 | AI | QuoteCard | C | Football on dark grass, cyan rim |
-| 8 | AI | StatInsight | B | Horizontal cyan light streaks |
-| 9 | AI | QuestionHook | B | Youth boots, single cyan light |
-| 10 | AI | PillarHighlight | C | Heartbeat pulse fading right |
-| 11 | **PHOTO:** Night celebration, clapping, stadium | CoachHero | C | Victory celebration, crowd |
-| 12 | AI | PillarHighlight | A | 4 wireframe icons at low opacity |
-| 13 | AI | QuestionHook | C | Football dissolving into particles |
-| 14 | **PHOTO:** Trophy + J.CAMPOS #29 jersey, medal | StatInsight | C | Championship trophy in hand |
-| 15 | AI | QuoteCard | B | One-point perspective corridor |
-| 16 | **PHOTO:** FIFA CWC Japan 2005, medals, banner | StatInsight | A | FIFA Japan 2005 medal ceremony |
-| 17 | AI | StatInsight | B | Abstracted flag ribbons, cyan tint |
-| 18 | AI | StatInsight | C | Constellation of glowing dots |
-| 19 | **PHOTO:** Thumbs up, packed night stadium | StatInsight | A | Night match confidence, crowd |
-| 20 | AI | StatInsight | B | Brain + football wireframe, connected |
+This is the single workflow reference. For each piece: get the background (photo or AI), then open ad-generator → select template + variant + preset. Copy text loads automatically from the preset (`src/data/presets/mf.ts`).
+
+| # | Source | Template | Variant | Preset | Visual Concept |
+|---|--------|----------|---------|--------|----------------|
+| 1 | **PHOTO** `drive-review/08` | CoachHero | A | mf-01 | Night stadium authority walk |
+| 2 | AI → Gemini | QuoteCard | A | mf-02 | Stadium tunnel, radial cyan glow |
+| 3 | AI → Gemini | PillarHighlight | A | mf-03 | Abstract neural network in cyan |
+| 4 | AI → Gemini | StatInsight | A | mf-04 | Aerial pitch, lines glowing cyan |
+| 5 | AI → Gemini | QuestionHook | A | mf-05 | Stadium tunnel perspective |
+| 6 | AI → Gemini | PillarHighlight | B | mf-06 | Tactical formation dots + lines |
+| 7 | AI → Gemini | QuoteCard | C | mf-07 | Football on dark grass, cyan rim |
+| 8 | AI → Gemini | StatInsight | B | mf-08 | Horizontal cyan light streaks |
+| 9 | AI → Gemini | QuestionHook | B | mf-09 | Youth boots, single cyan light |
+| 10 | AI → Gemini | PillarHighlight | C | mf-10 | Heartbeat pulse fading right |
+| 11 | **PHOTO** `drive-review/19` | CoachHero | C | mf-11 | Victory celebration, crowd |
+| 12 | AI → Gemini | PillarHighlight | A | mf-12 | 4 wireframe icons at low opacity |
+| 13 | AI → Gemini | QuestionHook | C | mf-13 | Football dissolving into particles |
+| 14 | **PHOTO** `drive-review/28` | StatInsight | C | mf-14 | Championship trophy in hand |
+| 15 | AI → Gemini | QuoteCard | B | mf-15 | One-point perspective corridor |
+| 16 | **PHOTO** `drive-review/44` | StatInsight | A | mf-16 | FIFA Japan 2005 medal ceremony |
+| 17 | AI → Gemini | StatInsight | B | mf-17 | Abstracted flag ribbons, cyan tint |
+| 18 | AI → Gemini | StatInsight | C | mf-18 | Constellation of glowing dots |
+| 19 | **PHOTO** `drive-review/20` | StatInsight | A | mf-19 | Night match confidence, crowd |
+| 20 | AI → Gemini | StatInsight | B | mf-20 | Brain + football wireframe, connected |
 
 ---
 
