@@ -268,7 +268,7 @@ export function MfPillarHighlight({
     );
   }
 
-  // Variant A (default): Pillar badge top-center, hook centered, bullet cards with cyan left-border
+  // Variant A (default): Pillar badge top-center, hook centered, glass bullet cards, CTA pill
   return (
     <div
       style={{
@@ -281,10 +281,11 @@ export function MfPillarHighlight({
       {image && (
         <MfPhotoBackground
           image={image}
-          gradient="radial-gradient(ellipse at center, rgba(11,12,16,0.55) 0%, rgba(11,12,16,0.9) 100%)"
+          gradient="linear-gradient(to bottom, rgba(11,12,16,0.25) 0%, rgba(11,12,16,0.45) 25%, rgba(11,12,16,0.72) 50%, rgba(11,12,16,0.88) 75%, rgba(11,12,16,0.95) 100%)"
+          objectPosition="center 30%"
         />
       )}
-      <MfDotGrid />
+      <MfDotGrid opacity={image ? 0.015 : 0.03} />
 
       <div
         style={{
@@ -294,7 +295,7 @@ export function MfPillarHighlight({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          padding: "72px 64px 0",
+          padding: "56px 64px 0",
           gap: 36,
         }}
       >
@@ -302,25 +303,36 @@ export function MfPillarHighlight({
 
         <div
           style={{
-            fontSize: 56,
+            fontSize: 52,
             fontWeight: 800,
             color: "#FFFFFF",
-            lineHeight: 1.15,
+            lineHeight: 1.18,
             textAlign: "center",
-            textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
+            textShadow: "0 2px 16px rgba(0,0,0,0.6)",
           }}
         >
           {copy.hook}
         </div>
 
-        {/* Bullet cards with cyan left-border */}
+        {/* Cyan divider */}
+        <div
+          style={{
+            width: 64,
+            height: 2,
+            backgroundColor: "rgba(91,224,255,0.25)",
+            borderRadius: 2,
+            marginTop: -8,
+          }}
+        />
+
+        {/* Glass bullet cards with cyan left-border */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 16,
+            gap: 14,
             width: "100%",
-            marginTop: 12,
+            marginTop: 4,
           }}
         >
           {bullets.map((line, i) => (
@@ -329,19 +341,25 @@ export function MfPillarHighlight({
               style={{
                 display: "flex",
                 alignItems: "center",
-                padding: "20px 28px",
-                backgroundColor: image ? "rgba(4,4,71,0.45)" : "rgba(4,4,71,0.5)",
-                backdropFilter: image ? "blur(8px)" : undefined,
-                borderRadius: 16,
+                padding: "22px 30px",
+                backgroundColor: image ? "rgba(4,4,71,0.38)" : "rgba(4,4,71,0.5)",
+                backdropFilter: image ? "blur(14px)" : undefined,
+                borderRadius: 18,
                 borderLeft: "4px solid #5BE0FF",
+                borderTop: image ? "1px solid rgba(91,224,255,0.07)" : undefined,
+                borderRight: image ? "1px solid rgba(91,224,255,0.04)" : undefined,
+                borderBottom: image ? "1px solid rgba(91,224,255,0.04)" : undefined,
+                boxShadow: image
+                  ? "0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)"
+                  : undefined,
               }}
             >
               <span
                 style={{
-                  color: image ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.65)",
+                  color: image ? "rgba(255,255,255,0.82)" : "rgba(255,255,255,0.65)",
                   fontSize: 26,
                   lineHeight: 1.4,
-                  textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
+                  textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
                 }}
               >
                 {line}
@@ -354,13 +372,14 @@ export function MfPillarHighlight({
         <div
           style={{
             marginTop: "auto",
-            marginBottom: 24,
-            padding: "16px 36px",
+            marginBottom: 20,
+            padding: "18px 44px",
             borderRadius: 50,
             backgroundColor: "#2076FF",
+            boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
           }}
         >
-          <span style={{ color: "#FFFFFF", fontSize: 24, fontWeight: 700 }}>
+          <span style={{ color: "#FFFFFF", fontSize: 26, fontWeight: 700, letterSpacing: "0.3px" }}>
             {copy.cta}
           </span>
         </div>
