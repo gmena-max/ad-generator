@@ -281,7 +281,7 @@ export function MfPillarHighlight({
       {image && (
         <MfPhotoBackground
           image={image}
-          gradient="linear-gradient(to bottom, rgba(11,12,16,0.25) 0%, rgba(11,12,16,0.45) 25%, rgba(11,12,16,0.72) 50%, rgba(11,12,16,0.88) 75%, rgba(11,12,16,0.95) 100%)"
+          gradient="linear-gradient(to bottom, rgba(11,12,16,0.1) 0%, rgba(11,12,16,0.3) 25%, rgba(11,12,16,0.55) 50%, rgba(11,12,16,0.78) 70%, rgba(11,12,16,0.92) 100%)"
           objectPosition="center 30%"
         />
       )}

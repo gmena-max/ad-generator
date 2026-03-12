@@ -20,6 +20,30 @@ export function MfQuoteCard({
           backgroundColor: "#0B0C10",
         }}
       >
+        {image && (
+          <>
+            <img
+              src={image}
+              alt=""
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                opacity: 0.3,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to right, rgba(11,12,16,0.85) 0%, rgba(11,12,16,0.5) 100%)",
+              }}
+            />
+          </>
+        )}
         <MfDotGrid opacity={0.02} />
 
         {/* Vertical cyan accent line left edge */}
@@ -145,6 +169,30 @@ export function MfQuoteCard({
           backgroundColor: "#0B0C10",
         }}
       >
+        {image && (
+          <>
+            <img
+              src={image}
+              alt=""
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                opacity: 0.25,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "radial-gradient(ellipse at center, rgba(11,12,16,0.3) 0%, rgba(11,12,16,0.9) 100%)",
+              }}
+            />
+          </>
+        )}
         <MfDotGrid opacity={0.015} />
 
         {/* Deep navy card centered (card-in-card) */}
@@ -155,10 +203,10 @@ export function MfQuoteCard({
             left: 56,
             right: 56,
             bottom: 240,
-            backgroundColor: "#040447",
+            backgroundColor: "transparent",
             borderRadius: 32,
             border: "1px solid rgba(91,224,255,0.15)",
-            boxShadow: "0 0 60px rgba(91,224,255,0.1)",
+            boxShadow: "none",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -254,6 +302,31 @@ export function MfQuoteCard({
         backgroundColor: "#0B0C10",
       }}
     >
+      {/* Background image (AI-generated or uploaded) */}
+      {image && (
+        <>
+          <img
+            src={image}
+            alt=""
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              opacity: 0.35,
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "radial-gradient(ellipse at center, rgba(11,12,16,0.4) 0%, rgba(11,12,16,0.85) 100%)",
+            }}
+          />
+        </>
+      )}
       <MfDotGrid />
 
       {/* Large cyan quotation mark top-left */}

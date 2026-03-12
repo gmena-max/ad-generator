@@ -224,28 +224,25 @@ export function MfCoachHero({
         backgroundColor: "#0B0C10",
       }}
     >
-      {/* Full-bleed photo (top 65%) */}
+      {/* Full-bleed photo (entire card) */}
       {image ? (
         <img
           src={image}
           alt=""
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
+            inset: 0,
             width: "100%",
-            height: "65%",
+            height: "100%",
             objectFit: "cover",
+            objectPosition: "top center",
           }}
         />
       ) : (
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "65%",
+            inset: 0,
             backgroundColor: "#040447",
             display: "flex",
             alignItems: "center",
@@ -258,16 +255,29 @@ export function MfCoachHero({
         </div>
       )}
 
-      {/* Bottom gradient */}
+      {/* Top vignette — tames harsh highlights (floodlights, sky) */}
       <div
         style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
-          height: "70%",
+          height: "40%",
           background:
-            "linear-gradient(to bottom, transparent 30%, #0B0C10 100%)",
+            "linear-gradient(to bottom, rgba(11,12,16,0.6) 0%, transparent 100%)",
+        }}
+      />
+
+      {/* Bottom gradient for text readability */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: "65%",
+          background:
+            "linear-gradient(to bottom, transparent 0%, rgba(11,12,16,0.85) 45%, #0B0C10 100%)",
         }}
       />
 
@@ -323,7 +333,6 @@ export function MfCoachHero({
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>
           {copy.stat && <MfCredentialBadge text={copy.stat} />}
           <MfCredentialBadge text="30+ años" />
-          <MfCredentialBadge text="Keylor · Celso · Jewison" />
         </div>
 
         {/* CTA pill */}

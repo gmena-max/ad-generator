@@ -29,7 +29,9 @@ export default function Home() {
   const [variant, setVariant] = useState<"a" | "b" | "c">("a");
 
   const canvasRef = useRef<HTMLDivElement>(null);
+  const canvasRef1x1 = useRef<HTMLDivElement>(null);
   const bulkCanvasRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+  const bulkCanvasRefs1x1 = useRef<Map<number, HTMLDivElement>>(new Map());
 
   const brand = clients[clientId];
   const presets = getPresetsForClient(clientId);
@@ -57,10 +59,10 @@ export default function Home() {
   }
 
   const handleExportCurrent = useCallback(async () => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current || !canvasRef1x1.current) return;
     setIsExporting(true);
     try {
-      await exportAndDownload(canvasRef.current, clientId, templateId, 0);
+      await exportAndDownload(canvasRef.current, canvasRef1x1.current, clientId, templateId, 0);
     } catch (err) {
       console.error("Export failed:", err);
     }
@@ -71,12 +73,17 @@ export default function Home() {
     if (variations.length === 0) return;
     setIsExporting(true);
     try {
-      const nodes: HTMLElement[] = [];
+      const nodes4x5: HTMLElement[] = [];
+      const nodes1x1: HTMLElement[] = [];
       for (let i = 0; i < variations.length; i++) {
-        const node = bulkCanvasRefs.current.get(i);
-        if (node) nodes.push(node);
+        const node4x5 = bulkCanvasRefs.current.get(i);
+        const node1x1 = bulkCanvasRefs1x1.current.get(i);
+        if (node4x5 && node1x1) {
+          nodes4x5.push(node4x5);
+          nodes1x1.push(node1x1);
+        }
       }
-      await bulkExportAll(nodes, clientId, templateId);
+      await bulkExportAll(nodes4x5, nodes1x1, clientId, templateId);
     } catch (err) {
       console.error("Bulk export failed:", err);
     }
@@ -205,6 +212,18 @@ export default function Home() {
               variant={variant}
             />
           </AdPreview>
+          {/* Hidden 1:1 canvas for export */}
+          <div style={{ position: "fixed", left: -9999, top: 0, pointerEvents: "none" }}>
+            <AdCanvas
+              ref={canvasRef1x1}
+              brand={brand}
+              template={templateId}
+              copy={copy}
+              image={image ?? undefined}
+              variant={variant}
+              aspectRatio="1:1"
+            />
+          </div>
         </div>
 
         {/* Right panel — Bulk + Export */}
@@ -262,6 +281,24 @@ export default function Home() {
                 </p>
               </div>
             ))}
+            {/* Hidden 1:1 canvases for bulk export */}
+            <div style={{ position: "fixed", left: -9999, top: 0, pointerEvents: "none" }}>
+              {variations.map((v, i) => (
+                <AdCanvas
+                  key={`1x1-${i}`}
+                  ref={(el) => {
+                    if (el) bulkCanvasRefs1x1.current.set(i, el);
+                    else bulkCanvasRefs1x1.current.delete(i);
+                  }}
+                  brand={brand}
+                  template={templateId}
+                  copy={v}
+                  image={image ?? undefined}
+                  variant={variant}
+                  aspectRatio="1:1"
+                />
+              ))}
+            </div>
           </div>
         </div>
       )}

@@ -44,7 +44,7 @@ export function ExportPanel({
       <p className="text-xs text-gray-400">
         4:5 (1080x1350) for Instagram + Meta Ads
         <br />
-        1:1 (1080x1080) center crop for Facebook
+        1:1 (1080x1080) for Facebook
       </p>
     </div>
   );
