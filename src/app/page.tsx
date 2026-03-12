@@ -157,7 +157,7 @@ export default function Home() {
             <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
               Image
             </h2>
-            <ImageUpload image={image} onChange={setImage} />
+            <ImageUpload image={image} onChange={setImage} brand={brand} />
           </div>
 
           {templateId.startsWith("mf-") && (
