@@ -83,7 +83,7 @@ export function MfQuestionHook({
               JEAUSTIN CAMPOS
             </span>
             <span style={{ color: "#5BE0FF", fontSize: 22, fontWeight: 700 }}>
-              8x Campeón
+              7x Campeón
             </span>
           </div>
 
@@ -243,7 +243,7 @@ export function MfQuestionHook({
               JEAUSTIN CAMPOS
             </span>
             <span style={{ color: "#5BE0FF", fontSize: 22, fontWeight: 700 }}>
-              8x Campeón
+              7x Campeón
             </span>
           </div>
 
@@ -352,7 +352,7 @@ export function MfQuestionHook({
             JEAUSTIN CAMPOS
           </span>
           <span style={{ color: "#5BE0FF", fontSize: 22, fontWeight: 700 }}>
-            8x Campeón
+            7x Campeón
           </span>
         </div>
 

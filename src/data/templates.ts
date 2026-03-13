@@ -128,9 +128,9 @@ export const templates: AdTemplate[] = [
     campaignStage: "cold",
     defaultCopy: {
       hook: "El DT más ganador de Costa Rica ahora te enseña",
-      body: "8 campeonatos. 30+ años formando campeones.",
+      body: "7 campeonatos. 30+ años formando campeones.",
       cta: "Descubrí tu perfil mental",
-      stat: "8x Campeón",
+      stat: "7x Campeón",
     },
   },
   {
@@ -153,8 +153,8 @@ export const templates: AdTemplate[] = [
     fields: ["hook", "body", "cta"],
     campaignStage: "warm",
     defaultCopy: {
-      hook: "Jeaustin Campos — 8x Campeón Nacional",
-      body: "No gané 8 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
+      hook: "Jeaustin Campos — 7x Campeón Nacional",
+      body: "No gané 7 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
       cta: "Aprendé del campeón",
     },
   },

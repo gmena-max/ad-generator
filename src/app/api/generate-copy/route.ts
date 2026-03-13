@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
       hook: "Hook / Título — the scroll-stopping headline. Short, punchy, emotional. Max 80 characters ideal, 150 max.",
       body: "Cuerpo — supporting text that expands on the hook. 1-3 sentences. Max 200 characters ideal. For pillar templates, use newlines to separate bullet points.",
       cta: "Call to Action — what the user should do. Short verb phrase. Max 30 characters. Examples: 'Descubrí cómo', 'Empezá hoy'.",
-      stat: "Número / Estadística — a compelling number or short label. Examples: '87%', '30+', '8x Campeón', 'Sicológico'. Max 20 characters.",
+      stat: "Número / Estadística — a compelling number or short label. Examples: '87%', '30+', '7x Campeón', 'Sicológico'. Max 20 characters.",
       question: "Pregunta — a direct question to the audience. Must end with '?'.",
       answer: "Respuesta — answer to the question above. Informative, builds trust.",
     };

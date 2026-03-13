@@ -137,7 +137,7 @@ export function MfQuoteCard({
                 marginLeft: 60,
               }}
             >
-              8x Campeón Nacional
+              7x Campeón Nacional
             </span>
 
             {/* Cyan text CTA */}
@@ -329,7 +329,7 @@ export function MfQuoteCard({
               fontWeight: 600,
             }}
           >
-            8x Campeón Nacional
+            7x Campeón Nacional
           </span>
 
           {/* Small pill CTA */}
@@ -486,7 +486,7 @@ export function MfQuoteCard({
               fontWeight: 600,
             }}
           >
-            8x Campeón Nacional
+            7x Campeón Nacional
           </span>
         </div>
       </div>

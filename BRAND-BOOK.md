@@ -9,7 +9,7 @@
 
 **Tagline principal:** "La psicología del fútbol, por quien lo vivió 7 veces"
 **Tagline secundario:** "La mente del campeón"
-**Propuesta de valor:** Educación en psicología deportiva aplicada al fútbol, liderada por un entrenador con 8 campeonatos nacionales — no por un académico.
+**Propuesta de valor:** Educación en psicología deportiva aplicada al fútbol, liderada por un entrenador con 7 campeonatos nacionales — no por un académico.
 
 ---
 
@@ -196,7 +196,7 @@ Cada pieza de contenido varía en:
 - Dar consejos prácticos y accionables
 - Usar lenguaje de cancha (no de universidad)
 - Mostrar vulnerabilidad cuando es real
-- Citar datos concretos (8 campeonatos, 30+ años, jugadores formados)
+- Citar datos concretos (7 campeonatos, 30+ años, jugadores formados)
 
 ### Lo Que NO Hacemos
 - Frases motivacionales genéricas ("cree en ti mismo", "nunca te rindas")
@@ -213,7 +213,7 @@ Cada pieza de contenido varía en:
 |---|---|
 | "La psicología del fútbol, por quien lo vivió 7 veces" | Tagline principal |
 | "La mente del campeón" | Tagline corto |
-| "No gané 8 campeonatos por tener los mejores jugadores" | Hook de autoridad |
+| "No gané 7 campeonatos por tener los mejores jugadores" | Hook de autoridad |
 | "La diferencia entre un jugador bueno y un campeón no está en las piernas" | Hook filosófico |
 | "Experiencia > Teoría" | Pilar de marca |
 | "Yo no estudié campeonatos, los gané" | Diferenciador |

@@ -9,9 +9,9 @@ export const mfPresets: CopyPreset[] = [
     copies: [
       {
         hook: "El DT más ganador de Costa Rica ahora te enseña",
-        body: "8 campeonatos. 30+ años formando campeones. Jeaustin Campos te revela la metodología mental que usó para ganar.",
+        body: "7 campeonatos. 30+ años formando campeones. Jeaustin Campos te revela la metodología mental que usó para ganar.",
         cta: "Descubrí tu perfil mental",
-        stat: "8x Campeón",
+        stat: "7x Campeón",
       },
     ],
   },
@@ -23,7 +23,7 @@ export const mfPresets: CopyPreset[] = [
     copies: [
       {
         hook: "¿Cuando caminás hacia la cancha... ya ganaste o ya perdiste?",
-        body: "No gané 8 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
+        body: "No gané 7 campeonatos por tener los mejores jugadores. Los gané porque mis jugadores tenían la mejor mentalidad.",
         cta: "Aprendé del campeón",
       },
     ],
@@ -90,7 +90,7 @@ export const mfPresets: CopyPreset[] = [
     label: "Quote — No está en las piernas",
     copies: [
       {
-        hook: "Jeaustin Campos — 8x Campeón Nacional",
+        hook: "Jeaustin Campos — 7x Campeón Nacional",
         body: "La diferencia entre un jugador bueno y un campeón no está en las piernas. Está en la cabeza.",
         cta: "Descubrí la diferencia",
       },
@@ -146,9 +146,9 @@ export const mfPresets: CopyPreset[] = [
     copies: [
       {
         hook: "El talento te abre la puerta. La mente es la que te deja entrar.",
-        body: "Jeaustin Campos — 8 campeonatos, 30+ años formando cracks. Ahora te enseña lo que no te enseñan en la cancha.",
+        body: "Jeaustin Campos — 7 campeonatos, 30+ años formando cracks. Ahora te enseña lo que no te enseñan en la cancha.",
         cta: "Empezá gratis",
-        stat: "8x Campeón",
+        stat: "7x Campeón",
       },
     ],
   },
@@ -184,13 +184,13 @@ export const mfPresets: CopyPreset[] = [
   {
     personaId: "all",
     framework: "AIDA",
-    label: "Stat 8 campeonatos — Récord",
+    label: "Stat 7 campeonatos — Récord",
     copies: [
       {
         hook: "campeonatos nacionales — la metodología detrás del récord de Costa Rica",
         body: "Jeaustin Campos no ganó por suerte. Ganó con un sistema mental que ahora podés aprender.",
         cta: "Descubrí el sistema",
-        stat: "8",
+        stat: "7",
       },
     ],
   },
@@ -201,7 +201,7 @@ export const mfPresets: CopyPreset[] = [
     label: "Quote — Constancia mental",
     copies: [
       {
-        hook: "Jeaustin Campos — 8x Campeón Nacional",
+        hook: "Jeaustin Campos — 7x Campeón Nacional",
         body: "La constancia mental gana más partidos que cualquier jugada ensayada.",
         cta: "Empezá hoy",
       },

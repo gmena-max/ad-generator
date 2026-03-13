@@ -91,7 +91,7 @@ Style: modern, digital, energetic — like a gaming or tech brand.`,
     logoWhite: "/clients/mf/logo-white.png",
     phone: "mentefutbol.com",
     headline: "Jeaustin Campos",
-    subheadline: "8x Campeón Nacional",
+    subheadline: "7x Campeón Nacional",
     tagline: "La psicología del fútbol, por quien lo vivió 7 veces",
     brandRules: {
       mood: ["cinematic", "premium", "moody", "Champions League"],
