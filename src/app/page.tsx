@@ -15,6 +15,8 @@ import { PersonaSelector } from "@/components/PersonaSelector";
 import { getPresetsForClient } from "@/data/presets";
 import { getPersonasForClient } from "@/data/personas";
 import { exportAndDownload, bulkExportAll } from "@/lib/export";
+import { exportAllAsZip, downloadBlob } from "@/lib/zip-export";
+import type { ExportProgress } from "@/lib/zip-export";
 import { Trash2 } from "lucide-react";
 
 export default function Home() {
@@ -25,6 +27,7 @@ export default function Home() {
   );
   const [variations, setVariations] = useState<CopyContent[]>([]);
   const [isExporting, setIsExporting] = useState(false);
+  const [exportProgress, setExportProgress] = useState<ExportProgress | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const [personaId, setPersonaId] = useState<string | null>(null);
   const [variant, setVariant] = useState<"a" | "b" | "c">("a");
@@ -102,6 +105,31 @@ export default function Home() {
     setIsExporting(false);
   }, [variations, clientId, templateId]);
 
+  const handleExportZip = useCallback(async () => {
+    if (variations.length === 0) return;
+    setIsExporting(true);
+    setExportProgress(null);
+    try {
+      const nodes4x5: HTMLElement[] = [];
+      const nodes1x1: HTMLElement[] = [];
+      for (let i = 0; i < variations.length; i++) {
+        const node4x5 = bulkCanvasRefs.current.get(i);
+        const node1x1 = bulkCanvasRefs1x1.current.get(i);
+        if (node4x5 && node1x1) {
+          nodes4x5.push(node4x5);
+          nodes1x1.push(node1x1);
+        }
+      }
+      const templateIds = variations.map(() => templateId);
+      const blob = await exportAllAsZip(nodes4x5, nodes1x1, clientId, templateIds, setExportProgress);
+      downloadBlob(blob, `${clientId}-batch-${new Date().toISOString().slice(0, 10)}.zip`);
+    } catch (err) {
+      console.error("ZIP export failed:", err);
+    }
+    setExportProgress(null);
+    setIsExporting(false);
+  }, [variations, clientId, templateId]);
+
   function removeVariation(index: number) {
     setVariations(variations.filter((_, i) => i !== index));
   }
@@ -140,8 +168,10 @@ export default function Home() {
             <ExportPanel
               onExportCurrent={handleExportCurrent}
               onExportAll={handleExportAll}
+              onExportZip={handleExportZip}
               variationCount={variations.length}
               isExporting={isExporting}
+              progress={exportProgress}
             />
           </div>
         </div>

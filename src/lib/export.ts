@@ -1,4 +1,5 @@
 import { toPng } from "html-to-image";
+import type { ExportProgress } from "./zip-export";
 
 const AD_WIDTH = 1080;
 const AD_HEIGHT_4_5 = 1350;
@@ -54,10 +55,13 @@ export async function bulkExportAll(
   nodes4x5: HTMLElement[],
   nodes1x1: HTMLElement[],
   clientId: string,
-  templateId: string
+  templateId: string,
+  onProgress?: (progress: ExportProgress) => void
 ) {
+  const total = nodes4x5.length;
   for (let i = 0; i < nodes4x5.length; i++) {
     if (nodes4x5[i] && nodes1x1[i]) {
+      onProgress?.({ current: i + 1, total, label: `v${i + 1}` });
       await exportAndDownload(nodes4x5[i], nodes1x1[i], clientId, templateId, i);
       // Small delay between downloads
       await new Promise((r) => setTimeout(r, 500));
