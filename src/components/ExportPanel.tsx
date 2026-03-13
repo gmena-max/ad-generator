@@ -1,6 +1,7 @@
 "use client";
 
 import { Download, ImageIcon, Archive } from "lucide-react";
+import type { ExportProgress } from "@/lib/zip-export";
 
 type Props = {
   onExportCurrent: () => void;
@@ -8,7 +9,7 @@ type Props = {
   onExportZip: () => void;
   variationCount: number;
   isExporting: boolean;
-  progress: { current: number; total: number; label: string } | null;
+  progress: ExportProgress | null;
 };
 
 export function ExportPanel({

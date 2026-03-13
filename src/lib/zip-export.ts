@@ -1,9 +1,9 @@
 import JSZip from "jszip";
 import { toPng } from "html-to-image";
 
-const AD_WIDTH = 1080;
-const AD_HEIGHT_4_5 = 1350;
-const AD_HEIGHT_1_1 = 1080;
+export const AD_WIDTH = 1080;
+export const AD_HEIGHT_4_5 = 1350;
+export const AD_HEIGHT_1_1 = 1080;
 
 export type ExportProgress = {
   current: number;
@@ -36,7 +36,11 @@ export async function exportAllAsZip(
   onProgress?: OnProgress
 ): Promise<Blob> {
   const zip = new JSZip();
-  const total = nodes4x5.length * 2;
+  let total = 0;
+  for (let i = 0; i < nodes4x5.length; i++) {
+    if (nodes4x5[i]) total++;
+    if (nodes1x1[i]) total++;
+  }
   let current = 0;
 
   for (let i = 0; i < nodes4x5.length; i++) {

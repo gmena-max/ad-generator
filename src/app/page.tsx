@@ -73,6 +73,20 @@ export default function Home() {
     setCopy(t.defaultCopy);
   }
 
+  function collectBulkNodes() {
+    const nodes4x5: HTMLElement[] = [];
+    const nodes1x1: HTMLElement[] = [];
+    for (let i = 0; i < variations.length; i++) {
+      const node4x5 = bulkCanvasRefs.current.get(i);
+      const node1x1 = bulkCanvasRefs1x1.current.get(i);
+      if (node4x5 && node1x1) {
+        nodes4x5.push(node4x5);
+        nodes1x1.push(node1x1);
+      }
+    }
+    return { nodes4x5, nodes1x1 };
+  }
+
   const handleExportCurrent = useCallback(async () => {
     if (!canvasRef.current || !canvasRef1x1.current) return;
     setIsExporting(true);
@@ -87,21 +101,14 @@ export default function Home() {
   const handleExportAll = useCallback(async () => {
     if (variations.length === 0) return;
     setIsExporting(true);
+    setExportProgress(null);
     try {
-      const nodes4x5: HTMLElement[] = [];
-      const nodes1x1: HTMLElement[] = [];
-      for (let i = 0; i < variations.length; i++) {
-        const node4x5 = bulkCanvasRefs.current.get(i);
-        const node1x1 = bulkCanvasRefs1x1.current.get(i);
-        if (node4x5 && node1x1) {
-          nodes4x5.push(node4x5);
-          nodes1x1.push(node1x1);
-        }
-      }
-      await bulkExportAll(nodes4x5, nodes1x1, clientId, templateId);
+      const { nodes4x5, nodes1x1 } = collectBulkNodes();
+      await bulkExportAll(nodes4x5, nodes1x1, clientId, templateId, setExportProgress);
     } catch (err) {
       console.error("Bulk export failed:", err);
     }
+    setExportProgress(null);
     setIsExporting(false);
   }, [variations, clientId, templateId]);
 
@@ -110,16 +117,7 @@ export default function Home() {
     setIsExporting(true);
     setExportProgress(null);
     try {
-      const nodes4x5: HTMLElement[] = [];
-      const nodes1x1: HTMLElement[] = [];
-      for (let i = 0; i < variations.length; i++) {
-        const node4x5 = bulkCanvasRefs.current.get(i);
-        const node1x1 = bulkCanvasRefs1x1.current.get(i);
-        if (node4x5 && node1x1) {
-          nodes4x5.push(node4x5);
-          nodes1x1.push(node1x1);
-        }
-      }
+      const { nodes4x5, nodes1x1 } = collectBulkNodes();
       const templateIds = variations.map(() => templateId);
       const blob = await exportAllAsZip(nodes4x5, nodes1x1, clientId, templateIds, setExportProgress);
       downloadBlob(blob, `${clientId}-batch-${new Date().toISOString().slice(0, 10)}.zip`);
