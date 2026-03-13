@@ -1,9 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import { templates, TemplateId } from "@/data/templates";
 import { BatchItem } from "@/types/batch";
 import type { MfVariant } from "@/components/templates/mf/types";
-import { Trash2 } from "lucide-react";
+import { Trash2, ImageIcon, X } from "lucide-react";
 
 type Props = {
   items: BatchItem[];
@@ -38,162 +39,218 @@ export function BulkTable({
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-xs border-collapse">
-        <thead>
-          <tr className="bg-gray-50 text-gray-500 uppercase tracking-wide">
-            <th className="px-2 py-1 text-left font-semibold w-8">#</th>
-            <th className="px-2 py-1 text-left font-semibold w-28">Template</th>
-            {isMfClient && (
-              <th className="px-2 py-1 text-left font-semibold w-16">Var</th>
-            )}
-            <th className="px-2 py-1 text-left font-semibold w-36">Hook</th>
-            <th className="px-2 py-1 text-left font-semibold min-w-[180px]">Body</th>
-            <th className="px-2 py-1 text-left font-semibold w-28">CTA</th>
-            <th className="px-2 py-1 text-left font-semibold w-20">Stat</th>
-            <th className="px-2 py-1 w-8" />
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item, i) => {
-            const effectiveTemplateId = item.templateId || currentTemplateId;
-            const tpl = templates.find((t) => t.id === effectiveTemplateId);
-            const showStat = tpl?.fields.includes("stat") ?? false;
+    <div className="space-y-2">
+      {items.map((item, i) => {
+        const effectiveTemplateId = item.templateId || currentTemplateId;
+        const tpl = templates.find((t) => t.id === effectiveTemplateId);
+        const showStat = tpl?.fields.includes("stat") ?? false;
 
-            return (
-              <tr
-                key={i}
-                className="border-t border-gray-100 hover:bg-blue-50/30 transition-colors"
-              >
-                {/* Row number */}
-                <td className="px-2 py-1 text-gray-400 font-mono">{i + 1}</td>
+        return (
+          <BulkTableRow
+            key={i}
+            index={i}
+            item={item}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
+            filteredTemplates={filteredTemplates}
+            isMfClient={isMfClient}
+            showStat={showStat}
+          />
+        );
+      })}
+    </div>
+  );
+}
 
-                {/* Template dropdown */}
-                <td className="px-2 py-1">
-                  <select
-                    value={item.templateId || ""}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      onUpdate(i, {
-                        ...item,
-                        templateId: val ? (val as TemplateId) : undefined,
-                      });
-                    }}
-                    className="w-full rounded border border-gray-200 bg-white px-1 py-0.5 text-xs focus:border-blue-400 focus:outline-none"
-                  >
-                    <option value="">(current)</option>
-                    {filteredTemplates.map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.name}
-                      </option>
-                    ))}
-                  </select>
-                </td>
+function BulkTableRow({
+  index,
+  item,
+  onUpdate,
+  onDelete,
+  filteredTemplates,
+  isMfClient,
+  showStat,
+}: {
+  index: number;
+  item: BatchItem;
+  onUpdate: (index: number, item: BatchItem) => void;
+  onDelete: (index: number) => void;
+  filteredTemplates: { id: TemplateId; name: string }[];
+  isMfClient: boolean;
+  showStat: boolean;
+}) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-                {/* Variant dropdown (MF only) */}
-                {isMfClient && (
-                  <td className="px-2 py-1">
-                    <select
-                      value={item.variant || ""}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        onUpdate(i, {
-                          ...item,
-                          variant: val ? (val as MfVariant) : undefined,
-                        });
-                      }}
-                      className="w-full rounded border border-gray-200 bg-white px-1 py-0.5 text-xs focus:border-blue-400 focus:outline-none"
-                    >
-                      <option value="">(current)</option>
-                      <option value="a">A</option>
-                      <option value="b">B</option>
-                      <option value="c">C</option>
-                    </select>
-                  </td>
-                )}
+  function handleImageFile(file: File) {
+    if (!file.type.startsWith("image/")) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      onUpdate(index, { ...item, image: e.target?.result as string });
+    };
+    reader.readAsDataURL(file);
+  }
 
-                {/* Hook */}
-                <td className="px-2 py-1">
-                  <input
-                    type="text"
-                    value={item.copy.hook}
-                    onChange={(e) =>
-                      onUpdate(i, {
-                        ...item,
-                        copy: { ...item.copy, hook: e.target.value },
-                      })
-                    }
-                    className="w-full rounded border border-gray-200 px-1 py-0.5 text-xs focus:border-blue-400 focus:outline-none"
-                    placeholder="Hook"
-                  />
-                </td>
+  return (
+    <div className="rounded-lg border border-gray-200 bg-white overflow-hidden">
+      {/* Row header */}
+      <div className="flex items-center gap-2 px-2.5 py-1.5 bg-gray-50 border-b border-gray-100">
+        <span className="text-[10px] font-bold text-gray-400 w-5">
+          {index + 1}
+        </span>
 
-                {/* Body */}
-                <td className="px-2 py-1">
-                  <input
-                    type="text"
-                    value={item.copy.body}
-                    onChange={(e) =>
-                      onUpdate(i, {
-                        ...item,
-                        copy: { ...item.copy, body: e.target.value },
-                      })
-                    }
-                    className="w-full rounded border border-gray-200 px-1 py-0.5 text-xs focus:border-blue-400 focus:outline-none"
-                    placeholder="Body"
-                  />
-                </td>
+        {/* Template dropdown */}
+        <select
+          value={item.templateId || ""}
+          onChange={(e) => {
+            const val = e.target.value;
+            onUpdate(index, {
+              ...item,
+              templateId: val ? (val as TemplateId) : undefined,
+            });
+          }}
+          className="rounded border border-gray-200 bg-white px-1.5 py-0.5 text-xs focus:border-blue-400 focus:outline-none flex-1"
+        >
+          <option value="">(current)</option>
+          {filteredTemplates.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.name}
+            </option>
+          ))}
+        </select>
 
-                {/* CTA */}
-                <td className="px-2 py-1">
-                  <input
-                    type="text"
-                    value={item.copy.cta}
-                    onChange={(e) =>
-                      onUpdate(i, {
-                        ...item,
-                        copy: { ...item.copy, cta: e.target.value },
-                      })
-                    }
-                    className="w-full rounded border border-gray-200 px-1 py-0.5 text-xs focus:border-blue-400 focus:outline-none"
-                    placeholder="CTA"
-                  />
-                </td>
+        {/* Variant dropdown (MF only) */}
+        {isMfClient && (
+          <select
+            value={item.variant || ""}
+            onChange={(e) => {
+              const val = e.target.value;
+              onUpdate(index, {
+                ...item,
+                variant: val ? (val as MfVariant) : undefined,
+              });
+            }}
+            className="rounded border border-gray-200 bg-white px-1.5 py-0.5 text-xs w-16 focus:border-blue-400 focus:outline-none"
+          >
+            <option value="">(cur)</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+          </select>
+        )}
 
-                {/* Stat (conditional) */}
-                <td className="px-2 py-1">
-                  {showStat ? (
-                    <input
-                      type="text"
-                      value={item.copy.stat || ""}
-                      onChange={(e) =>
-                        onUpdate(i, {
-                          ...item,
-                          copy: { ...item.copy, stat: e.target.value },
-                        })
-                      }
-                      className="w-full rounded border border-gray-200 px-1 py-0.5 text-xs focus:border-blue-400 focus:outline-none"
-                      placeholder="Stat"
-                    />
-                  ) : (
-                    <span className="text-gray-300">--</span>
-                  )}
-                </td>
+        {/* Image button */}
+        <button
+          onClick={() =>
+            item.image !== undefined
+              ? onUpdate(index, { ...item, image: undefined })
+              : fileInputRef.current?.click()
+          }
+          title={item.image !== undefined ? "Quitar imagen" : "Asignar imagen"}
+          className={`flex items-center gap-0.5 rounded px-1.5 py-0.5 text-[10px] font-medium transition-colors ${
+            item.image !== undefined
+              ? "bg-green-100 text-green-700 hover:bg-red-100 hover:text-red-600"
+              : "bg-gray-100 text-gray-500 hover:bg-blue-100 hover:text-blue-600"
+          }`}
+        >
+          {item.image !== undefined ? (
+            <>
+              <X size={10} />
+              Img
+            </>
+          ) : (
+            <>
+              <ImageIcon size={10} />
+              Img
+            </>
+          )}
+        </button>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) handleImageFile(file);
+            e.target.value = "";
+          }}
+        />
 
-                {/* Delete */}
-                <td className="px-2 py-1">
-                  <button
-                    onClick={() => onDelete(i)}
-                    className="rounded p-0.5 text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors"
-                  >
-                    <Trash2 size={12} />
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+        {/* Delete */}
+        <button
+          onClick={() => onDelete(index)}
+          className="rounded p-0.5 text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors"
+        >
+          <Trash2 size={12} />
+        </button>
+      </div>
+
+      {/* Image preview (if has per-row image) */}
+      {item.image !== undefined && (
+        <div className="px-2.5 py-1.5 border-b border-gray-100 bg-gray-50/50">
+          <img
+            src={item.image}
+            alt={`Row ${index + 1}`}
+            className="h-12 w-full rounded object-cover"
+          />
+        </div>
+      )}
+
+      {/* Copy fields */}
+      <div className="px-2.5 py-1.5 space-y-1">
+        <input
+          type="text"
+          value={item.copy.hook}
+          onChange={(e) =>
+            onUpdate(index, {
+              ...item,
+              copy: { ...item.copy, hook: e.target.value },
+            })
+          }
+          className="w-full rounded border border-gray-200 px-2 py-1 text-xs focus:border-blue-400 focus:outline-none"
+          placeholder="Hook"
+        />
+        <input
+          type="text"
+          value={item.copy.body}
+          onChange={(e) =>
+            onUpdate(index, {
+              ...item,
+              copy: { ...item.copy, body: e.target.value },
+            })
+          }
+          className="w-full rounded border border-gray-200 px-2 py-1 text-xs focus:border-blue-400 focus:outline-none"
+          placeholder="Body"
+        />
+        <div className="flex gap-1">
+          <input
+            type="text"
+            value={item.copy.cta}
+            onChange={(e) =>
+              onUpdate(index, {
+                ...item,
+                copy: { ...item.copy, cta: e.target.value },
+              })
+            }
+            className="flex-1 rounded border border-gray-200 px-2 py-1 text-xs focus:border-blue-400 focus:outline-none"
+            placeholder="CTA"
+          />
+          {showStat && (
+            <input
+              type="text"
+              value={item.copy.stat || ""}
+              onChange={(e) =>
+                onUpdate(index, {
+                  ...item,
+                  copy: { ...item.copy, stat: e.target.value },
+                })
+              }
+              className="w-20 rounded border border-gray-200 px-2 py-1 text-xs focus:border-blue-400 focus:outline-none"
+              placeholder="Stat"
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

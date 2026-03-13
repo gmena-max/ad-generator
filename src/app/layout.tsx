@@ -13,8 +13,8 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Lux Media — Ad Generator",
-  description: "Bulk ad creative generator for Lux Media clients",
+  title: "Lux Media — Image Generator",
+  description: "Bulk image generator for Lux Media clients",
 };
 
 export default function RootLayout({

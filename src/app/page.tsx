@@ -145,7 +145,7 @@ export default function Home() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <h1 className="text-lg font-bold text-gray-800">
-              Lux Media Ad Generator
+              Lux Media Image Generator
             </h1>
             <ClientSelector selected={clientId} onChange={handleClientChange} />
           </div>
