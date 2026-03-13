@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { CopyContent } from "@/data/templates";
+import { BatchItem } from "@/types/batch";
 import { Plus, Copy } from "lucide-react";
 
 type Props = {
-  variations: CopyContent[];
-  onChange: (variations: CopyContent[]) => void;
+  variations: BatchItem[];
+  onChange: (variations: BatchItem[]) => void;
   currentCopy: CopyContent;
 };
 
@@ -15,7 +16,7 @@ export function BulkGenerator({ variations, onChange, currentCopy }: Props) {
   const [showBulkInput, setShowBulkInput] = useState(false);
 
   function addCurrentAsVariation() {
-    onChange([...variations, { ...currentCopy }]);
+    onChange([...variations, { copy: { ...currentCopy } }]);
   }
 
   function parseBulkText() {
@@ -24,13 +25,15 @@ export function BulkGenerator({ variations, onChange, currentCopy }: Props) {
       .map((l) => l.trim())
       .filter((l) => l.length > 0);
 
-    const newVariations: CopyContent[] = lines.map((line) => {
+    const newVariations: BatchItem[] = lines.map((line) => {
       const parts = line.split("|").map((p) => p.trim());
       return {
-        hook: parts[0] || "",
-        body: parts[1] || "",
-        cta: parts[2] || currentCopy.cta,
-        stat: parts[3] || currentCopy.stat,
+        copy: {
+          hook: parts[0] || "",
+          body: parts[1] || "",
+          cta: parts[2] || currentCopy.cta,
+          stat: parts[3] || currentCopy.stat,
+        },
       };
     });
 

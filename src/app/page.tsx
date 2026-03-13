@@ -17,6 +17,7 @@ import { getPersonasForClient } from "@/data/personas";
 import { exportAndDownload, bulkExportAll } from "@/lib/export";
 import { exportAllAsZip, downloadBlob } from "@/lib/zip-export";
 import type { ExportProgress } from "@/lib/zip-export";
+import { BatchItem } from "@/types/batch";
 import { Trash2 } from "lucide-react";
 
 export default function Home() {
@@ -25,7 +26,7 @@ export default function Home() {
   const [copy, setCopy] = useState<CopyContent>(
     templates.find((t) => t.id === "symptom-question")!.defaultCopy
   );
-  const [variations, setVariations] = useState<CopyContent[]>([]);
+  const [variations, setVariations] = useState<BatchItem[]>([]);
   const [isExporting, setIsExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState<ExportProgress | null>(null);
   const [image, setImage] = useState<string | null>(null);
@@ -118,7 +119,7 @@ export default function Home() {
     setExportProgress(null);
     try {
       const { nodes4x5, nodes1x1 } = collectBulkNodes();
-      const templateIds = variations.map(() => templateId);
+      const templateIds = variations.map((v) => v.templateId || templateId);
       const blob = await exportAllAsZip(nodes4x5, nodes1x1, clientId, templateIds, setExportProgress);
       downloadBlob(blob, `${clientId}-batch-${new Date().toISOString().slice(0, 10)}.zip`);
     } catch (err) {
@@ -326,61 +327,71 @@ export default function Home() {
 
             {variations.length > 0 && (
               <div className="flex gap-3 overflow-x-auto pb-2">
-                {variations.map((v, i) => (
-                  <div key={i} className="flex-shrink-0 group relative">
-                    <div
-                      className="overflow-hidden rounded-lg border border-gray-200 shadow-sm"
-                      style={{ width: 144, height: 180 }}
-                    >
+                {variations.map((item, i) => {
+                  const effTemplate = item.templateId || templateId;
+                  const effVariant = item.variant || variant;
+                  const effImage = item.image !== undefined ? item.image : image;
+                  return (
+                    <div key={i} className="flex-shrink-0 group relative">
                       <div
-                        style={{
-                          transform: "scale(0.1333)",
-                          transformOrigin: "top left",
-                          width: 1080,
-                          height: 1350,
-                        }}
+                        className="overflow-hidden rounded-lg border border-gray-200 shadow-sm"
+                        style={{ width: 144, height: 180 }}
                       >
-                        <AdCanvas
-                          ref={(el) => {
-                            if (el) bulkCanvasRefs.current.set(i, el);
-                            else bulkCanvasRefs.current.delete(i);
+                        <div
+                          style={{
+                            transform: "scale(0.1333)",
+                            transformOrigin: "top left",
+                            width: 1080,
+                            height: 1350,
                           }}
-                          brand={brand}
-                          template={templateId}
-                          copy={v}
-                          image={image ?? undefined}
-                          variant={variant}
-                        />
+                        >
+                          <AdCanvas
+                            ref={(el) => {
+                              if (el) bulkCanvasRefs.current.set(i, el);
+                              else bulkCanvasRefs.current.delete(i);
+                            }}
+                            brand={brand}
+                            template={effTemplate}
+                            copy={item.copy}
+                            image={effImage ?? undefined}
+                            variant={effVariant}
+                          />
+                        </div>
                       </div>
+                      <button
+                        onClick={() => removeVariation(i)}
+                        className="absolute -top-1.5 -right-1.5 hidden group-hover:flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white shadow-sm hover:bg-red-600 transition-colors"
+                      >
+                        <Trash2 size={10} />
+                      </button>
+                      <p className="mt-0.5 text-center text-[10px] text-gray-400">
+                        v{i + 1}
+                      </p>
                     </div>
-                    <button
-                      onClick={() => removeVariation(i)}
-                      className="absolute -top-1.5 -right-1.5 hidden group-hover:flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white shadow-sm hover:bg-red-600 transition-colors"
-                    >
-                      <Trash2 size={10} />
-                    </button>
-                    <p className="mt-0.5 text-center text-[10px] text-gray-400">
-                      v{i + 1}
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
                 {/* Hidden 1:1 canvases for bulk export */}
                 <div style={{ position: "fixed", left: -9999, top: 0, pointerEvents: "none" }}>
-                  {variations.map((v, i) => (
-                    <AdCanvas
-                      key={`1x1-${i}`}
-                      ref={(el) => {
-                        if (el) bulkCanvasRefs1x1.current.set(i, el);
-                        else bulkCanvasRefs1x1.current.delete(i);
-                      }}
-                      brand={brand}
-                      template={templateId}
-                      copy={v}
-                      image={image ?? undefined}
-                      variant={variant}
-                      aspectRatio="1:1"
-                    />
-                  ))}
+                  {variations.map((item, i) => {
+                    const effTemplate = item.templateId || templateId;
+                    const effVariant = item.variant || variant;
+                    const effImage = item.image !== undefined ? item.image : image;
+                    return (
+                      <AdCanvas
+                        key={`1x1-${i}`}
+                        ref={(el) => {
+                          if (el) bulkCanvasRefs1x1.current.set(i, el);
+                          else bulkCanvasRefs1x1.current.delete(i);
+                        }}
+                        brand={brand}
+                        template={effTemplate}
+                        copy={item.copy}
+                        image={effImage ?? undefined}
+                        variant={effVariant}
+                        aspectRatio="1:1"
+                      />
+                    );
+                  })}
                 </div>
               </div>
             )}
