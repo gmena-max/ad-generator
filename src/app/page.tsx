@@ -9,6 +9,7 @@ import { ClientSelector } from "@/components/ClientSelector";
 import { TemplateSelector } from "@/components/TemplateSelector";
 import { CopyEditor } from "@/components/CopyEditor";
 import { BulkGenerator } from "@/components/BulkGenerator";
+import { BulkTable } from "@/components/BulkTable";
 import { ExportPanel } from "@/components/ExportPanel";
 import { ImageUpload } from "@/components/ImageUpload";
 import { PersonaSelector } from "@/components/PersonaSelector";
@@ -32,7 +33,7 @@ export default function Home() {
   const [image, setImage] = useState<string | null>(null);
   const [personaId, setPersonaId] = useState<string | null>(null);
   const [variant, setVariant] = useState<"a" | "b" | "c">("a");
-  const [activeTab, setActiveTab] = useState<"setup" | "copy">("setup");
+  const [activeTab, setActiveTab] = useState<"setup" | "copy" | "batch">("setup");
 
   const canvasRef = useRef<HTMLDivElement>(null);
   const canvasRef1x1 = useRef<HTMLDivElement>(null);
@@ -133,6 +134,10 @@ export default function Home() {
     setVariations(variations.filter((_, i) => i !== index));
   }
 
+  function updateVariation(index: number, item: BatchItem) {
+    setVariations((prev) => prev.map((v, i) => (i === index ? item : v)));
+  }
+
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-gray-50">
       {/* Header */}
@@ -218,6 +223,21 @@ export default function Home() {
             >
               Texto
             </button>
+            <button
+              onClick={() => setActiveTab("batch")}
+              className={`flex-1 px-4 py-2.5 text-sm font-medium transition-colors relative ${
+                activeTab === "batch"
+                  ? "text-blue-600 border-b-2 border-blue-600 bg-blue-50/50"
+                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              Batch
+              {variations.length > 0 && (
+                <span className="ml-1.5 inline-flex items-center justify-center rounded-full bg-blue-500 px-1.5 py-0.5 text-[10px] font-bold text-white leading-none">
+                  {variations.length}
+                </span>
+              )}
+            </button>
           </div>
 
           {/* Scrollable tab content */}
@@ -266,7 +286,7 @@ export default function Home() {
                   <ImageUpload image={image} onChange={setImage} brand={brand} />
                 </div>
               </>
-            ) : (
+            ) : activeTab === "copy" ? (
               <div>
                 <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
                   Copy
@@ -277,6 +297,20 @@ export default function Home() {
                   onChange={setCopy}
                   presets={presets}
                   personaId={personaId}
+                  clientId={clientId}
+                />
+              </div>
+            ) : (
+              <div>
+                <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
+                  Batch Items
+                </h2>
+                <BulkTable
+                  items={variations}
+                  onUpdate={updateVariation}
+                  onDelete={removeVariation}
+                  currentTemplateId={templateId}
+                  currentVariant={variant}
                   clientId={clientId}
                 />
               </div>
@@ -321,7 +355,11 @@ export default function Home() {
               <BulkGenerator
                 variations={variations}
                 onChange={setVariations}
+                onUpdate={updateVariation}
                 currentCopy={copy}
+                currentTemplateId={templateId}
+                currentVariant={variant}
+                clientId={clientId}
               />
             </div>
 
