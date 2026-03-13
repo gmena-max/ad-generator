@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CopyContent } from "@/data/templates";
-import { Plus, Trash2, Copy } from "lucide-react";
+import { Plus, Copy } from "lucide-react";
 
 type Props = {
   variations: CopyContent[];
@@ -16,10 +16,6 @@ export function BulkGenerator({ variations, onChange, currentCopy }: Props) {
 
   function addCurrentAsVariation() {
     onChange([...variations, { ...currentCopy }]);
-  }
-
-  function removeVariation(index: number) {
-    onChange(variations.filter((_, i) => i !== index));
   }
 
   function parseBulkText() {
@@ -44,25 +40,28 @@ export function BulkGenerator({ variations, onChange, currentCopy }: Props) {
   }
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-gray-700">
-          Variations ({variations.length})
-        </h3>
-        <div className="flex gap-1">
+    <div className="space-y-2">
+      <div className="flex items-center gap-2">
+        <button
+          onClick={addCurrentAsVariation}
+          className="flex items-center gap-1 rounded bg-blue-500 px-2 py-1 text-xs text-white hover:bg-blue-600 transition-colors"
+        >
+          <Plus size={12} /> Agregar actual
+        </button>
+        <button
+          onClick={() => setShowBulkInput(!showBulkInput)}
+          className="flex items-center gap-1 rounded bg-gray-200 px-2 py-1 text-xs text-gray-700 hover:bg-gray-300 transition-colors"
+        >
+          <Copy size={12} /> Bulk
+        </button>
+        {variations.length > 0 && (
           <button
-            onClick={addCurrentAsVariation}
-            className="flex items-center gap-1 rounded bg-blue-500 px-2 py-1 text-xs text-white hover:bg-blue-600 transition-colors"
+            onClick={() => onChange([])}
+            className="rounded bg-red-100 px-2 py-1 text-xs text-red-600 hover:bg-red-200 transition-colors"
           >
-            <Plus size={12} /> Add Current
+            Limpiar
           </button>
-          <button
-            onClick={() => setShowBulkInput(!showBulkInput)}
-            className="flex items-center gap-1 rounded bg-gray-200 px-2 py-1 text-xs text-gray-700 hover:bg-gray-300 transition-colors"
-          >
-            <Copy size={12} /> Bulk
-          </button>
-        </div>
+        )}
       </div>
 
       {showBulkInput && (
@@ -71,40 +70,17 @@ export function BulkGenerator({ variations, onChange, currentCopy }: Props) {
             value={bulkText}
             onChange={(e) => setBulkText(e.target.value)}
             placeholder="hook | body | cta&#10;hook | body | cta&#10;..."
-            rows={4}
+            rows={3}
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-xs font-mono focus:border-blue-500 focus:outline-none"
           />
           <button
             onClick={parseBulkText}
-            className="w-full rounded bg-green-500 py-1.5 text-xs font-medium text-white hover:bg-green-600 transition-colors"
+            className="rounded bg-green-500 px-3 py-1 text-xs font-medium text-white hover:bg-green-600 transition-colors"
           >
             Parse & Add
           </button>
         </div>
       )}
-
-      {/* Variation list */}
-      <div className="max-h-64 space-y-1 overflow-y-auto">
-        {variations.map((v, i) => (
-          <div
-            key={i}
-            className="flex items-start justify-between rounded-lg bg-white border border-gray-200 p-2"
-          >
-            <div className="min-w-0 flex-1">
-              <div className="text-xs font-medium text-gray-700 truncate">
-                {v.hook}
-              </div>
-              <div className="text-xs text-gray-400 truncate">{v.body}</div>
-            </div>
-            <button
-              onClick={() => removeVariation(i)}
-              className="ml-2 flex-shrink-0 text-gray-400 hover:text-red-500 transition-colors"
-            >
-              <Trash2 size={14} />
-            </button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

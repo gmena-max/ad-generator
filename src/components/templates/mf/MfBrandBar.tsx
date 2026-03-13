@@ -9,8 +9,8 @@ export function MfBrandBar({ brand }: { brand: ClientBrand }) {
         left: 0,
         right: 0,
         height: 120,
-        backgroundColor: "rgba(0,0,0,0.6)",
-        backdropFilter: "blur(8px)",
+        backgroundColor: "rgba(0,0,0,0.65)",
+        backdropFilter: "blur(10px)",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -20,12 +20,12 @@ export function MfBrandBar({ brand }: { brand: ClientBrand }) {
       <img
         src={brand.logoWhite}
         alt={brand.name}
-        style={{ height: 40, objectFit: "contain" }}
+        style={{ height: 44, objectFit: "contain" }}
       />
       <span
         style={{
-          color: "rgba(255,255,255,0.55)",
-          fontSize: 24,
+          color: "rgba(255,255,255,0.65)",
+          fontSize: 26,
           fontWeight: 500,
           letterSpacing: "0.5px",
         }}

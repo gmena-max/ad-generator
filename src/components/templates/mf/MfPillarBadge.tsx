@@ -1,32 +1,34 @@
-const PILLAR_ICONS: Record<string, string> = {
-  "Técnica": "⚽",
-  "Táctica": "📋",
-  "Físico": "💪",
-  "Sicológico": "🧠",
-};
-
 export function MfPillarBadge({ pillar }: { pillar: string }) {
-  const icon = PILLAR_ICONS[pillar] || "◆";
   return (
     <div
       style={{
         display: "inline-flex",
         alignItems: "center",
         gap: 10,
-        padding: "8px 20px",
+        padding: "10px 24px",
         borderRadius: 50,
-        border: "1.5px solid rgba(91,224,255,0.3)",
-        backgroundColor: "rgba(4,4,71,0.4)",
+        border: "2.5px solid rgba(91,224,255,0.4)",
+        backgroundColor: "rgba(4,4,71,0.5)",
+        backdropFilter: "blur(6px)",
+        boxShadow: "0 0 20px rgba(91,224,255,0.15)",
       }}
     >
-      <span style={{ fontSize: 18 }}>{icon}</span>
       <span
         style={{
           color: "#5BE0FF",
-          fontSize: 18,
-          fontWeight: 600,
+          fontSize: 16,
+          lineHeight: 1,
+        }}
+      >
+        ◆
+      </span>
+      <span
+        style={{
+          color: "#5BE0FF",
+          fontSize: 22,
+          fontWeight: 700,
           textTransform: "uppercase",
-          letterSpacing: "1px",
+          letterSpacing: "1.5px",
         }}
       >
         {pillar}

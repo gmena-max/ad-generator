@@ -6,6 +6,7 @@ type Props = {
   selected: TemplateId;
   onChange: (id: TemplateId) => void;
   recommendedIds?: TemplateId[];
+  clientId: string;
 };
 
 const TEMPLATE_ICONS: Record<TemplateId, string> = {
@@ -24,12 +25,18 @@ const TEMPLATE_ICONS: Record<TemplateId, string> = {
   "mf-question-hook": "M?",
 };
 
-export function TemplateSelector({ selected, onChange, recommendedIds }: Props) {
+export function TemplateSelector({ selected, onChange, recommendedIds, clientId }: Props) {
   const hasRecommendations = recommendedIds && recommendedIds.length > 0;
+
+  // Filter templates by client: MF templates only for "mf", generic templates for everyone else
+  const filteredTemplates = templates.filter((t) => {
+    const isMfTemplate = t.id.startsWith("mf-");
+    return clientId === "mf" ? isMfTemplate : !isMfTemplate;
+  });
 
   return (
     <div className="grid grid-cols-2 gap-2">
-      {templates.map((t) => {
+      {filteredTemplates.map((t) => {
         const isRecommended = hasRecommendations && recommendedIds.includes(t.id);
         const isDimmed = hasRecommendations && !isRecommended && selected !== t.id;
 

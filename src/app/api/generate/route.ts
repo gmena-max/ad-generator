@@ -26,16 +26,37 @@ export async function POST(req: NextRequest) {
       "16:9": "16:9",
     };
 
-    const response = await ai.models.generateContent({
-      model: model || "gemini-2.0-flash-exp",
-      contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
-      config: {
-        responseModalities: ["IMAGE", "TEXT"],
-        ...(aspectMap[aspectRatio] && {
-          imageConfig: { aspectRatio: aspectMap[aspectRatio] },
-        }),
-      },
-    });
+    // Image generation models — try in order, fall back on quota errors
+    const imageModels = [model, "gemini-2.5-flash-image", "gemini-2.0-flash"].filter(Boolean);
+    let response;
+    let lastError;
+
+    for (const m of imageModels) {
+      try {
+        response = await ai.models.generateContent({
+          model: m,
+          contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
+          config: {
+            responseModalities: ["IMAGE", "TEXT"],
+            ...(aspectMap[aspectRatio] && {
+              imageConfig: { aspectRatio: aspectMap[aspectRatio] },
+            }),
+          },
+        });
+        break;
+      } catch (err: unknown) {
+        lastError = err;
+        const msg = err instanceof Error ? err.message : "";
+        if (msg.includes("quota") || msg.includes("RESOURCE_EXHAUSTED")) {
+          continue;
+        }
+        throw err;
+      }
+    }
+
+    if (!response) {
+      throw lastError || new Error("All models exhausted");
+    }
 
     // Extract image from response
     const parts = response.candidates?.[0]?.content?.parts;

@@ -15,101 +15,60 @@ export function MfCoachHero({
         style={{
           width: "100%",
           height: "100%",
-          display: "flex",
           position: "relative",
           backgroundColor: "#0B0C10",
         }}
       >
-        {/* Photo left 60% */}
-        <div style={{ width: "60%", height: "100%", position: "relative" }}>
-          {image ? (
-            <img
-              src={image}
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
-          ) : (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                backgroundColor: "#040447",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 24 }}>
-                Foto de Jeaustin
-              </span>
-            </div>
-          )}
+        {/* Full-bleed photo — visible in top-right triangle */}
+        {image ? (
+          <img
+            src={image}
+            alt=""
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        ) : (
           <div
             style={{
               position: "absolute",
               inset: 0,
-              background:
-                "linear-gradient(to right, transparent 50%, #0B0C10 100%)",
+              background: "linear-gradient(135deg, #040447 0%, #0B0C10 100%)",
             }}
-          />
-        </div>
+          >
+            <MfDotGrid opacity={0.08} />
+            {/* Subtle radial cyan glow for no-image */}
+            <div
+              style={{
+                position: "absolute",
+                top: "30%",
+                right: "20%",
+                width: 400,
+                height: 400,
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(91,224,255,0.08) 0%, transparent 70%)",
+                pointerEvents: "none",
+              }}
+            />
+          </div>
+        )}
 
-        {/* Dark panel right 40% */}
+        {/* Steep diagonal gradient — darkens lower-left 55%+ */}
         <div
           style={{
-            width: "40%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: "60px 40px",
-            gap: 28,
-            position: "relative",
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to top right, #0B0C10 55%, transparent 100%)",
           }}
-        >
-          <MfDotGrid opacity={0.04} />
-          <div
-            style={{
-              fontSize: 52,
-              fontWeight: 800,
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            {copy.hook}
-          </div>
-          <div
-            style={{
-              fontSize: 24,
-              color: "rgba(255,255,255,0.55)",
-              lineHeight: 1.5,
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            {copy.body}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 10,
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            {copy.stat && <MfCredentialBadge text={copy.stat} />}
-            <MfCredentialBadge text="30+ años de experiencia" />
-          </div>
-        </div>
+        />
 
-        {/* Logo top-right */}
+        {image && <MfDotGrid opacity={0.05} />}
+
+        {/* Logo top-right (in bright photo zone) */}
         <img
           src={brand.logoWhite}
           alt=""
@@ -120,8 +79,87 @@ export function MfCoachHero({
             height: 36,
             objectFit: "contain",
             opacity: 0.8,
+            zIndex: 2,
           }}
         />
+
+        {/* Content — left-aligned in dark diagonal zone */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 140,
+            left: 64,
+            right: 64,
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            zIndex: 1,
+          }}
+        >
+          {/* Glass backdrop behind content */}
+          <div
+            style={{
+              position: "absolute",
+              top: -32,
+              left: -32,
+              right: 100,
+              bottom: -32,
+              borderRadius: 24,
+              backgroundColor: "rgba(0,0,0,0.3)",
+              backdropFilter: "blur(8px)",
+              zIndex: -1,
+            }}
+          />
+
+          <div
+            style={{
+              fontSize: 68,
+              fontWeight: 800,
+              color: "#FFFFFF",
+              lineHeight: 1.08,
+              textShadow: "0 2px 20px rgba(0,0,0,0.5)",
+            }}
+          >
+            {copy.hook}
+          </div>
+          <div
+            style={{
+              fontSize: 22,
+              color: "rgba(255,255,255,0.6)",
+              lineHeight: 1.5,
+              maxWidth: 650,
+            }}
+          >
+            {copy.body}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+            }}
+          >
+            {copy.stat && <MfCredentialBadge text={copy.stat} />}
+            <MfCredentialBadge text="30+ años de experiencia" />
+          </div>
+
+          {/* CTA pill */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignSelf: "flex-start",
+              padding: "16px 36px",
+              borderRadius: 50,
+              backgroundColor: "#2076FF",
+              boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
+              marginTop: 4,
+            }}
+          >
+            <span style={{ color: "#FFFFFF", fontSize: 28, fontWeight: 700 }}>
+              {copy.cta}
+            </span>
+          </div>
+        </div>
 
         <MfBrandBar brand={brand} />
       </div>
@@ -157,9 +195,24 @@ export function MfCoachHero({
             style={{
               position: "absolute",
               inset: 0,
-              backgroundColor: "#040447",
+              background: "linear-gradient(135deg, #040447 0%, #0B0C10 100%)",
             }}
-          />
+          >
+            <MfDotGrid opacity={0.08} />
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: 500,
+                height: 500,
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(91,224,255,0.06) 0%, transparent 70%)",
+                pointerEvents: "none",
+              }}
+            />
+          </div>
         )}
 
         {/* Heavy vignette */}
@@ -168,30 +221,48 @@ export function MfCoachHero({
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(ellipse at center, transparent 20%, #0B0C10 75%)",
+              "radial-gradient(ellipse at center, transparent 15%, #0B0C10 70%)",
           }}
         />
+
+        <MfDotGrid opacity={0.04} />
 
         {/* Centered text */}
         <div
           style={{
             position: "absolute",
             inset: 0,
+            bottom: 120,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            padding: "0 80px",
-            gap: 32,
+            padding: "0 72px",
+            gap: 24,
           }}
         >
+          {/* Glass backdrop behind centered content */}
           <div
             style={{
-              fontSize: 64,
+              position: "absolute",
+              top: "20%",
+              left: 48,
+              right: 48,
+              bottom: 0,
+              borderRadius: 24,
+              backgroundColor: "rgba(0,0,0,0.3)",
+              backdropFilter: "blur(8px)",
+              zIndex: -1,
+            }}
+          />
+
+          <div
+            style={{
+              fontSize: 72,
               fontWeight: 800,
               color: "#FFFFFF",
-              lineHeight: 1.15,
+              lineHeight: 1.1,
               textShadow: "0 4px 24px rgba(0,0,0,0.5)",
             }}
           >
@@ -199,7 +270,7 @@ export function MfCoachHero({
           </div>
           <div
             style={{
-              fontSize: 28,
+              fontSize: 24,
               color: "rgba(255,255,255,0.6)",
               lineHeight: 1.5,
               maxWidth: 700,
@@ -207,6 +278,25 @@ export function MfCoachHero({
           >
             {copy.body}
           </div>
+
+          {/* Credential badges */}
+          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", justifyContent: "center", marginTop: 8 }}>
+            {copy.stat && <MfCredentialBadge text={copy.stat} />}
+            <MfCredentialBadge text="30+ años" />
+          </div>
+
+          {/* CTA text */}
+          <span
+            style={{
+              color: "#5BE0FF",
+              fontSize: 28,
+              fontWeight: 700,
+              marginTop: 8,
+              textShadow: "0 2px 12px rgba(0,0,0,0.5)",
+            }}
+          >
+            {copy.cta} →
+          </span>
         </div>
 
         <MfBrandBar brand={brand} />
@@ -243,19 +333,27 @@ export function MfCoachHero({
           style={{
             position: "absolute",
             inset: 0,
-            backgroundColor: "#040447",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            background: "linear-gradient(135deg, #040447 0%, #0B0C10 100%)",
           }}
         >
-          <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 28 }}>
-            Foto de Jeaustin
-          </span>
+          <MfDotGrid opacity={0.08} />
+          <div
+            style={{
+              position: "absolute",
+              top: "40%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 500,
+              height: 500,
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(91,224,255,0.06) 0%, transparent 70%)",
+              pointerEvents: "none",
+            }}
+          />
         </div>
       )}
 
-      {/* Top vignette — tames harsh highlights (floodlights, sky) */}
+      {/* Top vignette */}
       <div
         style={{
           position: "absolute",
@@ -291,7 +389,7 @@ export function MfCoachHero({
           height: "50%",
         }}
       >
-        <MfDotGrid />
+        <MfDotGrid opacity={0.05} />
       </div>
 
       {/* Content bottom-left */}
@@ -304,23 +402,38 @@ export function MfCoachHero({
           padding: "0 64px",
           display: "flex",
           flexDirection: "column",
-          gap: 20,
+          gap: 16,
         }}
       >
+        {/* Glass backdrop behind text block */}
         <div
           style={{
-            fontSize: 60,
+            position: "absolute",
+            top: -24,
+            left: 40,
+            right: 40,
+            bottom: -24,
+            borderRadius: 24,
+            backgroundColor: "rgba(0,0,0,0.3)",
+            backdropFilter: "blur(8px)",
+            zIndex: -1,
+          }}
+        />
+
+        <div
+          style={{
+            fontSize: 68,
             fontWeight: 800,
             color: "#FFFFFF",
-            lineHeight: 1.1,
-            textShadow: "0 2px 16px rgba(0,0,0,0.4)",
+            lineHeight: 1.08,
+            textShadow: "0 2px 20px rgba(0,0,0,0.5)",
           }}
         >
           {copy.hook}
         </div>
         <div
           style={{
-            fontSize: 26,
+            fontSize: 22,
             color: "rgba(255,255,255,0.6)",
             lineHeight: 1.5,
             maxWidth: 750,
@@ -330,7 +443,7 @@ export function MfCoachHero({
         </div>
 
         {/* Credential badges row */}
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>
+        <div style={{ display: "flex", gap: 18, flexWrap: "wrap", marginTop: 4 }}>
           {copy.stat && <MfCredentialBadge text={copy.stat} />}
           <MfCredentialBadge text="30+ años" />
         </div>
@@ -340,13 +453,14 @@ export function MfCoachHero({
           style={{
             display: "inline-flex",
             alignSelf: "flex-start",
-            padding: "16px 36px",
+            padding: "18px 44px",
             borderRadius: 50,
             backgroundColor: "#2076FF",
-            marginTop: 8,
+            boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
+            marginTop: 4,
           }}
         >
-          <span style={{ color: "#FFFFFF", fontSize: 24, fontWeight: 700 }}>
+          <span style={{ color: "#FFFFFF", fontSize: 28, fontWeight: 700 }}>
             {copy.cta}
           </span>
         </div>

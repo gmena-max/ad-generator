@@ -24,7 +24,7 @@ export function MfStatInsight({
         }}
       >
         {image && <MfPhotoBackground image={image} />}
-        <MfDotGrid opacity={0.025} />
+        <MfDotGrid opacity={0.04} />
 
         {/* Stat top-right (giant, cropped) — hidden when image present */}
         {!image && (
@@ -36,7 +36,7 @@ export function MfStatInsight({
               fontSize: 360,
               fontWeight: 900,
               color: "#5BE0FF",
-              opacity: 0.08,
+              opacity: 0.12,
               lineHeight: 1,
               pointerEvents: "none",
             }}
@@ -56,20 +56,62 @@ export function MfStatInsight({
             display: "flex",
             flexDirection: "column",
             justifyContent: image ? "flex-end" : "center",
-            padding: image ? "0 64px 60px" : "0 64px",
-            gap: 28,
+            padding: image ? "0 64px 48px" : "0 64px",
+            gap: 20,
           }}
         >
+          {/* Glass card wrap when image present */}
+          {image && (
+            <div
+              style={{
+                position: "absolute",
+                left: 40,
+                right: 40,
+                bottom: 24,
+                top: "auto",
+                height: "55%",
+                borderRadius: 24,
+                backgroundColor: "rgba(0,0,0,0.3)",
+                backdropFilter: "blur(10px)",
+                zIndex: -1,
+              }}
+            />
+          )}
+          {/* DATO label */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignSelf: "flex-start",
+              padding: "6px 18px",
+              borderRadius: 50,
+              border: "1.5px solid rgba(91,224,255,0.3)",
+              backgroundColor: image ? "rgba(11,12,16,0.5)" : "rgba(4,4,71,0.4)",
+              backdropFilter: image ? "blur(4px)" : undefined,
+            }}
+          >
+            <span
+              style={{
+                color: "#5BE0FF",
+                fontSize: 18,
+                fontWeight: 700,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+              }}
+            >
+              DATO
+            </span>
+          </div>
+
           {/* Visible stat */}
           <div
             style={{
-              fontSize: 120,
+              fontSize: 150,
               fontWeight: 900,
               color: "#5BE0FF",
               lineHeight: 1,
               textShadow: image
-                ? "0 0 60px rgba(91,224,255,0.5), 0 2px 20px rgba(0,0,0,0.8)"
-                : "0 0 40px rgba(91,224,255,0.3)",
+                ? "0 0 80px rgba(91,224,255,0.6), 0 0 40px rgba(91,224,255,0.4), 0 2px 20px rgba(0,0,0,0.8)"
+                : "0 0 60px rgba(91,224,255,0.4), 0 0 30px rgba(91,224,255,0.2)",
             }}
           >
             {stat}
@@ -77,10 +119,10 @@ export function MfStatInsight({
 
           <div
             style={{
-              fontSize: 44,
+              fontSize: 40,
               fontWeight: 700,
               color: "#FFFFFF",
-              lineHeight: 1.2,
+              lineHeight: 1.15,
               maxWidth: 700,
               textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
             }}
@@ -90,7 +132,7 @@ export function MfStatInsight({
 
           <div
             style={{
-              fontSize: 26,
+              fontSize: 22,
               color: image ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.55)",
               lineHeight: 1.5,
               maxWidth: 650,
@@ -100,17 +142,21 @@ export function MfStatInsight({
             {copy.body}
           </div>
 
-          {/* CTA text */}
+          {/* CTA pill */}
           <div
             style={{
-              marginTop: 12,
-              fontSize: 24,
-              color: "#5BE0FF",
-              fontWeight: 600,
-              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
+              marginTop: 8,
+              display: "inline-flex",
+              alignSelf: "flex-start",
+              padding: "16px 36px",
+              borderRadius: 50,
+              backgroundColor: "#2076FF",
+              boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
             }}
           >
-            {copy.cta}
+            <span style={{ color: "#FFFFFF", fontSize: 26, fontWeight: 700 }}>
+              {copy.cta}
+            </span>
           </div>
         </div>
 
@@ -130,33 +176,56 @@ export function MfStatInsight({
         }}
       >
         {image && <MfPhotoBackground image={image} />}
-        <MfDotGrid opacity={0.04} />
+        <MfDotGrid opacity={0.05} />
 
-        {/* Stat inside glowing circle center */}
+        {/* Content centered */}
         <div
           style={{
             position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -60%)",
+            inset: 0,
+            bottom: 120,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 40,
+            justifyContent: "center",
+            gap: 28,
           }}
         >
+          {/* DATO label */}
+          <div
+            style={{
+              padding: "6px 18px",
+              borderRadius: 50,
+              border: "1.5px solid rgba(91,224,255,0.3)",
+              backgroundColor: image ? "rgba(11,12,16,0.5)" : "rgba(4,4,71,0.4)",
+              backdropFilter: image ? "blur(4px)" : undefined,
+            }}
+          >
+            <span
+              style={{
+                color: "#5BE0FF",
+                fontSize: 18,
+                fontWeight: 700,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+              }}
+            >
+              DATO
+            </span>
+          </div>
+
           {/* Glowing circle */}
           <div
             style={{
-              width: 280,
-              height: 280,
+              width: 340,
+              height: 340,
               borderRadius: "50%",
-              border: "2px solid rgba(91,224,255,0.3)",
+              border: "3px solid rgba(91,224,255,0.4)",
               boxShadow: image
-                ? "0 0 80px rgba(91,224,255,0.3), inset 0 0 50px rgba(91,224,255,0.08)"
-                : "0 0 60px rgba(91,224,255,0.2), inset 0 0 40px rgba(91,224,255,0.05)",
+                ? "0 0 100px rgba(91,224,255,0.4), 0 0 40px rgba(91,224,255,0.2), inset 0 0 60px rgba(91,224,255,0.1)"
+                : "0 0 80px rgba(91,224,255,0.3), 0 0 30px rgba(91,224,255,0.15), inset 0 0 50px rgba(91,224,255,0.08)",
               backgroundColor: image ? "rgba(11,12,16,0.6)" : undefined,
-              backdropFilter: image ? "blur(8px)" : undefined,
+              backdropFilter: image ? "blur(10px)" : undefined,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -164,12 +233,12 @@ export function MfStatInsight({
           >
             <span
               style={{
-                fontSize: 140,
+                fontSize: 160,
                 fontWeight: 900,
                 color: "#5BE0FF",
                 textShadow: image
-                  ? "0 0 50px rgba(91,224,255,0.5), 0 2px 20px rgba(0,0,0,0.8)"
-                  : "0 0 40px rgba(91,224,255,0.4)",
+                  ? "0 0 60px rgba(91,224,255,0.6), 0 2px 20px rgba(0,0,0,0.8)"
+                  : "0 0 50px rgba(91,224,255,0.5)",
               }}
             >
               {stat}
@@ -179,13 +248,13 @@ export function MfStatInsight({
           {/* Hook text below circle */}
           <div
             style={{
-              fontSize: 42,
+              fontSize: 38,
               fontWeight: 700,
               color: "#FFFFFF",
               lineHeight: 1.2,
               textAlign: "center",
               maxWidth: 700,
-              padding: "0 40px",
+              padding: "0 56px",
               textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
             }}
           >
@@ -194,39 +263,31 @@ export function MfStatInsight({
 
           <div
             style={{
-              fontSize: 26,
+              fontSize: 22,
               color: image ? "rgba(255,255,255,0.65)" : "rgba(255,255,255,0.5)",
               lineHeight: 1.5,
               textAlign: "center",
               maxWidth: 600,
-              padding: "0 40px",
+              padding: "0 56px",
               textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
             }}
           >
             {copy.body}
           </div>
-        </div>
 
-        {/* CTA text bottom */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 150,
-            left: 0,
-            right: 0,
-            textAlign: "center",
-          }}
-        >
-          <span
+          {/* CTA pill */}
+          <div
             style={{
-              color: "#5BE0FF",
-              fontSize: 24,
-              fontWeight: 600,
-              textShadow: image ? "0 1px 8px rgba(0,0,0,0.6)" : undefined,
+              padding: "16px 36px",
+              borderRadius: 50,
+              backgroundColor: "#2076FF",
+              boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
             }}
           >
-            {copy.cta}
-          </span>
+            <span style={{ color: "#FFFFFF", fontSize: 26, fontWeight: 700 }}>
+              {copy.cta}
+            </span>
+          </div>
         </div>
 
         <MfBrandBar brand={brand} />
@@ -251,7 +312,7 @@ export function MfStatInsight({
           objectPosition="center 30%"
         />
       )}
-      <MfDotGrid opacity={image ? 0.015 : 0.03} />
+      <MfDotGrid opacity={image ? 0.03 : 0.06} />
 
       <div
         style={{
@@ -264,7 +325,7 @@ export function MfStatInsight({
           justifyContent: image ? "flex-end" : "center",
           textAlign: "center",
           padding: image ? "0 64px 40px" : "0 64px",
-          gap: 24,
+          gap: 20,
         }}
       >
         {/* DATO badge */}
@@ -272,7 +333,7 @@ export function MfStatInsight({
           style={{
             padding: "8px 24px",
             borderRadius: 50,
-            border: "1.5px solid rgba(91,224,255,0.3)",
+            border: "2px solid rgba(91,224,255,0.4)",
             backgroundColor: image ? "rgba(11,12,16,0.5)" : "rgba(4,4,71,0.4)",
             backdropFilter: image ? "blur(4px)" : undefined,
           }}
@@ -280,7 +341,7 @@ export function MfStatInsight({
           <span
             style={{
               color: "#5BE0FF",
-              fontSize: 18,
+              fontSize: 22,
               fontWeight: 700,
               letterSpacing: 3,
               textTransform: "uppercase",
@@ -298,8 +359,8 @@ export function MfStatInsight({
             color: "#5BE0FF",
             lineHeight: 1,
             textShadow: image
-              ? "0 0 120px rgba(91,224,255,0.4), 0 0 60px rgba(91,224,255,0.5), 0 4px 24px rgba(0,0,0,0.8)"
-              : "0 0 60px rgba(91,224,255,0.35)",
+              ? "0 0 120px rgba(91,224,255,0.5), 0 0 60px rgba(91,224,255,0.6), 0 4px 24px rgba(0,0,0,0.8)"
+              : "0 0 160px rgba(91,224,255,0.5), 0 0 80px rgba(91,224,255,0.4), 0 0 40px rgba(91,224,255,0.3)",
           }}
         >
           {stat}
@@ -308,7 +369,7 @@ export function MfStatInsight({
         {/* Hook */}
         <div
           style={{
-            fontSize: 46,
+            fontSize: 42,
             fontWeight: 700,
             color: "#FFFFFF",
             lineHeight: 1.15,
@@ -322,7 +383,7 @@ export function MfStatInsight({
         {/* Body */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 24,
             color: image ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.55)",
             lineHeight: 1.45,
             maxWidth: 650,
@@ -336,10 +397,10 @@ export function MfStatInsight({
         <div
           style={{
             display: "flex",
-            gap: 12,
+            gap: 18,
             flexWrap: "wrap",
             justifyContent: "center",
-            marginTop: 16,
+            marginTop: 8,
           }}
         >
           <MfCredentialBadge text="2–3 años de desarrollo perdidos" />
@@ -348,13 +409,14 @@ export function MfStatInsight({
         {/* CTA pill */}
         <div
           style={{
-            marginTop: 12,
-            padding: "16px 36px",
+            marginTop: 8,
+            padding: "18px 44px",
             borderRadius: 50,
             backgroundColor: "#2076FF",
+            boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
           }}
         >
-          <span style={{ color: "#FFFFFF", fontSize: 24, fontWeight: 700 }}>
+          <span style={{ color: "#FFFFFF", fontSize: 28, fontWeight: 700 }}>
             {copy.cta}
           </span>
         </div>

@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { CopyContent, templates, TemplateId } from "@/data/templates";
 import { CopyPreset } from "@/data/presets";
+import { Sparkles, Loader2 } from "lucide-react";
 
 type Props = {
   templateId: TemplateId;
@@ -10,6 +11,7 @@ type Props = {
   onChange: (copy: CopyContent) => void;
   presets: CopyPreset[];
   personaId: string | null;
+  clientId: string;
 };
 
 const FIELD_LABELS: Record<string, string> = {
@@ -34,8 +36,11 @@ function CharCount({ value }: { value: string }) {
   return <span className={`text-[10px] ${color}`}>{len}</span>;
 }
 
-export function CopyEditor({ templateId, copy, onChange, presets, personaId }: Props) {
+export function CopyEditor({ templateId, copy, onChange, presets, personaId, clientId }: Props) {
   const template = templates.find((t) => t.id === templateId)!;
+  const [aiPrompt, setAiPrompt] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     if (!personaId) return presets;
@@ -60,8 +65,74 @@ export function CopyEditor({ templateId, copy, onChange, presets, personaId }: P
     onChange({ ...copy, ...preset });
   }
 
+  async function handleAiGenerate() {
+    setIsGenerating(true);
+    setAiError(null);
+    try {
+      const res = await fetch("/api/generate-copy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          templateId,
+          clientId,
+          personaId,
+          instructions: aiPrompt || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setAiError(data.error || "Generation failed");
+        return;
+      }
+      onChange({ ...copy, ...data.copy });
+      setAiPrompt("");
+    } catch (err) {
+      setAiError(err instanceof Error ? err.message : "Network error");
+    } finally {
+      setIsGenerating(false);
+    }
+  }
+
   return (
     <div className="space-y-4">
+      {/* AI Generate section */}
+      <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-3 space-y-2">
+        <label className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 uppercase tracking-wide">
+          <Sparkles size={14} />
+          Generate with AI
+        </label>
+        <input
+          type="text"
+          value={aiPrompt}
+          onChange={(e) => setAiPrompt(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !isGenerating) handleAiGenerate();
+          }}
+          placeholder="Optional: describe what you want..."
+          className="w-full rounded-md border border-blue-200 bg-white px-3 py-1.5 text-sm focus:border-blue-500 focus:outline-none placeholder:text-gray-400"
+        />
+        <button
+          onClick={handleAiGenerate}
+          disabled={isGenerating}
+          className="w-full flex items-center justify-center gap-2 rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          {isGenerating ? (
+            <>
+              <Loader2 size={14} className="animate-spin" />
+              Generating...
+            </>
+          ) : (
+            <>
+              <Sparkles size={14} />
+              Generate Copy
+            </>
+          )}
+        </button>
+        {aiError && (
+          <p className="text-xs text-red-500">{aiError}</p>
+        )}
+      </div>
+
       {/* Preset selector grouped by framework */}
       <div>
         <label className="mb-1 block text-xs font-medium text-gray-500 uppercase tracking-wide">

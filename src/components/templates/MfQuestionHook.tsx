@@ -28,7 +28,7 @@ export function MfQuestionHook({
             gradient="linear-gradient(to bottom, rgba(11,12,16,0.15) 0%, rgba(11,12,16,0.4) 35%, rgba(11,12,16,0.88) 60%, rgba(11,12,16,0.98) 80%)"
           />
         )}
-        <MfDotGrid opacity={0.02} />
+        <MfDotGrid opacity={0.04} />
 
         {/* Pillar badge top-right */}
         {pillarName && (
@@ -43,23 +43,23 @@ export function MfQuestionHook({
             position: "absolute",
             left: 0,
             right: 0,
-            top: "40%",
+            top: "38%",
             bottom: 120,
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             padding: "0 64px",
-            gap: 24,
+            gap: 20,
           }}
         >
           {/* Question — the scroll-stopper */}
           <div
             style={{
-              fontSize: 54,
+              fontSize: 60,
               fontWeight: 800,
               color: "#FFFFFF",
-              lineHeight: 1.15,
-              textShadow: "0 2px 16px rgba(0,0,0,0.6)",
+              lineHeight: 1.1,
+              textShadow: "0 2px 20px rgba(0,0,0,0.6)",
             }}
           >
             {copy.hook}
@@ -71,38 +71,42 @@ export function MfQuestionHook({
               display: "inline-flex",
               alignSelf: "flex-start",
               alignItems: "center",
-              gap: 8,
-              padding: "8px 20px",
+              gap: 10,
+              padding: "10px 24px",
               borderRadius: 50,
-              backgroundColor: "rgba(0,0,0,0.4)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid rgba(91,224,255,0.2)",
+              backgroundColor: "rgba(0,0,0,0.45)",
+              backdropFilter: "blur(10px)",
+              border: "1.5px solid rgba(91,224,255,0.25)",
             }}
           >
-            <span style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, fontWeight: 600 }}>
+            <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 22, fontWeight: 600 }}>
               JEAUSTIN CAMPOS
             </span>
-            <span style={{ color: "#5BE0FF", fontSize: 18, fontWeight: 600 }}>
+            <span style={{ color: "#5BE0FF", fontSize: 22, fontWeight: 700 }}>
               8x Campeón
             </span>
           </div>
 
-          {/* Answer tease — glass card */}
+          {/* Answer tease — glass card (strengthened) */}
           {copy.body && (
             <div
               style={{
-                backgroundColor: "rgba(0,0,0,0.4)",
+                backgroundColor: "rgba(0,0,0,0.45)",
                 backdropFilter: "blur(16px)",
                 borderRadius: 16,
                 borderTop: "3px solid #5BE0FF",
-                padding: "32px 40px",
+                border: "1.5px solid rgba(91,224,255,0.2)",
+                borderTopWidth: 3,
+                borderTopColor: "#5BE0FF",
+                padding: "28px 36px",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 0 20px rgba(91,224,255,0.04)",
               }}
             >
               <div
                 style={{
-                  fontSize: 26,
-                  color: "rgba(255,255,255,0.75)",
-                  lineHeight: 1.45,
+                  fontSize: 24,
+                  color: "rgba(255,255,255,0.8)",
+                  lineHeight: 1.4,
                 }}
               >
                 {copy.body}
@@ -111,7 +115,7 @@ export function MfQuestionHook({
               <div
                 style={{
                   marginTop: 20,
-                  fontSize: 22,
+                  fontSize: 24,
                   color: "#5BE0FF",
                   fontWeight: 700,
                   display: "flex",
@@ -157,7 +161,7 @@ export function MfQuestionHook({
           />
         )}
 
-        <MfDotGrid opacity={0.02} />
+        <MfDotGrid opacity={0.04} />
 
         {/* Subtle cyan top-edge glow — picks up stadium lights */}
         {image && (
@@ -168,7 +172,7 @@ export function MfQuestionHook({
               left: 0,
               right: 0,
               height: 300,
-              background: "linear-gradient(to bottom, rgba(91,224,255,0.05) 0%, transparent 100%)",
+              background: "linear-gradient(to bottom, rgba(91,224,255,0.06) 0%, transparent 100%)",
               pointerEvents: "none",
             }}
           />
@@ -185,37 +189,37 @@ export function MfQuestionHook({
             height: 600,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(91,224,255,0.12) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(91,224,255,0.15) 0%, transparent 70%)",
             pointerEvents: "none",
           }}
         />
 
-        {/* Content in lower portion — stadium breathes above */}
+        {/* Content centered in lower portion */}
         <div
           style={{
             position: "absolute",
             left: 0,
             right: 0,
-            top: "38%",
+            top: "30%",
             bottom: 120,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            padding: "0 72px",
-            gap: 32,
+            padding: "0 64px",
+            gap: 24,
           }}
         >
           {/* Question — bold and centered */}
           <div
             style={{
-              fontSize: 58,
+              fontSize: 66,
               fontWeight: 800,
               color: "#FFFFFF",
-              lineHeight: 1.15,
+              lineHeight: 1.1,
               textShadow: image
-                ? "0 2px 16px rgba(0,0,0,0.6)"
+                ? "0 2px 20px rgba(0,0,0,0.6)"
                 : "0 0 40px rgba(91,224,255,0.15)",
             }}
           >
@@ -227,24 +231,54 @@ export function MfQuestionHook({
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: 8,
-              padding: "8px 20px",
+              gap: 10,
+              padding: "10px 24px",
               borderRadius: 50,
-              backgroundColor: "rgba(0,0,0,0.35)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid rgba(91,224,255,0.2)",
+              backgroundColor: "rgba(0,0,0,0.4)",
+              backdropFilter: "blur(10px)",
+              border: "1.5px solid rgba(91,224,255,0.25)",
             }}
           >
-            <span style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, fontWeight: 600 }}>
+            <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 22, fontWeight: 600 }}>
               JEAUSTIN CAMPOS
             </span>
-            <span style={{ color: "#5BE0FF", fontSize: 18, fontWeight: 600 }}>
+            <span style={{ color: "#5BE0FF", fontSize: 22, fontWeight: 700 }}>
               8x Campeón
             </span>
           </div>
 
           {/* Pillar badge */}
           {pillarName && <MfPillarBadge pillar={pillarName} />}
+
+          {/* Body text if present */}
+          {copy.body && (
+            <div
+              style={{
+                fontSize: 22,
+                color: "rgba(255,255,255,0.65)",
+                lineHeight: 1.5,
+                maxWidth: 650,
+                textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
+              }}
+            >
+              {copy.body}
+            </div>
+          )}
+
+          {/* CTA pill */}
+          <div
+            style={{
+              padding: "16px 36px",
+              borderRadius: 50,
+              backgroundColor: "#2076FF",
+              boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
+              marginTop: 4,
+            }}
+          >
+            <span style={{ color: "#FFFFFF", fontSize: 26, fontWeight: 700 }}>
+              {copy.cta}
+            </span>
+          </div>
         </div>
 
         <MfBrandBar brand={brand} />
@@ -252,7 +286,7 @@ export function MfQuestionHook({
     );
   }
 
-  // Variant A (default): "?" watermark, question centered in lower half, glass card, CTA pill
+  // Variant A (default): Question centered, answer tease, CTA pill
   return (
     <div
       style={{
@@ -269,44 +303,64 @@ export function MfQuestionHook({
           objectPosition="center 30%"
         />
       )}
-      <MfDotGrid opacity={image ? 0.015 : 0.03} />
+      <MfDotGrid opacity={image ? 0.03 : 0.06} />
 
-      {/* Content in lower portion — stadium breathes above */}
+      {/* Content — uses more of the canvas now */}
       <div
         style={{
           position: "absolute",
           left: 0,
           right: 0,
-          top: "30%",
+          top: "25%",
           bottom: 120,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "flex-end",
+          justifyContent: "center",
           textAlign: "center",
           padding: "0 64px",
-          paddingBottom: 48,
-          gap: 32,
+          gap: 24,
         }}
       >
         {/* Hook — the scroll-stopper */}
         <div
           style={{
-            fontSize: 54,
+            fontSize: 64,
             fontWeight: 800,
             color: "#FFFFFF",
-            lineHeight: 1.15,
-            textShadow: "0 2px 16px rgba(0,0,0,0.6)",
+            lineHeight: 1.1,
+            textShadow: "0 2px 20px rgba(0,0,0,0.6)",
           }}
         >
           {copy.hook}
+        </div>
+
+        {/* Credential pill */}
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "10px 24px",
+            borderRadius: 50,
+            backgroundColor: "rgba(0,0,0,0.4)",
+            backdropFilter: "blur(10px)",
+            border: "1.5px solid rgba(91,224,255,0.25)",
+          }}
+        >
+          <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 22, fontWeight: 600 }}>
+            JEAUSTIN CAMPOS
+          </span>
+          <span style={{ color: "#5BE0FF", fontSize: 22, fontWeight: 700 }}>
+            8x Campeón
+          </span>
         </div>
 
         {/* Answer tease */}
         {copy.body && (
           <div
             style={{
-              fontSize: 26,
+              fontSize: 22,
               color: "rgba(255,255,255,0.7)",
               lineHeight: 1.45,
               maxWidth: 700,
@@ -321,12 +375,13 @@ export function MfQuestionHook({
         <div
           style={{
             marginTop: 8,
-            padding: "16px 36px",
+            padding: "18px 44px",
             borderRadius: 50,
             backgroundColor: "#2076FF",
+            boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
           }}
         >
-          <span style={{ color: "#FFFFFF", fontSize: 24, fontWeight: 700 }}>
+          <span style={{ color: "#FFFFFF", fontSize: 28, fontWeight: 700 }}>
             {copy.cta}
           </span>
         </div>

@@ -1,4 +1,4 @@
-export function MfDotGrid({ opacity = 0.03 }: { opacity?: number }) {
+export function MfDotGrid({ opacity = 0.08 }: { opacity?: number }) {
   return (
     <div
       style={{

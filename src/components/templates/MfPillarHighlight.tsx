@@ -31,32 +31,7 @@ export function MfPillarHighlight({
             objectPosition="center 30%"
           />
         )}
-        <MfDotGrid opacity={image ? 0.015 : 0.03} />
-
-        {/* Large translucent pillar icon — hidden when image present */}
-        {!image && (
-          <div
-            style={{
-              position: "absolute",
-              right: -60,
-              top: "50%",
-              transform: "translateY(-50%)",
-              fontSize: 500,
-              opacity: 0.04,
-              color: "#5BE0FF",
-              lineHeight: 1,
-              pointerEvents: "none",
-            }}
-          >
-            {pillarName === "Técnica"
-              ? "⚽"
-              : pillarName === "Táctica"
-                ? "📋"
-                : pillarName === "Físico"
-                  ? "💪"
-                  : "🧠"}
-          </div>
-        )}
+        <MfDotGrid opacity={image ? 0.03 : 0.06} />
 
         {/* Pillar badge — top-right, floats over image */}
         <div style={{ position: "absolute", top: 48, right: 48 }}>
@@ -75,16 +50,16 @@ export function MfPillarHighlight({
             flexDirection: "column",
             justifyContent: "center",
             padding: "0 64px",
-            gap: 24,
+            gap: 20,
           }}
         >
           {/* Hook question */}
           <div
             style={{
-              fontSize: 52,
+              fontSize: 48,
               fontWeight: 800,
               color: "#FFFFFF",
-              lineHeight: 1.15,
+              lineHeight: 1.12,
               textShadow: "0 2px 16px rgba(0,0,0,0.6)",
             }}
           >
@@ -92,7 +67,7 @@ export function MfPillarHighlight({
           </div>
 
           {/* Numbered bullets */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {bullets.map((line, i) => (
               <div
                 key={i}
@@ -105,10 +80,10 @@ export function MfPillarHighlight({
                 <span
                   style={{
                     color: "#5BE0FF",
-                    fontSize: 22,
+                    fontSize: 20,
                     fontWeight: 700,
                     minWidth: 32,
-                    opacity: 0.7,
+                    opacity: 1.0,
                     textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
                   }}
                 >
@@ -116,8 +91,8 @@ export function MfPillarHighlight({
                 </span>
                 <span
                   style={{
-                    color: "rgba(255,255,255,0.8)",
-                    fontSize: 24,
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: 22,
                     lineHeight: 1.4,
                     textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
                   }}
@@ -134,12 +109,13 @@ export function MfPillarHighlight({
               marginTop: 8,
               display: "inline-flex",
               alignSelf: "flex-start",
-              padding: "14px 32px",
+              padding: "16px 36px",
               borderRadius: 50,
               backgroundColor: "#2076FF",
+              boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
             }}
           >
-            <span style={{ color: "#FFFFFF", fontSize: 22, fontWeight: 700 }}>
+            <span style={{ color: "#FFFFFF", fontSize: 26, fontWeight: 700 }}>
               {copy.cta} →
             </span>
           </div>
@@ -166,7 +142,7 @@ export function MfPillarHighlight({
             gradient="linear-gradient(to bottom, rgba(11,12,16,0.5) 0%, rgba(11,12,16,0.7) 45%, rgba(11,12,16,0.85) 100%)"
           />
         )}
-        <MfDotGrid opacity={0.02} />
+        <MfDotGrid opacity={0.04} />
 
         {/* Top half — large hook on dark bg */}
         <div
@@ -186,10 +162,10 @@ export function MfPillarHighlight({
           <MfPillarBadge pillar={pillarName} />
           <div
             style={{
-              fontSize: 56,
+              fontSize: 52,
               fontWeight: 800,
               color: "#FFFFFF",
-              lineHeight: 1.15,
+              lineHeight: 1.12,
               textShadow: image ? "0 2px 12px rgba(0,0,0,0.7)" : undefined,
             }}
           >
@@ -197,48 +173,48 @@ export function MfPillarHighlight({
           </div>
         </div>
 
-        {/* Bottom half — body on deep navy card */}
+        {/* Bottom half — bullets with cyan left-accent lines */}
         <div
           style={{
             position: "absolute",
+            left: 0,
+            right: 0,
+            top: "50%",
             bottom: 120,
-            left: 40,
-            right: 40,
-            top: "48%",
-            backgroundColor: image ? "rgba(4,4,71,0.55)" : "#040447",
-            backdropFilter: image ? "blur(12px)" : undefined,
-            borderRadius: 32,
-            padding: "48px 56px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            padding: "0 64px",
             gap: 24,
-            boxShadow: "0 0 40px rgba(91,224,255,0.08)",
           }}
         >
+          {/* Cyan divider */}
+          <div
+            style={{
+              width: 56,
+              height: 3,
+              backgroundColor: "rgba(91,224,255,0.4)",
+              borderRadius: 2,
+            }}
+          />
+
           {bullets.map((line, i) => (
             <div
               key={i}
               style={{
                 display: "flex",
-                alignItems: "flex-start",
-                gap: 14,
+                alignItems: "center",
+                gap: 20,
+                paddingLeft: 20,
+                borderLeft: "3px solid rgba(91,224,255,0.35)",
               }}
             >
               <span
                 style={{
-                  color: "#5BE0FF",
-                  fontSize: 18,
-                  lineHeight: "30px",
-                }}
-              >
-                ◆
-              </span>
-              <span
-                style={{
-                  color: "rgba(255,255,255,0.65)",
+                  color: "rgba(255,255,255,0.8)",
                   fontSize: 26,
-                  lineHeight: 1.45,
+                  lineHeight: 1.4,
+                  textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
                 }}
               >
                 {line}
@@ -246,18 +222,19 @@ export function MfPillarHighlight({
             </div>
           ))}
 
-          {/* CTA inside card */}
+          {/* CTA pill */}
           <div
             style={{
               marginTop: 12,
               display: "inline-flex",
               alignSelf: "flex-start",
-              padding: "14px 32px",
+              padding: "16px 36px",
               borderRadius: 50,
               backgroundColor: "#2076FF",
+              boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
             }}
           >
-            <span style={{ color: "#FFFFFF", fontSize: 22, fontWeight: 700 }}>
+            <span style={{ color: "#FFFFFF", fontSize: 26, fontWeight: 700 }}>
               {copy.cta}
             </span>
           </div>
@@ -285,7 +262,7 @@ export function MfPillarHighlight({
           objectPosition="center 30%"
         />
       )}
-      <MfDotGrid opacity={image ? 0.015 : 0.03} />
+      <MfDotGrid opacity={image ? 0.03 : 0.06} />
 
       <div
         style={{
@@ -296,17 +273,17 @@ export function MfPillarHighlight({
           flexDirection: "column",
           alignItems: "center",
           padding: "56px 64px 0",
-          gap: 36,
+          gap: 28,
         }}
       >
         <MfPillarBadge pillar={pillarName} />
 
         <div
           style={{
-            fontSize: 52,
+            fontSize: 58,
             fontWeight: 800,
             color: "#FFFFFF",
-            lineHeight: 1.18,
+            lineHeight: 1.12,
             textAlign: "center",
             textShadow: "0 2px 16px rgba(0,0,0,0.6)",
           }}
@@ -317,11 +294,11 @@ export function MfPillarHighlight({
         {/* Cyan divider */}
         <div
           style={{
-            width: 64,
-            height: 2,
-            backgroundColor: "rgba(91,224,255,0.25)",
+            width: 72,
+            height: 3,
+            backgroundColor: "rgba(91,224,255,0.4)",
             borderRadius: 2,
-            marginTop: -8,
+            marginTop: -4,
           }}
         />
 
@@ -330,7 +307,7 @@ export function MfPillarHighlight({
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 14,
+            gap: 12,
             width: "100%",
             marginTop: 4,
           }}
@@ -341,23 +318,23 @@ export function MfPillarHighlight({
               style={{
                 display: "flex",
                 alignItems: "center",
-                padding: "22px 30px",
-                backgroundColor: image ? "rgba(4,4,71,0.38)" : "rgba(4,4,71,0.5)",
+                padding: "20px 28px",
+                backgroundColor: image ? "rgba(4,4,71,0.55)" : "rgba(4,4,71,0.55)",
                 backdropFilter: image ? "blur(14px)" : undefined,
-                borderRadius: 18,
-                borderLeft: "4px solid #5BE0FF",
-                borderTop: image ? "1px solid rgba(91,224,255,0.07)" : undefined,
-                borderRight: image ? "1px solid rgba(91,224,255,0.04)" : undefined,
-                borderBottom: image ? "1px solid rgba(91,224,255,0.04)" : undefined,
+                borderRadius: 16,
+                borderLeft: "5px solid #5BE0FF",
+                borderTop: "1px solid rgba(91,224,255,0.08)",
+                borderRight: "1px solid rgba(91,224,255,0.05)",
+                borderBottom: "1px solid rgba(91,224,255,0.05)",
                 boxShadow: image
-                  ? "0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)"
-                  : undefined,
+                  ? "0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05), inset 0 0 20px rgba(91,224,255,0.04)"
+                  : "0 2px 12px rgba(0,0,0,0.2), inset 0 0 16px rgba(91,224,255,0.03)",
               }}
             >
               <span
                 style={{
-                  color: image ? "rgba(255,255,255,0.82)" : "rgba(255,255,255,0.65)",
-                  fontSize: 26,
+                  color: image ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.7)",
+                  fontSize: 23,
                   lineHeight: 1.4,
                   textShadow: image ? "0 1px 8px rgba(0,0,0,0.5)" : undefined,
                 }}
@@ -379,7 +356,7 @@ export function MfPillarHighlight({
             boxShadow: "0 4px 20px rgba(32,118,255,0.35)",
           }}
         >
-          <span style={{ color: "#FFFFFF", fontSize: 26, fontWeight: 700, letterSpacing: "0.3px" }}>
+          <span style={{ color: "#FFFFFF", fontSize: 28, fontWeight: 700, letterSpacing: "0.3px" }}>
             {copy.cta}
           </span>
         </div>

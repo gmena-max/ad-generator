@@ -13,14 +13,14 @@ export const AdPreview = forwardRef<HTMLDivElement, Props>(
         <div
           className="relative overflow-hidden rounded-lg shadow-2xl bg-white"
           style={{
-            width: 360,
-            height: 450,
+            width: 432,
+            height: 540,
           }}
         >
           <div
             ref={ref}
             style={{
-              transform: "scale(0.3333)",
+              transform: "scale(0.4)",
               transformOrigin: "top left",
               width: 1080,
               height: 1350,
@@ -30,7 +30,7 @@ export const AdPreview = forwardRef<HTMLDivElement, Props>(
           </div>
         </div>
         <p className="mt-2 text-xs text-gray-400">
-          Preview — 1080x1350 actual size
+          Preview — 1080×1350 actual size
         </p>
       </div>
     );
